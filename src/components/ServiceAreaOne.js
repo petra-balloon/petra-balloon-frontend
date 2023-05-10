@@ -6,7 +6,7 @@ import serviceList from "../scripts/serviceList";
 
 const ServiceAreaOne = () => {
   
-  const apiKey = "f56f24967aaf51182d1d4df628297c6d"
+  /* const apiKey = "af72e0d33f3297a2d00565cd1d9099e7"
   const [inputCity, setInputCity] = useState("jordan")
   const [data, setData] = useState({})
 
@@ -22,7 +22,7 @@ const ServiceAreaOne = () => {
     }).catch((err) => {
       console.log("err", err)
     })
-  }
+  } */
 
   return (
     <>

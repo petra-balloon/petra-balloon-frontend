@@ -1,6 +1,16 @@
 /*----------------------------------------------
     # Nav bar
 ----------------------------------------------*/
+.nav-book-now{
+  display: "flex";
+  flex-direction: "column";
+  align-items: "center";
+  justify-content: "center";
+  color: "white";
+  width: "100%";
+  background-color: "#648cbc";
+  padding:"5px";
+}
 .navbar-top {
   background: #091d3e;
   padding: 15px 0;

@@ -1,3 +1,5 @@
+
+
 :root {
     --main-color: #246BFD;
     --main-color2: #EE0020;
@@ -39,6 +41,19 @@ body {
     font-weight: 500;
 }
 
+/* modal css */
+.modal-body{
+    border-radius: 5px;
+    top:0;
+    max-width: 100%;
+}
+
+/* calander */
+.react-calendar{
+    width:100%;
+    border: none;
+}
+/* modal css */
 h1 {
     font-size: 75px;
     line-height: 1.2333333333333333;

@@ -1,6 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { MdFmdGood } from "react-icons/md";
+import { MdCalendarMonth } from "react-icons/md";
 
 const AboutAreaOne = () => {
+  const apiKey = "af72e0d33f3297a2d00565cd1d9099e7";
+  /* const [inputCity, setInputCity] = useState("jordan") */
+   const [weatherSunSet, setWeatherSunSet] = useState("")
+   const [weatherSunRise, setWeatherSunRise] = useState("")
+   const [weatherSkyCondition, setWeatherSkyCondition] = useState("")
+   const [weatherWind, setWeatherWind] = useState("")
+   const [weatherCity, setWeatherCity] = useState("")
+   const [weatherDate, setWeatherDate] = useState("")
+
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    getWetherDetails();
+  }, []);
+
+  const getWetherDetails = (cityName) => {
+    const apiURL =
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+      "jordan" +
+      "&appid=" +
+      apiKey;
+    axios
+      .get(apiURL)
+      .then((res) => {
+        console.log("response", res.data);
+        setData(res.data);
+        var sunsetTime = new Date(res.data.sys.sunset * 1000);
+        var sunriseTime = new Date(res.data.sys.sunrise * 1000);
+        setWeatherSunSet(sunsetTime.toLocaleTimeString("en-US"))
+        setWeatherSunRise(sunriseTime.toLocaleTimeString("en-US"))
+        setWeatherSkyCondition(res.data.weather[0].main)
+        setWeatherWind(res.data.wind.speed)
+        setWeatherCity(res.data.name)
+        setWeatherDate(sunsetTime.toLocaleDateString("en-US"));
+       //console.log(sunsetTime)
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+
   return (
     <>
       {/* ================== AboutAreaOne start  ==================*/}
@@ -8,32 +52,137 @@ const AboutAreaOne = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-6">
-              <div
-                className="about-thumb-inner pe-xl-5 me-xl-5 "
-                data-aos="fade-right"
-                data-aos-delay="100"
-                data-aos-duration="1500"
-              >
-                <img
-                  className="animate-img-1 top_image_bounce"
-                  src="assets/img/about/2.png"
-                  alt="img"
-                />
-                <img
-                  className="animate-img-2 left_image_bounce"
-                  src="assets/img/about/3.png"
-                  alt="img"
-                />
-                <img
-                  className="animate-img-3 top_image_bounce"
-                  src="assets/img/banner/5.svg"
-                  alt="img"
-                />
-                <img
-                  className="main-img"
-                  src="assets/img/about/1.png"
-                  alt="img"
-                />
+              <div style={{ backgroundColor: "#2c2426" }} className="row">
+                <div
+                  style={{
+                    display: "felx",
+                    textAlign: "center",
+                    justifyContent: "center",
+                  }}
+                  className="col-lg-12"
+                >
+                  <h2 style={{ color: "white",fontSize:"60px" }}>Weather Forecast</h2>
+                </div>
+                <div style={{marginTop:"2rem"}}></div>
+                <div className="col-lg-12">
+                  <div className="row">
+                    <div className="col-lg-6">
+                      <div style={{ display: "flex" }}>
+                        <MdFmdGood
+                          style={{ fontSize: "25px", color: "white" }}
+                        />
+                        <h6 style={{ marginLeft: "10px", color: "white"  }}>
+                          {weatherCity}
+                        </h6>
+                      </div>
+                    </div>
+                    <div className="col-lg-6">
+                      <div style={{ display: "flex", marginLeft: "0.5rem" }}>
+                        <MdCalendarMonth
+                          style={{ fontSize: "25px", color: "white" }}
+                        />
+                        <h6 style={{color: "white"}}>
+                          Today Forecast |{" "}
+                          <span style={{ color: "white" }}>{weatherDate}</span>
+                        </h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style={{ marginTop: "0.5rem" }}></div>
+                <div className="col-lg-12">
+                  <div className="row">
+                    <div className="col-lg-3">
+                      <div style={{ display: "flex", padding: "5px" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            color: "white",
+                            width: "100%",
+                            backgroundColor: "#7c7973",
+                            borderRadius: "5px",
+                            padding:"5px"
+                          }}
+                        >
+                          <h6 style={{ color: "white" }}>Sunrise</h6>
+                          <div style={{ fontSize: "12px" }}>{weatherSunRise}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-lg-3">
+                      <div style={{ display: "flex", padding: "5px" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            color: "white",
+                            width: "100%",
+                            backgroundColor: "#648cbc",
+                            borderRadius: "5px",
+                            padding:"5px"
+                          }}
+                        >
+                          <h6 style={{ color: "white" }}>Evening</h6>
+                          <div style={{ fontSize: "12px" }}>{weatherSunSet}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-lg-3">
+                      <div style={{ display: "flex", padding: "5px" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            color: "white",
+                            width: "100%",
+                            backgroundColor: "#648cbc",
+                            borderRadius: "5px",
+                            padding:"5px"
+                          }}
+                        >
+                          <h6 style={{ color: "white" }}>Sky</h6>
+                          <div style={{ fontSize: "12px" }}>{weatherSkyCondition}</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-lg-3">
+                      <div style={{ display: "flex", padding: "5px" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            color: "white",
+                            width: "100%",
+                            backgroundColor: "#648cbc",
+                            borderRadius: "5px",
+                            padding:"5px"
+                          }}
+                        >
+                          <h6 style={{ color: "white" }}>Wind</h6>
+                          <div style={{ fontSize: "12px" }}>{weatherWind} m/s</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-12">
+                  <div className="row">
+                    <div className="col-lg-12">
+                      <div style={{ minHeight: "100px" }}>
+                        <img src="assets/img/about/weather.gif" alt="img" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div
