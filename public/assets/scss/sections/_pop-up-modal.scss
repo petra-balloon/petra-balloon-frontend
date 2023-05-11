@@ -184,6 +184,7 @@
     background-color: #363A47;
     font-size: 18px;
     padding: 1rem 1.5rem;
+    cursor: pointer;
     
 }
 
@@ -223,3 +224,215 @@
 .total-bill{
     margin-left: 100px;
 }
+
+.calculated-bill{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+/* third modal */
+
+.third-modal-outer-div{
+    width: 1350px;
+    height: 680px;
+}
+
+.shoping-cart-top-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+
+}
+.heading-wrap{
+    border-bottom: 2px solid #e9ecef;
+}
+
+.timer-main-class{
+    display: flex;
+    align-items: center;
+}
+
+.running-timer{
+    margin-left:5px;
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: #354052;
+}
+.heading-icon{
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: #354052;
+}
+
+.heading-top{
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #354052;
+}
+
+.card-outer-div{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #E0E0E0;
+    border-radius: 0.25rem;
+    padding: 12px;
+    font-size: 12px;
+    color:#354052
+    
+}
+
+.third-modal-spacer{
+    margin-top: 2rem;
+}
+.third-price-class{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-weight: 800;
+    padding-bottom: 10px;
+}
+
+.third-total-recipt-price{
+    display: flex;
+    justify-content: end;
+    font-size: 16px;
+    color:#354052
+}
+.card-head{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 2px solid #e9ecef;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    vertical-align: middle;
+    line-height: 1.8;
+    color:#354052;
+}
+
+.third-product-class{
+    font-weight: 800;
+    padding-bottom: 10px;
+}
+
+.third-pass-details{
+    font-size: 16px;
+    color:#354052
+}
+
+.card-edit{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    font-size: 16px;
+    color:#354052
+}
+
+.third-date{
+    font-size: 16px;
+    color:#354052
+}
+.pencil-margin-left{
+    margin-right: 6px;
+    color: #ffc107
+}
+
+.third-edit-text-class{
+    color: #ffc107
+}
+
+.third-selected-family-div{
+    display: flex;
+    font-size: 16px;
+    color:#354052
+
+}
+.cross-margin-left{
+    margin-right: 6px;
+    color: #dc3545;
+}
+
+.third-cross-text-class{
+    color: #dc3545;
+}
+
+.margin-for-family{
+    margin-left: 7px;
+}
+.spacer-card-family{
+    margin-top: 0.5rem;
+}
+.spacer-top-total{
+    margin-top: 0.5rem;
+}
+.due-now-text{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    color:#354052;
+
+}
+.due-now-text-price{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    font-size: 16px;
+    font-weight: bold;
+    color:#354052;
+}
+
+.biger-pricing-div{
+    display: flex;
+    border-top: 1px solid #E0E0E0;
+}
+
+.span-date-class-first{
+    font-size: 16px;
+    font-weight: bold;
+    color:#354052;
+    margin-right: 5px;
+}
+.span-date-class-second{
+    font-size: 16px;
+    font-weight: bold;
+    color:#354052;
+    margin-left: 5px;
+}
+
+.contact-info-class{
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.third-label-class{
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+    color:#354052
+}
+.input-margin-bottom-spacer{
+    margin-bottom: 16px;
+}
+
+
+
+.third-check-box-outer-div{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .outside-info-div{
+    border: 1px solid #E0E0E0;
+    padding: 1.2rem
+  }

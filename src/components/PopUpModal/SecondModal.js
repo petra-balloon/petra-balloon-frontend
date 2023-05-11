@@ -18,29 +18,23 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
   const [totalbill, setTotalBill] = useState(0);
   const [adultSelectedNumber, setAdultSelectedNumber] = useState(0);
   const [adultPrice, setAdultPrice] = useState(200);
-  const [adultSubTotal, setAdultSubTotal] = useState(0)
+  const [adultSubTotal, setAdultSubTotal] = useState(0);
   const [childPrice, setChildPrice] = useState(100);
   const [childSubtotal, setChildSubTotal] = useState(200);
 
-
-
-  const CalculateTotalBill = async () => {
-
-  };
+  const CalculateTotalBill = async () => {};
 
   const AdultPriceAdd = async (value) => {
-    setAdultSelectedNumber(value)
-    setAdultSubTotal(value*adultPrice)
+    setAdultSelectedNumber(value);
+    setAdultSubTotal(value * adultPrice);
     setIsOpen(false);
   };
 
   const ChildPriceAdd = async (value) => {
-    setChildSubTotal(value)
-    setTotalBill(value*childPrice)
+    setChildSubTotal(value);
+    setTotalBill(value * childPrice);
     setIsOpen(false);
   };
-
-
 
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);
@@ -51,7 +45,7 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
         if (ref.current && !ref.current.contains(event.target)) {
           setIsOpen(false);
           setIsOpenSecond(false);
-          setIsOpenThird(false)
+          setIsOpenThird(false);
         }
       }
       document.addEventListener("mousedown", handleClickOutside);
@@ -153,7 +147,9 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
                           </div>
                           <div className="col-lg-2">
                             <div className="select-person-outer-div">
-                              <div className="total-adult-price">{adultSelectedNumber}</div>
+                              <div className="total-adult-price">
+                                {adultSelectedNumber}
+                              </div>
                               <div>
                                 <BsChevronExpand
                                   onClick={() => {
@@ -169,7 +165,7 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
                                     return (
                                       <li
                                         onClick={() => {
-                                          AdultPriceAdd(value.value)
+                                          AdultPriceAdd(value.value);
                                         }}
                                         className="select-control"
                                       >
@@ -209,7 +205,9 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
                               <div>
                                 <BsChevronExpand
                                   onClick={() => {
-                                    setIsOpenSecond(isOpensecond ? false : true);
+                                    setIsOpenSecond(
+                                      isOpensecond ? false : true
+                                    );
                                   }}
                                 />
                               </div>
@@ -341,8 +339,21 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
               <div>26.9 AED</div>
             </div>
             <div className="add-to-cart-outer">
-              <div>ADD to Cart</div>
-              <div className="total-bill">{totalbill}</div>
+              <div
+                className="row"
+                onClick={() => {
+                  setSecondModal("third");
+                }}
+              >
+                <div className="col-lg-10">
+                  <div>ADD to Cart</div>
+                </div>
+                <div className="col-lg-2">
+                  <div className="calculated-bill">
+                    <div className="total-bill">{totalbill}</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
