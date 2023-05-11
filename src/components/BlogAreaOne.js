@@ -35,13 +35,13 @@ const BlogAreaOne = () => {
                       <div className='col-6'>
                         <p>
                           <FaRegUser />
-                          Sam Curren
+                          Sam 
                         </p>
                       </div>
                       <div className='col-6 text-end'>
                         <p>
                           <FaRegComments />
-                          Sam Curren
+                          Sam
                         </p>
                       </div>
                     </div>
@@ -69,13 +69,13 @@ const BlogAreaOne = () => {
                       <div className='col-6'>
                         <p>
                           <FaRegUser />
-                          Sam Curren
+                          Tom
                         </p>
                       </div>
                       <div className='col-6 text-end'>
                         <p>
                           <FaRegComments />
-                          Sam Curren
+                          Tom
                         </p>
                       </div>
                     </div>
@@ -103,13 +103,13 @@ const BlogAreaOne = () => {
                       <div className='col-6'>
                         <p>
                           <FaRegUser />
-                          Sam Curren
+                          Roy
                         </p>
                       </div>
                       <div className='col-6 text-end'>
                         <p>
                           <FaRegComments />
-                          Sam Curren
+                          Roy
                         </p>
                       </div>
                     </div>

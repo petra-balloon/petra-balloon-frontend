@@ -43,7 +43,7 @@ const CaseStudyAreaOne = () => {
                     <Link to="/case-study-details">Tecnology Farms</Link>
                   </h5>
                   <a className="cat" href="#">
-                    Las vegas
+                    Petra
                   </a>
                   <a className="right-arrow" href="#">
                     <FaAngleDoubleRight />
@@ -61,7 +61,7 @@ const CaseStudyAreaOne = () => {
                     <Link to="/case-study-details">Tecnology Farms</Link>
                   </h5>
                   <a className="cat" href="#">
-                    Las vegas
+                    Petra
                   </a>
                   <a className="right-arrow" href="#">
                     <FaAngleDoubleRight />
@@ -79,7 +79,7 @@ const CaseStudyAreaOne = () => {
                     <Link to="/case-study-details">Tecnology Farms</Link>
                   </h5>
                   <a className="cat" href="#">
-                    Las vegas
+                    Petra
                   </a>
                   <a className="right-arrow" href="#">
                     <FaAngleDoubleRight />

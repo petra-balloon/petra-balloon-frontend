@@ -92,14 +92,14 @@ const FooterOne = () => {
               <div className="col-md-6 align-self-center">
                 <p>
                   <span style={{ marginRight: "5px" }}> @ 2023</span>
-                  <a href="https://petraballoon.com/" target="_blank">
+                  <a target="_blank">
                     petraballoon.com
                   </a>
                   <span style={{ marginRight: "5px" }}>
                     made with passion by
                   </span>
                   <a href="https://www.verticalsols.com/" target="_blank">
-                    VerticalSols.com
+                    verticalsols
                   </a>
                 </p>
               </div>
