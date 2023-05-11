@@ -22,7 +22,7 @@ const AboutAreaOne = () => {
   const getWetherDetails = (cityName) => {
     const apiURL =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
-      "jordan" +
+      "petra" +
       "&appid=" +
       apiKey;
     axios
