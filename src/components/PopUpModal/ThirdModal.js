@@ -162,6 +162,17 @@ const ThirdModal = ({ secondmodal, setSecondModal }) => {
                       </div>
                     </div>
                   </div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <div className="input-margin-bottom-spacer"></div>
+              <div className="row">
+                <div className="col-lg-8">
+                  <div className="">Payment Details</div>
+                </div>
+                <div className="col-lg-4">
+                  <div className="">300.00 AED</div>
                 </div>
               </div>
             </div>

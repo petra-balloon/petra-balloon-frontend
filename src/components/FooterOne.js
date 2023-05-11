@@ -38,7 +38,7 @@ const FooterOne = () => {
                     <FaPhoneAlt /> +962 3 215 6600
                   </p>
                   <p className="mt-2">
-                    <FaEnvelope /> hello@imevent.com
+                    <FaEnvelope /> petraballoon@gmail.com
                   </p>
                 </div>
               </div>
@@ -93,13 +93,13 @@ const FooterOne = () => {
                 <p>
                   <span style={{ marginRight: "5px" }}> @ 2023</span>
                   <a target="_blank">
-                    petraballoon.com
+                    petraballoon
                   </a>
                   <span style={{ marginRight: "5px" }}>
-                    made with passion by
+                  design and developed by
                   </span>
                   <a href="https://www.verticalsols.com/" target="_blank">
-                    verticalsols
+                    Verticalsols
                   </a>
                 </p>
               </div>
