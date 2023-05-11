@@ -116,7 +116,7 @@ const NavBar = () => {
                 <a href="#">Photo Memories</a>
               </li>
               <li>
-                <Link to="/contact">About Us</Link>
+                <Link to="/about">About Us</Link>
               </li>
             </ul>
           </div>

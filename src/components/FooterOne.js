@@ -52,35 +52,31 @@ const FooterOne = () => {
                 <h4 className="widget-title">Our Service</h4>
                 <ul>
                   <li>
-                    <Link to="/service">
-                      <FaArrowRight /> Experiences
+                    <Link to="/experience">
+                       Experiences
                     </Link>
                   </li>
                   <li>
-                    <Link to="/service">
-                      <FaArrowRight />
+                    <Link to="/pricing">
+                      
                       Pricing
                     </Link>
                   </li>
+                
                   <li>
-                    <Link to="/service">
-                      <FaArrowRight /> Digital marketing
+                    <Link to="/plan-your-flight">
+                       Plan Your Flight
                     </Link>
                   </li>
                   <li>
-                    <Link to="/service">
-                      <FaArrowRight /> Plan Your Flight
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/service">
-                      <FaArrowRight />
+                    <Link to="/">
+                      
                       Photo Memories
                     </Link>
                   </li>
                   <li>
-                    <Link to="/service">
-                      <FaArrowRight /> About Us
+                    <Link to="/about">
+                       About Us
                     </Link>
                   </li>
                 </ul>
