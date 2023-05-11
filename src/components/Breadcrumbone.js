@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Breadcrumb = ({  }) => {
-  const title = "EXPERIENCES"
+const Breadcrumbone = ({  }) => {
+  const title = "Pricing"
   return (
     <>
       {/* ================ Breadcrumb Start ================*/}
       <div
         className='breadcrumb-area bg-cover'
-        style={{ height :"720px" , backgroundImage: 'url("./assets/img/bg/71.jpg")' }}
+        style={{ height :"720px" , backgroundImage: 'url("./assets/img/bg/72.jpg")' }}
       >
         <div className='container'>
           <div className='breadcrumb-inner'>
@@ -26,4 +26,4 @@ const Breadcrumb = ({  }) => {
   );
 };
 
-export default Breadcrumb;
+export default Breadcrumbone;
