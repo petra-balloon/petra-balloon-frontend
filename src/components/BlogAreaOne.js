@@ -26,7 +26,7 @@ const BlogAreaOne = () => {
                     October 19, 2023
                   </p>
                   <h5>
-                    <Link to='/blog-details'>
+                    <Link to='/'>
                       Transforming businesses, one pixel at a time
                     </Link>
                   </h5>
@@ -60,7 +60,7 @@ const BlogAreaOne = () => {
                     June 19, 2023
                   </p>
                   <h5>
-                    <Link to='/blog-details'>
+                    <Link to='/'>
                       The Importance of a Strong Digital for Strategy
                     </Link>
                   </h5>
@@ -94,7 +94,7 @@ const BlogAreaOne = () => {
                     October 19, 2023
                   </p>
                   <h5>
-                    <Link to='/blog-details'>
+                    <Link to='/'>
                       Creating Engaging Content: A Guide for Digital
                     </Link>
                   </h5>

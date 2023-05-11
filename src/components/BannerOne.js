@@ -47,7 +47,7 @@ const BannerOne = () => {
                   data-aos='fade-right'
                   data-aos-delay='300'
                   data-aos-duration='1500'
-                  to='/about'
+                  to='/'
                 >
                   Discover More <FaPlus />
                 </Link>
