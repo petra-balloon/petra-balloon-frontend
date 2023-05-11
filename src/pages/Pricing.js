@@ -1,20 +1,23 @@
 import React from "react";
 import Breadcrumb from "../components/Breadcrumb";
-import ContactMain from "../components/ContactMain";
 import FooterOne from "../components/FooterOne";
 import NavBar from "../components/NavBar";
+import PricingAreaOne from "../components/PricingAreaOne";
+import ServiceAreaGroup from "../components/ServiceAreaGroup";
+import Breadcrumbone from "../components/Breadcrumbone";
 
-const Contact = () => {
+const Pricing = () => {
   return (
     <>
       {/* Navigation Bar */}
       <NavBar />
 
       {/* Navigation Bar */}
-      {/* <Breadcrumb title={"Contact"} /> */}
+      <Breadcrumbone  />
 
-      {/* Contact Main */}
-      <ContactMain />
+
+      {/* Pricing Area One */}
+      <PricingAreaOne />
 
       {/* Footer One */}
       <FooterOne />
@@ -22,4 +25,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Pricing;

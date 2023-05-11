@@ -17,6 +17,9 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import ScrollToTop from "react-scroll-to-top";
 import HomeFive from "./pages/HomeFive";
+import Experience from "./pages/Experience";
+import Pricing from "./pages/Pricing";
+import PlanYourFlight from "./pages/Plan-your-flight";
 function App() {
   useEffect(() => {
     AOS.init({
@@ -46,6 +49,9 @@ function App() {
         <Route exact path='/service' element={<Service />} />
         <Route exact path='/service-details' element={<ServiceDetails />} />
         <Route exact path='/team' element={<Team />} />
+        <Route exact path="/experience" element={<Experience />} />
+        <Route exact path="/pricing" element={<Pricing />} />
+        <Route exact path="/plan-your-flight" element={<PlanYourFlight />} />
         <Route exact path='/team-details' element={<TeamDetails />} />
       </Routes>
       <ScrollToTop smooth color='#246BFD' />

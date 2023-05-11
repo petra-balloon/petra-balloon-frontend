@@ -103,67 +103,20 @@ const NavBar = () => {
             id="itech_main_menu"
           >
             <ul className="navbar-nav menu-open text-lg-end">
-              <li className="menu-item-has-children">
-                <a href="#">Home</a>
-                <ul className="sub-menu">
-                  <li>
-                    <Link to="/">Home 01</Link>
-                  </li>
-                  <li>
-                    <Link to="/index-2">Home 02</Link>
-                  </li>
-                  <li>
-                    <Link to="/index-3">Home 03</Link>
-                  </li>
-                  <li>
-                    <Link to="/index-4">Home 04</Link>
-                  </li>
-                  <li>
-                    <Link to="/index-5">Home 05</Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="menu-item-has-children">
-                <a href="#">Service</a>
-                <ul className="sub-menu">
-                  <li>
-                    <Link to="/service">Service</Link>
-                  </li>
-                  <li>
-                    <Link to="/service-details">Service Single</Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="menu-item-has-children">
-                <a href="#">Pages</a>
-                <ul className="sub-menu">
-                  <li>
-                    <Link to="/about">About Us</Link>
-                  </li>
-                  <li>
-                    <Link to="/team">Team</Link>
-                  </li>
-                  <li>
-                    <Link to="/team-details">Team Details</Link>
-                  </li>
-                  <li>
-                    <Link to="/case-study-details">Case Study Details</Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="menu-item-has-children">
-                <a href="#">Blog</a>
-                <ul className="sub-menu">
-                  <li>
-                    <Link to="/blog">Blog</Link>
-                  </li>
-                  <li>
-                    <Link to="/blog-details">Blog Details</Link>
-                  </li>
-                </ul>
+              <li>
+                <a href="/experience">Experiences</a>
               </li>
               <li>
-                <Link to="/contact">Contact Us</Link>
+                <a href="/pricing"> Pricing</a>
+              </li>
+              <li>
+                <a href="/plan-your-flight">Plan Your Flight</a>
+              </li>
+              <li>
+                <a href="#">Photo Memories</a>
+              </li>
+              <li>
+                <Link to="/contact">About Us</Link>
               </li>
             </ul>
           </div>
@@ -173,10 +126,10 @@ const NavBar = () => {
               display: "flex",
               justifyItems: "center",
               alignContent: "center",
-              padding:'20px',
-              fontSize:'24px',
-              color:'white',
-              cursor:"pointer"
+              padding: "23px",
+              fontSize: "20px",
+              color: "white",
+              cursor: "pointer",
             }}
             onClick={() => {
               setOpenModal(true);

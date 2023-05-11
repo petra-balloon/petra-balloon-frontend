@@ -15,11 +15,11 @@ const FooterOne = () => {
   return (
     <>
       {/* ================== Footer One Start ==================*/}
-      <footer className='footer-area bg-black bg-cover'>
-        <div className='footer-subscribe'>
-          <div className='container'>
+      <footer className="footer-area bg-black bg-cover">
+        <div className="footer-subscribe">
+          <div className="container">
             <div
-              className='footer-subscribe-inner bg-cover'
+              className="footer-subscribe-inner bg-cover"
               style={{ backgroundImage: 'url("./assets/img/bg/6.png")' }}
             >
               {/* <div className='row'>
@@ -36,138 +36,136 @@ const FooterOne = () => {
             </div>
           </div>
         </div>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-lg-3 col-md-6'>
-              <div className='widget widget_about'>
-                <div className='thumb'>
-                  <img src='assets/img/logo2.png' alt='img' />
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-3 col-md-6">
+              <div className="widget widget_about">
+                <div className="thumb">
+                  <img src="assets/img/logo1.png" alt="img" />
                 </div>
-                <div className='details'>
-                  <p>
-                    Melbourne is simply is dumiomy is text Lorem Ipsum is simply
+                <div className="details">
+                  <p>PETRA BALLOON PETRA BALLOON ST. PETRA 71810 JORDAN</p>
+                  <p className="mt-3">
+                    <FaPhoneAlt /> +962 3 215 6600
                   </p>
-                  <p className='mt-3'>
-                    <FaPhoneAlt /> (+888) 123 456 765
+                  <p className="mt-2">
+                    <FaEnvelope /> hello@imevent.com  
                   </p>
-                  <p className='mt-2'>
-                    <FaEnvelope /> (+888) 123 456 765
-                  </p>
-                  <ul className='social-media'>
+                  {/* <ul className="social-media">
                     <li>
-                      <a href='#'>
+                      <a href="#">
                         <FaFacebookF />
                       </a>
                     </li>
                     <li>
-                      <a href='#'>
+                      <a href="#">
                         <FaTwitter />
                       </a>
                     </li>
                     <li>
-                      <a href='#'>
+                      <a href="#">
                         <FaInstagram />
                       </a>
                     </li>
                     <li>
-                      <a href='#'>
+                      <a href="#">
                         <FaYoutube />
                       </a>
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
             </div>
-            <div className='col-lg-3 col-md-6'>
-              <div className='widget widget_nav_menu'>
-                <h4 className='widget-title'>Our Service</h4>
+            <div className="col-lg-3 col-md-6">
+              <div className="widget widget_nav_menu">
+                <h4 className="widget-title">Our Service</h4>
                 <ul>
                   <li>
-                    <Link to='/service'>
+                    <Link to="/service">
                       <FaArrowRight /> Ui Design
                     </Link>
                   </li>
                   <li>
-                    <Link to='/service'>
+                    <Link to="/service">
                       <FaArrowRight /> Web design
                     </Link>
                   </li>
                   <li>
-                    <Link to='/service'>
+                    <Link to="/service">
                       <FaArrowRight /> Digital marketing{" "}
                     </Link>
                   </li>
                   <li>
-                    <Link to='/service'>
+                    <Link to="/service">
                       <FaArrowRight /> Video Editing
                     </Link>
                   </li>
                   <li>
-                    <Link to='/service'>
+                    <Link to="/service">
                       <FaArrowRight /> Pc Repairs
                     </Link>
                   </li>
                   <li>
-                    <Link to='/service'>
+                    <Link to="/service">
                       <FaArrowRight /> Web Development
                     </Link>
                   </li>
                 </ul>
               </div>
             </div>
-            <div className='col-lg-3 col-md-6'>
-              <div className='widget widget_nav_menu'>
-                <h4 className='widget-title'>Pay links</h4>
+            <div className="col-lg-3 col-md-6">
+              <div className="widget widget_nav_menu">
+                <h4 className="widget-title">Pay links</h4>
                 <ul>
                   <li>
-                    <Link to='/service'>
+                    <Link to="/service">
                       <FaArrowRight /> Credit industrys
                     </Link>
                   </li>
                   <li>
-                    <Link to='/service'>
+                    <Link to="/service">
                       <FaArrowRight /> Reasearch sector
                     </Link>
                   </li>
                   <li>
-                    <Link to='/service'>
+                    <Link to="/service">
                       <FaArrowRight /> Finance Sector{" "}
                     </Link>
                   </li>
                   <li>
-                    <Link to='/service'>
+                    <Link to="/service">
                       <FaArrowRight /> Credit industrys
                     </Link>
                   </li>
                   <li>
-                    <Link to='/service'>
+                    <Link to="/service">
                       <FaArrowRight /> Reasearch sector
                     </Link>
                   </li>
                   <li>
-                    <Link to='/service'>
+                    <Link to="/service">
                       <FaArrowRight /> Finance Sector
                     </Link>
                   </li>
                 </ul>
               </div>
             </div>
-            <div className='col-lg-3 col-md-6'>
-              <div className='widget widget-recent-post'>
-                <h4 className='widget-title'>Contact us</h4>
+            <div className="col-lg-3 col-md-6">
+              <div className="widget widget-recent-post">
+                <h4 className="widget-title">Contact us</h4>
                 <ul>
                   <li>
-                    <div className='media'>
-                      <div className='media-left'>
-                        <img src='assets/img/widget/1.png' alt='blog' />
+                    <div className="media">
+                      <div className="media-left">
+                        <img src="assets/img/widget/1.png" alt="blog" />
                       </div>
-                      <div className='media-body align-self-center'>
-                        <div className='post-info mb-2'>
+                      <div className="media-body align-self-center">
+                        <div className="post-info mb-2">
                           <FaCalendarAlt />
                           <span>january 11, 2023</span>
                         </div>
-                        <h6 className='title mb-0'>
-                          <Link to='/blog-details'>
+                        <h6 className="title mb-0">
+                          <Link to="/blog-details">
                             Social Media For Promote Business.
                           </Link>
                         </h6>
@@ -175,17 +173,17 @@ const FooterOne = () => {
                     </div>
                   </li>
                   <li>
-                    <div className='media'>
-                      <div className='media-left'>
-                        <img src='assets/img/widget/2.png' alt='blog' />
+                    <div className="media">
+                      <div className="media-left">
+                        <img src="assets/img/widget/2.png" alt="blog" />
                       </div>
-                      <div className='media-body align-self-center'>
-                        <div className='post-info mb-2'>
+                      <div className="media-body align-self-center">
+                        <div className="post-info mb-2">
                           <FaCalendarAlt />
                           <span>january 11, 2023</span>
                         </div>
-                        <h6 className='title mb-0'>
-                          <Link to='/blog-details'>
+                        <h6 className="title mb-0">
+                          <Link to="/blog-details">
                             Marketing For Base market watch
                           </Link>
                         </h6>
@@ -197,16 +195,16 @@ const FooterOne = () => {
             </div>
           </div>
         </div>
-        <div className='footer-bottom'>
-          <div className='container'>
-            <div className='row'>
-              <div className='col-md-6 align-self-center'>
+        <div className="footer-bottom">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-6 align-self-center">
                 <p>© Yoursitename 2023 | All Rights Reserved</p>
               </div>
-              <div className='col-md-6 text-lg-end'>
-                <a href='#'>Trams &amp; Condition</a>
-                <a href='#'>Privacy Policy</a>
-                <a href='#'>Contact Us</a>
+              <div className="col-md-6 text-lg-end">
+                <a href="#">Trams &amp; Condition</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact Us</a>
               </div>
             </div>
           </div>
