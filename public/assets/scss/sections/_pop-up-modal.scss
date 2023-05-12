@@ -443,3 +443,95 @@
     line-height: 1.5;
     color: #354052;
   }
+
+  .credit-card{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #354052;
+  }
+
+  .credit-card-icon{
+    color: #00112c;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 20px;
+    margin-right: 8px;
+  }
+
+  .credit-card-labels{
+    color: #00112c;
+    font-size: .81em;
+    font-weight: 400;
+    line-height: 13px;
+  }
+
+  .card-type-main-class{
+    display: flex;
+
+  }
+
+  .visa-card-type{
+    font-size: 25px;
+    margin-right: 8px;
+    color:rgb(54, 54, 146)
+  }
+  .master-card-type{
+    font-size: 25px;
+    color:rgb(252, 74, 26);
+  }
+
+  .checkout-icon-class{
+    margin-right: 8px;
+  }
+
+  .checkout-btn-outer-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    background-color: #363A47;
+    color:#FFFFFF;
+  }
+
+  .redeem-gift-outer-div{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    color: #527fb4;
+    padding: 5px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .gift-icon{
+    margin-right: 5px;
+  }
+
+
+  /* fourth Modal */
+  .fourth-modal-main-container{
+    width:500px;
+}
+
+.redeem-popup-heading{
+    display: flex;
+    padding: 0.4rem;
+    padding-top:1rem ;
+    padding-bottom: 1rem;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 16px;
+    font-weight: 30px;
+}
+
+.fourth-redeem-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    background-color: #354052;
+    color: #FFFFFF;
+    padding: 8px;
+    border-radius: 0.3rem; 
+}

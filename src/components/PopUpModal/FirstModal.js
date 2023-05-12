@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "react-responsive-modal/styles.css";
 import SecondModal from "./SecondModal";
 import ThirdModal from "./ThirdModal";
+import FourthModal from "./FourthModal";
 import { BsArrowRight } from "react-icons/bs";
 
 const FirstModal = ({}) => {
@@ -37,7 +38,7 @@ const FirstModal = ({}) => {
                     <BsArrowRight />
                   </div>
                 </div>
-                <div 
+                <div
                   className="col-lg-12 hover-class"
                   onClick={() => {
                     setSecondModal("second");
@@ -72,7 +73,12 @@ const FirstModal = ({}) => {
           setSecondModal={setSecondModal}
         />
       )}
-      {secondmodal == "third" && <ThirdModal />}
+      {secondmodal == "third" && (
+        <ThirdModal secondmodal={secondmodal} setSecondModal={setSecondModal} />
+      )}
+      {secondmodal == "fourth" && (
+        <FourthModal secondmodal={secondmodal} setSecondModal={setSecondModal} />
+      )}
     </div>
   );
 };
