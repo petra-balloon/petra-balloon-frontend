@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import moment from "react-moment";
 import "react-responsive-modal/styles.css";
 import "react-calendar/dist/Calendar.css";
 import { BsVinyl } from "react-icons/bs";
@@ -8,32 +9,188 @@ import { BsChevronExpand } from "react-icons/bs";
 import { BsRecord } from "react-icons/bs";
 
 import Calendar from "react-calendar";
+import axios from "axios";
 
-const SecondModal = ({ secondmodal, setSecondModal }) => {
+const SecondModal = ({ secondmodal, setSecondModal, passName,resData,setResData }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [apiData, setApiData] = useState("");
   const [isOpensecond, setIsOpenSecond] = useState(false);
   const [isOpenthird, setIsOpenThird] = useState(false);
   const [isDiscount, setIsDiscount] = useState(false);
   const [value, onChange] = useState(new Date());
   const [totalbill, setTotalBill] = useState(0);
   const [adultSelectedNumber, setAdultSelectedNumber] = useState(0);
-  const [adultPrice, setAdultPrice] = useState(200);
+  const [chiledSelectedNumber, setChiledSelectedNumber] = useState(0);
+  const [infantSelectedNumber, setInfantSelectedNumber] = useState(0);
+  const [adultPrice, setAdultPrice] = useState();
+  const [infantPrice, setInfantPrice] = useState();
+  const [childPrice, setChildPrice] = useState();
   const [adultSubTotal, setAdultSubTotal] = useState(0);
-  const [childPrice, setChildPrice] = useState(100);
-  const [childSubtotal, setChildSubTotal] = useState(200);
+  const [infantSubTotal, setInfantSubTotal] = useState(0);
+  const [childSubtotal, setChildSubTotal] = useState(0);
+  const [totalTicketAmount, setTotalTicketAmount] = useState(0);
+  const [taxAmount, setTaxAmount] = useState(0);
 
-  const CalculateTotalBill = async () => {};
+
+
+  const [ticketDetails, setTicketDetails] = useState([]);
+
+  console.log("this is passName", passName);
+
+  const API_URL = "http://localhost:5000/api/";
+  useEffect(() => {
+    if (passName === "sunrise_pass") {
+      const getsunrisePass = async () => {
+        await axios
+          .get(`${API_URL}pricing/sunrise/get`, {})
+          .then(async (response) => {
+            console.log(response.data.data);
+            setApiData(response.data.data);
+            setAdultPrice(response.data.data.adult_price);
+            setChildPrice(response.data.data.child_price);
+            setInfantPrice(response.data.data.infant_price);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      };
+      getsunrisePass();
+    }
+    if (passName === "fast_pass") {
+      const getfastPass = async () => {
+        await axios
+          .get(`${API_URL}pricing/fastpass/get`, {})
+          .then(async (response) => {
+            console.log(response.data.data);
+            setApiData(response.data.data);
+            setAdultPrice(response.data.data.adult_price);
+            setChildPrice(response.data.data.child_price);
+            setInfantPrice(response.data.data.infant_price);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      };
+      getfastPass();
+    }
+    if (passName === "regular_pass") {
+      const getregularPass = async () => {
+        await axios
+          .get(`${API_URL}pricing/regularpass/get`, {})
+          .then(async (response) => {
+            console.log(response.data.data);
+            setApiData(response.data.data);
+            setAdultPrice(response.data.data.adult_price);
+            setChildPrice(response.data.data.child_price);
+            setInfantPrice(response.data.data.infant_price);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      };
+      getregularPass();
+    }
+  }, []);
+
+  useEffect(() => {
+    CalculateTotalBill();
+  }, [ticketDetails]);
+
+  //submit button
+
+  const createTicket = async () => {
+    await axios
+      .post(`${API_URL}ticket/create`, {
+        selected_pass: apiData.pass_name,
+        discount_amount: 20,
+        reservation_details: ticketDetails,
+        date: value,
+        total_amount: totalTicketAmount,
+        tax_amount: taxAmount,
+      })
+      .then(async (response) => {
+        console.log(response.data.data);
+        setResData(response.data.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const CalculateTotalBill = async () => {
+    //setTotalTicketAmount(parseInt(adultSubTotal) + parseInt(childSubtotal));
+    var totalAmountOfSubTotal = 0;
+    for (let i = 0; i < ticketDetails.length; i++) {
+      var totalAmountOfSubTotal =
+        totalAmountOfSubTotal + ticketDetails[i].Sub_total;
+    }
+    console.log("this is tickect details", ticketDetails);
+
+    setTotalTicketAmount(totalAmountOfSubTotal);
+    console.log("this is total", totalAmountOfSubTotal);
+    setIsOpen(false);
+    console.log(ticketDetails);
+  };
 
   const AdultPriceAdd = async (value) => {
+    console.log(value);
+    console.log(adultPrice);
+
     setAdultSelectedNumber(value);
     setAdultSubTotal(value * adultPrice);
-    setIsOpen(false);
+
+    console.log("this is woo", value, adultPrice);
+
+    for (let i = 0; i < ticketDetails.length; i++) {
+      if (ticketDetails[i].type == "adult") {
+        ticketDetails.splice(i, 1);
+      }
+    }
+
+    ticketDetails.push({
+      type: "adult",
+      quantity:value,
+      Sub_total: value * adultPrice,
+    });
+    CalculateTotalBill();
   };
 
   const ChildPriceAdd = async (value) => {
-    setChildSubTotal(value);
-    setTotalBill(value * childPrice);
-    setIsOpen(false);
+    console.log(value);
+    setChiledSelectedNumber(value);
+    setChildSubTotal(value * childPrice);
+
+    for (let i = 0; i < ticketDetails.length; i++) {
+      if (ticketDetails[i].type == "child") {
+        ticketDetails.splice(i, 1);
+      }
+    }
+
+    ticketDetails.push({
+      type: "child",
+      quantity:value,
+      Sub_total: value * childPrice,
+    });
+    CalculateTotalBill();
+  };
+
+  const InfantPriceAdd = async (value) => {
+    console.log(value);
+    setInfantSelectedNumber(value);
+    setChildSubTotal(value * infantPrice);
+
+    for (let i = 0; i < ticketDetails.length; i++) {
+      if (ticketDetails[i].type == "infant") {
+        ticketDetails.splice(i, 1);
+      }
+    }
+
+    ticketDetails.push({
+      type: "infant",
+      quantity:value,
+      Sub_total: value * infantPrice,
+    });
+    CalculateTotalBill();
   };
 
   const wrapperRef = useRef(null);
@@ -75,7 +232,7 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
           <div className="row">
             <div className="col-lg-12">
               <div className="second-popup-heading">
-                <div>Sunrise Pass :</div>
+                <div>{apiData.pass_name} :</div>
               </div>
             </div>
           </div>
@@ -142,7 +299,7 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
                           </div>
                           <div className="col-lg-2">
                             <div className="all-div-price-in-middle">
-                              200 AED
+                              {apiData.adult_price} JOD
                             </div>
                           </div>
                           <div className="col-lg-2">
@@ -196,12 +353,14 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
                           </div>
                           <div className="col-lg-2">
                             <div className="all-div-price-in-middle">
-                              100 AED
+                              {apiData.child_price} JOD
                             </div>
                           </div>
                           <div className="col-lg-2">
                             <div className="select-person-outer-div">
-                              <div className="total-adult-price">0</div>
+                              <div className="total-adult-price">
+                                {chiledSelectedNumber}
+                              </div>
                               <div>
                                 <BsChevronExpand
                                   onClick={() => {
@@ -219,7 +378,7 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
                                     return (
                                       <li
                                         onClick={() => {
-                                          setIsOpenSecond(false);
+                                          ChildPriceAdd(value.value);
                                         }}
                                         className="select-control"
                                       >
@@ -249,11 +408,15 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
                             </div>
                           </div>
                           <div className="col-lg-2">
-                            <div className="all-div-price-in-middle">Free</div>
+                            <div className="all-div-price-in-middle">
+                              {apiData.infant_price} Free
+                            </div>
                           </div>
                           <div className="col-lg-2">
                             <div className="select-person-outer-div">
-                              <div className="total-adult-price">0</div>
+                              <div className="total-adult-price">
+                                {infantSelectedNumber}
+                              </div>
                               <div>
                                 <BsChevronExpand
                                   onClick={() => {
@@ -263,14 +426,15 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
                               </div>
                             </div>
                             <div className="select-main-div">
+                              
                               <ul className="select-main">
                                 {isOpenthird &&
                                   options.map((value) => {
                                     return (
                                       <li
-                                        onClick={() => {
-                                          setIsOpenThird(false);
-                                        }}
+                                      onClick={() => {
+                                        InfantPriceAdd(value.value);
+                                      }}
                                         className="select-control"
                                       >
                                         {value.value}
@@ -336,21 +500,25 @@ const SecondModal = ({ secondmodal, setSecondModal }) => {
           <div className="packup-of-div-add-cart">
             <div className="outer-percentage-div">
               <div>UAE VAT 5%</div>
-              <div>26.9 AED</div>
+              <div>20 JOD</div>
             </div>
             <div className="add-to-cart-outer">
               <div
                 className="row"
-                onClick={() => {
+                onClick={async() => {
+                  await createTicket();
                   setSecondModal("third");
                 }}
               >
-                <div className="col-lg-10">
+                <div
+                  className="col-lg-10"
+
+                >
                   <div>ADD to Cart</div>
                 </div>
                 <div className="col-lg-2">
                   <div className="calculated-bill">
-                    <div className="total-bill">{totalbill}</div>
+                    <div className="total-bill">{totalTicketAmount}</div>
                   </div>
                 </div>
               </div>

@@ -8,7 +8,21 @@ import { BsArrowRight } from "react-icons/bs";
 
 const FirstModal = ({}) => {
   const [secondmodal, setSecondModal] = useState("first");
+  const [passName, setPassName] = useState("");
   const [firstmodalcontent, setFirstModalContent] = useState(true);
+
+  const [resData, setResData] = useState('');
+
+  /*   const getFastPass = async (email, password) => {
+    await axios
+      .post(`${API_URL}admin/login`, {})
+      .then(async response => {
+        console.log(response)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  } */
 
   return (
     <div>
@@ -17,20 +31,17 @@ const FirstModal = ({}) => {
           <div className="container">
             <div className="row">
               <div>
-                <div
-                  className="col-lg-12"
-                  onClick={() => {
-                    setSecondModal("second");
-                  }}
-                >
+                <div className="col-lg-12">
                   <div className="popup-heading">
                     <div className="heading-text">Select Products :</div>
                   </div>
                 </div>
                 <div
                   className="col-lg-12 hover-class"
-                  onClick={() => {
+                  onClick={async() => {
+                    await setPassName("sunrise_pass");
                     setSecondModal("second");
+                    
                   }}
                 >
                   <div className="popup-text">
@@ -42,16 +53,29 @@ const FirstModal = ({}) => {
                   className="col-lg-12 hover-class"
                   onClick={() => {
                     setSecondModal("second");
+                    setPassName("fast_pass");
                   }}
                 >
                   <div className="popup-text">
-                    <p>Regular Pass :</p>
+                    <p>Fast Pass :</p>
                     <BsArrowRight />
                   </div>
                 </div>
-                <div className="col-lg-12 hover-class">
-                  <div className="popup-last-text">
-                    <p>Fast Pass :</p>
+                <div
+                  className="col-lg-12 hover-class"
+                  onClick={() => {
+                    setSecondModal("second");
+                    setPassName("regular_pass");
+                  }}
+                >
+                  <div
+                    className="popup-last-text"
+                    onClick={() => {
+                      setSecondModal("second");
+                      setPassName("regular_pass");
+                    }}
+                  >
+                    <p>Regular Pass :</p>
                     <BsArrowRight />
                   </div>
                 </div>
@@ -70,14 +94,25 @@ const FirstModal = ({}) => {
       {secondmodal == "second" && (
         <SecondModal
           secondmodal={secondmodal}
+          passName={passName}
+          resData={resData}
+          setResData={setResData}
           setSecondModal={setSecondModal}
         />
       )}
       {secondmodal == "third" && (
-        <ThirdModal secondmodal={secondmodal} setSecondModal={setSecondModal} />
+        <ThirdModal
+          secondmodal={secondmodal}
+          setSecondModal={setSecondModal}
+          resData={resData}
+          setResData={setResData}
+        />
       )}
       {secondmodal == "fourth" && (
-        <FourthModal secondmodal={secondmodal} setSecondModal={setSecondModal} />
+        <FourthModal
+          secondmodal={secondmodal}
+          setSecondModal={setSecondModal}
+        />
       )}
     </div>
   );

@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import StripeCheckout from 'react-stripe-checkout';
+import axios from "axios";
+import Moment from "react-moment";
 import ReactDOM from "react-dom";
 import "react-responsive-modal/styles.css";
 import { BsAlarm } from "react-icons/bs";
@@ -17,18 +20,25 @@ import {
 
 import CountrySelect from "react-bootstrap-country-select";
 
-const ThirdModal = ({ secondmodal, setSecondModal }) => {
+const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
   const [value, setValue] = useState(null);
   const [country, setCountry] = useState(null);
   const [second, setSecond] = useState(59);
   const [minutes, setMinutes] = useState(29);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+
+  console.log("this is res qqqqqqqqqq data", resData);
+
 
   function selectCountry(val) {
     setCountry(val);
   }
 
   useEffect(() => {
-    var timer = setInterval(() => {
+    /* var timer = setInterval(() => {
       if (second === 0) {
         if (minutes === 0 && second === 0) {
           clearInterval(timer);
@@ -40,9 +50,34 @@ const ThirdModal = ({ secondmodal, setSecondModal }) => {
         setSecond(second - 1);
       }
     }, 1000);
-
-    return () => clearInterval(timer);
+ */
+    /*  return () => clearInterval(timer); */
   });
+
+  const API_URL = "http://localhost:5000/api/";
+  const handleToken = async (token) => {
+
+    await axios
+    .post(`${API_URL}ticket/payment`,{
+      amount: 1000, // Replace with the desired amount
+      currency: 'USD', // Replace with the desired currency code
+      token,
+      user_information:{
+        country : country,
+        firstName:firstName,
+        lastName:lastName,
+        email:email,
+        mobile:mobile,
+        ticketId:resData._id
+      }
+    }).then(async (response) => {
+      console.log(response.data.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  };
 
   return (
     <div className="third-modal-outer-div">
@@ -86,17 +121,19 @@ const ThirdModal = ({ secondmodal, setSecondModal }) => {
                     <div className="third-pass-details">Sunrise Pass</div>
                   </div>
                   <div className="col-lg-4">
-                    <div className="third-total-recipt-price">0.00 AED</div>
+                    <div className="third-total-recipt-price">
+                      {resData.total_amount} JOD
+                    </div>
                   </div>
                   <div className="col-lg-8">
                     <div className="third-date">
                       <span className="span-date-class-first">
-                        May 11, 2023
+                        <Moment format="D/MMM/YYYY">{resData.date}</Moment>
                       </span>{" "}
                       TO{" "}
                       <sapn className="span-date-class-second">
                         {" "}
-                        May 11, 2023
+                        <Moment format="D/MMM/YYYY">{resData.date}</Moment>
                       </sapn>
                     </div>
                   </div>
@@ -109,9 +146,15 @@ const ThirdModal = ({ secondmodal, setSecondModal }) => {
                   <div className="spacer-card-family"></div>
                   <div className="col-lg-8">
                     <div className="third-selected-family-div">
-                      <div>3Adults</div>
+                      {resData.reservation_details.map((s) => (
+                        <div className="margin-for-family">
+                          {s.type} {s.quantity}{" "}
+                        </div>
+                      ))}
+
+                      {/*  <div>3Adults</div>
                       <div className="margin-for-family">3Adults</div>
-                      <div className="margin-for-family">3Adults </div>
+                      <div className="margin-for-family">3Adults </div> */}
                     </div>
                   </div>
                   <div className="col-lg-4">
@@ -129,7 +172,9 @@ const ThirdModal = ({ secondmodal, setSecondModal }) => {
                         <div className="due-now-text">Due Now</div>
                       </div>
                       <div className="col-lg-4">
-                        <div className="due-now-text-price">200.00 AED</div>
+                        <div className="due-now-text-price">
+                          {resData.total_amount} AED
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -237,12 +282,12 @@ const ThirdModal = ({ secondmodal, setSecondModal }) => {
                   <div className="payment-heading">Payment Details</div>
                 </div>
                 <div className="col-lg-4">
-                  <div className="payment-heading">300.00 AED</div>
+                  <div className="payment-heading">300.00 JOD</div>
                 </div>
               </div>
               {/* credit card */}
               <div className="input-margin-bottom-spacer"></div>
-              <div className="row">
+              {/* <div className="row">
                 <div className="outside-info-div">
                   <div className="col-lg-12">
                     <div className="credit-card">
@@ -322,7 +367,14 @@ const ThirdModal = ({ secondmodal, setSecondModal }) => {
                   </div>
                 </div>
                 <div className="input-margin-bottom-spacer"></div>
-              </div>
+              </div> */}
+              <StripeCheckout
+                stripeKey="pk_test_51N8h2FBeZw2xmDYe02KYq06IRE39kiGvg4nIHhR0ignR7PmeZjji5DdpdqGAUSxyx8gZH0CmzzbIDuMdP8aA8X5Z000qHCUjIJ"
+                token={handleToken}
+                name="Example Store"
+                amount={1000} // Replace with the desired amount
+                currency="USD" // Replace with the desired currency code
+              />
             </div>
           </div>
         </div>
