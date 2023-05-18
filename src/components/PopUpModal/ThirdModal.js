@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import StripeCheckout from 'react-stripe-checkout';
+import React, { useState, useEffect  } from "react";
+import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import Moment from "react-moment";
 import ReactDOM from "react-dom";
@@ -22,6 +22,8 @@ import CountrySelect from "react-bootstrap-country-select";
 
 const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
   const [value, setValue] = useState(null);
+  const [isopen, setOpen] = useState(false);
+  
   const [country, setCountry] = useState(null);
   const [second, setSecond] = useState(59);
   const [minutes, setMinutes] = useState(29);
@@ -33,9 +35,13 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
   console.log("this is res qqqqqqqqqq data", resData);
 
 
+
+
+  console.log("first name", firstName);
   function selectCountry(val) {
     setCountry(val);
   }
+
 
   useEffect(() => {
     /* var timer = setInterval(() => {
@@ -56,27 +62,26 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
 
   const API_URL = "http://localhost:5000/api/";
   const handleToken = async (token) => {
-
     await axios
-    .post(`${API_URL}ticket/payment`,{
-      amount: 1000, // Replace with the desired amount
-      currency: 'USD', // Replace with the desired currency code
-      token,
-      user_information:{
-        country : country,
-        firstName:firstName,
-        lastName:lastName,
-        email:email,
-        mobile:mobile,
-        ticketId:resData._id
-      }
-    }).then(async (response) => {
-      console.log(response.data.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-
+      .post(`${API_URL}ticket/payment`, {
+        amount: 1000, // Replace with the desired amount
+        currency: "USD", // Replace with the desired currency code
+        token,
+        user_information: {
+          country: country,
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          mobile: mobile,
+          ticketId: resData._id,
+        },
+      })
+      .then(async (response) => {
+        console.log(response.data.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 
   return (
@@ -214,6 +219,7 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                         class="form-control"
                         id="name"
                         placeholder="First Name"
+                        onChange={(e) => setFirstName(e.target.value)}
                       />
                     </div>
                   </div>
@@ -226,6 +232,7 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                         class="form-control"
                         id="name"
                         placeholder="last Name"
+                        onChange={(e) => setLastName(e.target.value)}
                       />
                     </div>
                   </div>
@@ -237,6 +244,7 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                         class="form-control"
                         id="email"
                         placeholder="user@gmail.com"
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </div>
                   </div>
@@ -244,7 +252,12 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                   <div className="col-lg-12">
                     <div class="form-group">
                       <label className="third-label-class">Mobile *</label>
-                      <input class="form-control" id="number" placeholder="" />
+                      <input
+                        class="form-control"
+                        id="number"
+                        placeholder=""
+                        onChange={(e) => setMobile(e.target.value)}
+                      />
                     </div>
                   </div>
                   <div className="input-margin-bottom-spacer"></div>
@@ -370,12 +383,15 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
               </div> */}
               <StripeCheckout
                 stripeKey="pk_test_51N8h2FBeZw2xmDYe02KYq06IRE39kiGvg4nIHhR0ignR7PmeZjji5DdpdqGAUSxyx8gZH0CmzzbIDuMdP8aA8X5Z000qHCUjIJ"
-                token={handleToken}
+                token={handleToken} 
                 name="Example Store"
                 amount={1000} // Replace with the desired amount
                 currency="USD" // Replace with the desired currency code
               />
             </div>
+            {/* <button>
+              onclick
+            </button> */}
           </div>
         </div>
       </div>
