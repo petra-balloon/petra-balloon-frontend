@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "react-responsive-modal/styles.css";
 import SecondModal from "./SecondModal";
@@ -6,23 +6,32 @@ import ThirdModal from "./ThirdModal";
 import FourthModal from "./FourthModal";
 import { BsArrowRight } from "react-icons/bs";
 
+import axios from "axios";
+const API_URL = "http://localhost:5000/api/";
+
 const FirstModal = ({}) => {
   const [secondmodal, setSecondModal] = useState("first");
   const [passName, setPassName] = useState("");
+  const [allPasses, setAllPasses] = useState();
   const [firstmodalcontent, setFirstModalContent] = useState(true);
 
-  const [resData, setResData] = useState('');
+  const [resData, setResData] = useState("");
 
-  /*   const getFastPass = async (email, password) => {
+  useEffect(() => {
+    getPass();
+  }, []);
+
+  const getPass = async (email, password) => {
     await axios
-      .post(`${API_URL}admin/login`, {})
-      .then(async response => {
-        console.log(response)
+      .get(`${API_URL}pass-pricing/get`, {})
+      .then(async (response) => {
+        console.log(response.data.data);
+        setAllPasses(response.data.data);
       })
       .catch(function (error) {
-        console.log(error)
-      })
-  } */
+        console.log(error);
+      });
+  };
 
   return (
     <div>
@@ -36,20 +45,23 @@ const FirstModal = ({}) => {
                     <div className="heading-text">Select Products :</div>
                   </div>
                 </div>
-                <div
-                  className="col-lg-12 hover-class"
-                  onClick={async() => {
-                    await setPassName("sunrise_pass");
-                    setSecondModal("second");
-                    
-                  }}
-                >
-                  <div className="popup-text">
-                    <p>Sunrise Pass :</p>
-                    <BsArrowRight />
-                  </div>
-                </div>
-                <div
+                {allPasses &&
+                  allPasses.map((Details) => (
+                    <div
+                      className="col-lg-12 hover-class"
+                      onClick={async () => {
+                        await setPassName("sunrise_pass");
+                        setSecondModal("second");
+                      }}
+                    >
+                      <div className="popup-text">
+                        <p>{Details.pass_name}</p>
+                        <BsArrowRight />
+                      </div>
+                    </div>
+                  ))}
+
+                {/* <div
                   className="col-lg-12 hover-class"
                   onClick={() => {
                     setSecondModal("second");
@@ -78,7 +90,7 @@ const FirstModal = ({}) => {
                     <p>Regular Pass :</p>
                     <BsArrowRight />
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

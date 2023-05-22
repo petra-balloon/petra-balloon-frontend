@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios";
 import Moment from "react-moment";
@@ -12,6 +12,9 @@ import { FaCcVisa } from "react-icons/fa";
 import { FaCcMastercard } from "react-icons/fa";
 import { BsBagFill } from "react-icons/bs";
 import { BsGift } from "react-icons/bs";
+import { MdOutlineCheckBox } from "react-icons/md";
+import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
+
 import {
   CountryDropdown,
   RegionDropdown,
@@ -22,8 +25,11 @@ import CountrySelect from "react-bootstrap-country-select";
 
 const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
   const [value, setValue] = useState(null);
-  const [isopen, setOpen] = useState(false);
-  
+  const [isopen, setIsOpen] = useState(false);
+  const [isValidationComfirm, setIsValidationComfirm] = useState(false);
+  const [isPaymentBtn, setIsPaymentBtn] = useState(true);
+
+  const [errors, setErrors] = useState({});
   const [country, setCountry] = useState(null);
   const [second, setSecond] = useState(59);
   const [minutes, setMinutes] = useState(29);
@@ -34,14 +40,10 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
 
   console.log("this is res qqqqqqqqqq data", resData);
 
-
-
-
   console.log("first name", firstName);
   function selectCountry(val) {
     setCountry(val);
   }
-
 
   useEffect(() => {
     /* var timer = setInterval(() => {
@@ -82,6 +84,52 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
       .catch(function (error) {
         console.log(error);
       });
+  };
+
+  const handlFromValidation = async (token) => {
+    if (validateForm()) {
+      // Submit the form or perform further actions
+      setIsValidationComfirm(true);
+      setIsPaymentBtn(false);
+      console.log("Form submitted successfully!");
+    } else {
+      console.log("Form error!!!!!");
+    }
+  };
+
+  const validateForm = () => {
+    let errors = {};
+
+    // Perform validation logic
+    if (!firstName) {
+      errors.firstName = "First Name is required";
+    }
+
+    if (!email) {
+      errors.email = "Email is required";
+    } else if (!isValidEmail(email)) {
+      errors.email = "Invalid email format";
+    }
+
+    if (!lastName) {
+      errors.lastName = "Last Name is required";
+    }
+    if (!mobile) {
+      errors.mobile = "Mobile Number is required";
+    }
+    if (!country) {
+      errors.country = "Country is required";
+    }
+
+    setErrors(errors);
+
+    return Object.keys(errors).length === 0;
+  };
+
+  const isValidEmail = (email) => {
+    // Regular expression for email validation
+    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    return emailRegex.test(email);
   };
 
   return (
@@ -221,6 +269,12 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                         placeholder="First Name"
                         onChange={(e) => setFirstName(e.target.value)}
                       />
+                      {errors.firstName && (
+                        <span className="error-span-third">
+                          {" "}
+                          *{errors.firstName}
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div className="input-margin-bottom-spacer"></div>
@@ -235,6 +289,12 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                         onChange={(e) => setLastName(e.target.value)}
                       />
                     </div>
+                    {errors.lastName && (
+                      <span className="error-span-third">
+                        {" "}
+                        *{errors.lastName}
+                      </span>
+                    )}
                   </div>
                   <div className="input-margin-bottom-spacer"></div>
                   <div className="col-lg-12">
@@ -246,6 +306,12 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                         placeholder="user@gmail.com"
                         onChange={(e) => setEmail(e.target.value)}
                       />
+                      {errors.email && (
+                        <span className="error-span-third">
+                          {" "}
+                          *{errors.email}
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div className="input-margin-bottom-spacer"></div>
@@ -258,6 +324,12 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                         placeholder=""
                         onChange={(e) => setMobile(e.target.value)}
                       />
+                      {errors.mobile && (
+                        <span className="error-span-third">
+                          {" "}
+                          *{errors.mobile}
+                        </span>
+                      )}
                     </div>
                   </div>
                   <div className="input-margin-bottom-spacer"></div>
@@ -269,6 +341,12 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                         value={country}
                         onChange={(val) => selectCountry(val)}
                       />
+                      {errors.country && (
+                        <span className="error-span-third">
+                          {" "}
+                          *{errors.country}
+                        </span>
+                      )}
                       {/* <label className="third-label-class">Country *</label>
                       <CountrySelect
                         class="form-control"
@@ -279,7 +357,18 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                   </div>
                   <div className="col-lg-12">
                     <div className="third-check-box-outer-div">
-                      <input className="check-box-input" type="checkbox" />
+                      {!isValidationComfirm && (
+                        <MdOutlineCheckBoxOutlineBlank
+                          onClick={async () => {
+                            await handlFromValidation();
+                          }}
+                          className="check-box-input"
+                        />
+                      )}
+                      {isValidationComfirm && (
+                        <MdOutlineCheckBox className="check-box-input after-check-box-input" />
+                      )}
+                      {/* <input className="check-box-input" type="checkbox" /> */}
                       <div>
                         Send me the latest offers and exclusive discounts.
                       </div>
@@ -381,14 +470,25 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                 </div>
                 <div className="input-margin-bottom-spacer"></div>
               </div> */}
-              <StripeCheckout
-                stripeKey="pk_test_51N8h2FBeZw2xmDYe02KYq06IRE39kiGvg4nIHhR0ignR7PmeZjji5DdpdqGAUSxyx8gZH0CmzzbIDuMdP8aA8X5Z000qHCUjIJ"
-                token={handleToken} 
-                name="Example Store"
-                amount={1000} // Replace with the desired amount
-                currency="USD" // Replace with the desired currency code
-              />
+              <div className="row">
+                <div className="col-lg-12">
+                  <StripeCheckout
+                    style={{ width: "100% !important" }}
+                    stripeKey="pk_test_51N8h2FBeZw2xmDYe02KYq06IRE39kiGvg4nIHhR0ignR7PmeZjji5DdpdqGAUSxyx8gZH0CmzzbIDuMdP8aA8X5Z000qHCUjIJ"
+                    token={handleToken}
+                    name="Example Store"
+                    disabled={isPaymentBtn}
+                    amount={1000}
+                    currency="USD"
+                  >
+                    <div className="checkout-btn-outer-div">
+                      <BsBagFill className="checkout-icon-class" /> Pay JOD 600
+                    </div>
+                  </StripeCheckout>
+                </div>
+              </div>
             </div>
+            <div className="input-margin-bottom-spacer"></div>
             {/* <button>
               onclick
             </button> */}

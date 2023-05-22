@@ -492,6 +492,7 @@
     padding: 8px 12px;
     background-color: #363A47;
     color:#FFFFFF;
+    cursor: pointer;
   }
 
   .redeem-gift-outer-div{
@@ -534,4 +535,18 @@
     color: #FFFFFF;
     padding: 8px;
     border-radius: 0.3rem; 
+}
+
+.error-span-third{
+    color:red;
+    font-size: 14px;
+}
+
+.after-check-box-input{
+    color:green;
+}
+
+.StripeCheckout-btn{
+    width:200px;
+
 }

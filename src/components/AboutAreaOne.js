@@ -6,12 +6,12 @@ import { MdCalendarMonth } from "react-icons/md";
 const AboutAreaOne = () => {
   const apiKey = "af72e0d33f3297a2d00565cd1d9099e7";
   /* const [inputCity, setInputCity] = useState("jordan") */
-   const [weatherSunSet, setWeatherSunSet] = useState("")
-   const [weatherSunRise, setWeatherSunRise] = useState("")
-   const [weatherSkyCondition, setWeatherSkyCondition] = useState("")
-   const [weatherWind, setWeatherWind] = useState("")
-   const [weatherCity, setWeatherCity] = useState("")
-   const [weatherDate, setWeatherDate] = useState("")
+  const [weatherSunSet, setWeatherSunSet] = useState("");
+  const [weatherSunRise, setWeatherSunRise] = useState("");
+  const [weatherSkyCondition, setWeatherSkyCondition] = useState("");
+  const [weatherWind, setWeatherWind] = useState("");
+  const [weatherCity, setWeatherCity] = useState("");
+  const [weatherDate, setWeatherDate] = useState("");
 
   const [data, setData] = useState({});
 
@@ -25,6 +25,8 @@ const AboutAreaOne = () => {
       "petra" +
       "&appid=" +
       apiKey;
+
+    /* const apiURL =  "https://api.openweathermap.org/data/2.5/forecast?q=" +"petra" + "&appid=" + apiKey +"&cnt=5"; */
     axios
       .get(apiURL)
       .then((res) => {
@@ -32,13 +34,13 @@ const AboutAreaOne = () => {
         setData(res.data);
         var sunsetTime = new Date(res.data.sys.sunset * 1000);
         var sunriseTime = new Date(res.data.sys.sunrise * 1000);
-        setWeatherSunSet(sunsetTime.toLocaleTimeString("en-US"))
-        setWeatherSunRise(sunriseTime.toLocaleTimeString("en-US"))
-        setWeatherSkyCondition(res.data.weather[0].main)
-        setWeatherWind(res.data.wind.speed)
-        setWeatherCity(res.data.name)
+        setWeatherSunSet(sunsetTime.toLocaleTimeString("en-US"));
+        setWeatherSunRise(sunriseTime.toLocaleTimeString("en-US"));
+        setWeatherSkyCondition(res.data.weather[0].main);
+        setWeatherWind(res.data.wind.speed);
+        setWeatherCity(res.data.name);
         setWeatherDate(sunsetTime.toLocaleDateString("en-US"));
-       //console.log(sunsetTime)
+        //console.log(sunsetTime)
       })
       .catch((err) => {
         console.log("err", err);
@@ -61,9 +63,11 @@ const AboutAreaOne = () => {
                   }}
                   className="col-lg-12"
                 >
-                  <h2 style={{ color: "white",fontSize:"60px" }}>Weather Forecast</h2>
+                  <h2 style={{ color: "white", fontSize: "60px" }}>
+                    Weather Forecast
+                  </h2>
                 </div>
-                <div style={{marginTop:"2rem"}}></div>
+                <div style={{ marginTop: "2rem" }}></div>
                 <div className="col-lg-12">
                   <div className="row">
                     <div className="col-lg-6">
@@ -71,7 +75,7 @@ const AboutAreaOne = () => {
                         <MdFmdGood
                           style={{ fontSize: "25px", color: "white" }}
                         />
-                        <h6 style={{ marginLeft: "10px", color: "white"  }}>
+                        <h6 style={{ marginLeft: "10px", color: "white" }}>
                           {weatherCity}
                         </h6>
                       </div>
@@ -81,7 +85,7 @@ const AboutAreaOne = () => {
                         <MdCalendarMonth
                           style={{ fontSize: "25px", color: "white" }}
                         />
-                        <h6 style={{color: "white"}}>
+                        <h6 style={{ color: "white" }}>
                           Today Forecast |{" "}
                           <span style={{ color: "white" }}>{weatherDate}</span>
                         </h6>
@@ -104,11 +108,13 @@ const AboutAreaOne = () => {
                             width: "100%",
                             backgroundColor: "#7c7973",
                             borderRadius: "5px",
-                            padding:"5px"
+                            padding: "5px",
                           }}
                         >
                           <h6 style={{ color: "white" }}>Sunrise</h6>
-                          <div style={{ fontSize: "12px" }}>{weatherSunRise}</div>
+                          <div style={{ fontSize: "12px" }}>
+                            {weatherSunRise}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -124,11 +130,13 @@ const AboutAreaOne = () => {
                             width: "100%",
                             backgroundColor: "#648cbc",
                             borderRadius: "5px",
-                            padding:"5px"
+                            padding: "5px",
                           }}
                         >
                           <h6 style={{ color: "white" }}>Evening</h6>
-                          <div style={{ fontSize: "12px" }}>{weatherSunSet}</div>
+                          <div style={{ fontSize: "12px" }}>
+                            {weatherSunSet}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -144,11 +152,13 @@ const AboutAreaOne = () => {
                             width: "100%",
                             backgroundColor: "#648cbc",
                             borderRadius: "5px",
-                            padding:"5px"
+                            padding: "5px",
                           }}
                         >
                           <h6 style={{ color: "white" }}>Sky</h6>
-                          <div style={{ fontSize: "12px" }}>{weatherSkyCondition}</div>
+                          <div style={{ fontSize: "12px" }}>
+                            {weatherSkyCondition}
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -164,11 +174,13 @@ const AboutAreaOne = () => {
                             width: "100%",
                             backgroundColor: "#648cbc",
                             borderRadius: "5px",
-                            padding:"5px"
+                            padding: "5px",
                           }}
                         >
                           <h6 style={{ color: "white" }}>Wind</h6>
-                          <div style={{ fontSize: "12px" }}>{weatherWind} m/s</div>
+                          <div style={{ fontSize: "12px" }}>
+                            {weatherWind} m/s
+                          </div>
                         </div>
                       </div>
                     </div>
