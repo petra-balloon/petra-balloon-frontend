@@ -37,6 +37,7 @@ const NavBar = () => {
           openModal={openModal}
           secondmodal={secondmodal}
           setSecondModal={setSecondModal}
+          setOpenModal={setOpenModal}
           closeModal={() => {
             setOpenModal(false);
           }}

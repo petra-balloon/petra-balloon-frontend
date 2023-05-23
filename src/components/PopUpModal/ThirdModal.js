@@ -23,7 +23,7 @@ import {
 
 import CountrySelect from "react-bootstrap-country-select";
 
-const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
+const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal }) => {
   const [value, setValue] = useState(null);
   const [isopen, setIsOpen] = useState(false);
   const [isValidationComfirm, setIsValidationComfirm] = useState(false);
@@ -191,10 +191,10 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                     </div>
                   </div>
                   <div className="col-lg-4">
-                    <div className="card-edit">
+                    {/* <div className="card-edit">
                       <BsFillPencilFill className="pencil-margin-left" />
                       <div className="third-edit-text-class">EDIT</div>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="spacer-card-family"></div>
                   <div className="col-lg-8">
@@ -211,7 +211,10 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                     </div>
                   </div>
                   <div className="col-lg-4">
-                    <div className="card-edit">
+                    <div
+                      className="card-edit"
+                       onClick={()=>{setOpenModal(false)}} 
+                    >
                       <BsX className="cross-margin-left" />
                       <div className="third-cross-text-class">Remove</div>
                     </div>
@@ -226,7 +229,7 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                       </div>
                       <div className="col-lg-4">
                         <div className="due-now-text-price">
-                          {resData.total_amount} AED
+                          {resData.total_amount} JOD
                         </div>
                       </div>
                     </div>
@@ -384,7 +387,7 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                   <div className="payment-heading">Payment Details</div>
                 </div>
                 <div className="col-lg-4">
-                  <div className="payment-heading">300.00 JOD</div>
+                  <div className="payment-heading">{resData.total_amount} JOD</div>
                 </div>
               </div>
               {/* credit card */}
@@ -482,7 +485,7 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData }) => {
                     currency="USD"
                   >
                     <div className="checkout-btn-outer-div">
-                      <BsBagFill className="checkout-icon-class" /> Pay JOD 600
+                      <BsBagFill className="checkout-icon-class" /> Pay JOD {resData.total_amount}
                     </div>
                   </StripeCheckout>
                 </div>

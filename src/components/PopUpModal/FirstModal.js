@@ -9,9 +9,9 @@ import { BsArrowRight } from "react-icons/bs";
 import axios from "axios";
 const API_URL = "http://localhost:5000/api/";
 
-const FirstModal = ({}) => {
+const FirstModal = ({ setOpenModal }) => {
   const [secondmodal, setSecondModal] = useState("first");
-  const [passName, setPassName] = useState("");
+  const [selectedpass, setSelectedPass] = useState();
   const [allPasses, setAllPasses] = useState();
   const [firstmodalcontent, setFirstModalContent] = useState(true);
 
@@ -50,7 +50,7 @@ const FirstModal = ({}) => {
                     <div
                       className="col-lg-12 hover-class"
                       onClick={async () => {
-                        await setPassName("sunrise_pass");
+                        await setSelectedPass(Details);
                         setSecondModal("second");
                       }}
                     >
@@ -106,7 +106,7 @@ const FirstModal = ({}) => {
       {secondmodal == "second" && (
         <SecondModal
           secondmodal={secondmodal}
-          passName={passName}
+          selectedpass={selectedpass}
           resData={resData}
           setResData={setResData}
           setSecondModal={setSecondModal}
@@ -117,6 +117,7 @@ const FirstModal = ({}) => {
           secondmodal={secondmodal}
           setSecondModal={setSecondModal}
           resData={resData}
+          setOpenModal={setOpenModal}
           setResData={setResData}
         />
       )}
