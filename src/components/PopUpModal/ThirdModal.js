@@ -15,6 +15,7 @@ import { BsGift } from "react-icons/bs";
 import { MdOutlineCheckBox } from "react-icons/md";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import Loader from "../Loader/spinloader";
+import {API_URL} from '../../config';
 
 import {
   CountryDropdown,
@@ -40,6 +41,7 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal,setTick
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
 
+
   console.log("this is res qqqqqqqqqq data", resData);
 
   console.log("first name", firstName);
@@ -64,12 +66,12 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal,setTick
     /*  return () => clearInterval(timer); */
   });
 
-  const API_URL = "http://localhost:5000/api/";
+  //const API_URL = "http://localhost:5000/api/";
   const handleToken = async (token) => {
     setIsLoading(true)
     await axios
       .post(`${API_URL}ticket/payment`, {
-        amount: 1000, // Replace with the desired amount
+        amount: `${resData.total_amount}`, // Replace with the desired amount
         currency: "USD", // Replace with the desired currency code
         token,
         user_information: {
@@ -489,7 +491,7 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal,setTick
                     token={handleToken}
                     name="Example Store"
                     disabled={isPaymentBtn}
-                    amount={1000}
+                    amount={resData.total_amount}
                     currency="USD"
                   >
                     <div className="checkout-btn-outer-div">

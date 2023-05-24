@@ -11,7 +11,7 @@ import Loader from "../Loader/spinloader";
 
 import Calendar from "react-calendar";
 import axios from "axios";
-
+import {API_URL} from '../../config';
 const SecondModal = ({
   secondmodal,
   setSecondModal,
@@ -47,7 +47,8 @@ const SecondModal = ({
 
   console.log("this is passName", selectedpass);
 
-  const API_URL = "http://localhost:5000/api/";
+ // const API_URL = "http://localhost:5000/api/";
+  //const API_URL = "https://petra-balloon.herokuapp.com/api/";
   useEffect(() => {
     /*
     if (passName === "fast_pass") {
@@ -96,8 +97,8 @@ const SecondModal = ({
     setIsLoading(true)
     await axios
       .post(`${API_URL}ticket/create`, {
-        selected_pass: apiData.pass_name,
-        discount_amount: 20,
+        selected_pass: selectedpass.pass_name,
+        discount_amount: 0,
         reservation_details: ticketDetails,
         date: value,
         total_amount: totalTicketAmount,

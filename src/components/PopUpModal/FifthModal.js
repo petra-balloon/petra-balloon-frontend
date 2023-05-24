@@ -340,7 +340,7 @@ const FifthModal = ({ticketData}) => {
                     </div>{" "}
                     <div style={{ width: "50%" }}>
                       {" "}
-                      Rs {ticketData.discount_amount}
+                      JOD {ticketData.discount_amount}
                     </div>
                   </div>
                 </div>
@@ -451,7 +451,7 @@ const FifthModal = ({ticketData}) => {
                     </div>{" "}
                     <div style={{ width: "50%" }}>
                       {" "}
-                      Rs {ticketData.total_amount}
+                      JOD {ticketData.total_amount}
                     </div>
                   </div>
                 </div>

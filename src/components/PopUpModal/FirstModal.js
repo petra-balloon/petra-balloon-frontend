@@ -8,7 +8,9 @@ import FifthModal from "./FifthModal";
 import { BsArrowRight } from "react-icons/bs";
 import Loader from "../Loader/spinloader";
 import axios from "axios";
-const API_URL = "http://localhost:5000/api/";
+import {API_URL} from '../../config';
+//const API_URL = "http://localhost:5000/api/";
+//const API_URL = "https://petra-balloon.herokuapp.com/api/";
 
 const FirstModal = ({ setOpenModal }) => {
   const [secondmodal, setSecondModal] = useState("first");
