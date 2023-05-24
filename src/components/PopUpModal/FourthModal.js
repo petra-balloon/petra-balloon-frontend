@@ -33,7 +33,7 @@ const FourthModal = ({ secondmodal, setSecondModal }) => {
             <div className="col-lg-7"></div>
             <div className="col-lg-5">
                 <div className="fourth-redeem-btn">
-                    Redeem Gift Card
+                    Redeem Gift Cards
                 </div>
             </div>
 
