@@ -1,0 +1,12 @@
+/* nav {
+    transition: top 0.3s ease-in-out;
+    position: fixed;
+    z-index: 9999;
+  } */
+  
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+  }

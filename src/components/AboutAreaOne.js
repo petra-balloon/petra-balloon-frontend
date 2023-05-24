@@ -184,7 +184,7 @@ const AboutAreaOne = () => {
   return (
     <>
       {/* ================== AboutAreaOne start  ==================*/}
-      <div className="about-area">
+      <div className="about-area pd-top-100">
         <div className="container">
           <div className="row">
             {/* <div className="col-lg-6">
@@ -331,7 +331,7 @@ const AboutAreaOne = () => {
                 </div>
               </div>
             </div> */}
-            <div className="col-lg-12">
+            <div className="col-lg-6">
               {/* <Search
                 value={state.value}
                 data={state}
@@ -363,13 +363,13 @@ const AboutAreaOne = () => {
                 )}
               </div>
             </div>
-            {/*  <div
-              className="col-lg-6 "
+            <div
+              className="col-lg-6"
               data-aos="fade-left"
               data-aos-delay="100"
               data-aos-duration="1500"
             >
-              <div className="section-title mt-5 mt-lg-0">
+              <div className="section-title mt-5 mt-lg-0 ">
                 <h2 className="title">
                   <span>Weather Forecast</span> For The Dubai Balloon At
                   Atlantis
@@ -411,7 +411,7 @@ const AboutAreaOne = () => {
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

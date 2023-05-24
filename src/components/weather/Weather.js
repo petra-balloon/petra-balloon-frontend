@@ -10,8 +10,8 @@ import Weekly from './Weekly'
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    marginTop: 60,
-    padding: 15,
+   /*  marginTop: 60, */
+    padding: 5,
 
   },
   card: {

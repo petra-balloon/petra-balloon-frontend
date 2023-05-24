@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
     span: {
         fontWeight: 'bold',
+        fontSize:'8px'
     }
 
   }));
@@ -72,7 +73,7 @@ function Today({today}) {
                 <div>
                     <img src={pressure} alt="Logo" className={classes.unit__icon1}/><span className={classes.span}>{today.pressure} hPa</span>
                     <img src={humidity} alt="Logo" className={classes.unit__icon}/><span className={classes.span}>{today.humidity} %</span>
-                    <img src={wind_speed} alt="Logo" className={classes.unit__icon}/><span className={classes.span}>{today.wind} m/s N</span>
+                    <img src={wind_speed} alt="Logo" className={classes.unit__icon}/><span className={classes.span}>{today.wind} m/s</span>
                 </div>
             </CardContent>    
     )

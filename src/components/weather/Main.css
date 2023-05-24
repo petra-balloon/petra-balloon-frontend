@@ -15,7 +15,7 @@
   transform: translate(-50%, -50%);
 }
 .main-body-weather{
-  min-height: 60vh;
+  min-height: 50vh;
   position: relative;
  /*  height: 100%; */
   width: 100%;

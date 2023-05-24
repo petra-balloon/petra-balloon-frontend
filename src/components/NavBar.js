@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import "./navbar.css";
 import MainPopUpModal from "./PopUpModal/PoPUpModal";
 
 const NavBar = () => {
@@ -8,6 +9,23 @@ const NavBar = () => {
   const [openModal, setOpenModal] = useState(false);
   const [searchShow, setSearchShow] = useState(false);
   const [secondmodal, setSecondModal] = useState(false);
+  /* sticky navbar */
+  const [isSticky, setIsSticky] = useState(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      setIsSticky(scrollTop > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  /* sticky navbar */
   const menuActive = () => {
     setActive(!active);
   };
@@ -67,80 +85,83 @@ const NavBar = () => {
         id="body-overlay"
       ></div>
       {/* navbar start */}
-      <nav className="navbar navbar-area navbar-expand-lg">
-        <div className="container nav-container navbar-bg">
-          <div className="responsive-mobile-menu">
-            <button
-              onClick={menuActive}
+      <div className={isSticky ? 'sticky' : ''}>
+        <nav className="navbar navbar-area navbar-expand-lg">
+          <div className="container nav-container navbar-bg">
+            <div className="responsive-mobile-menu">
+              <button
+                onClick={menuActive}
+                className={
+                  active
+                    ? "menu toggle-btn d-block d-lg-none open"
+                    : "menu toggle-btn d-block d-lg-none"
+                }
+                data-target="#itech_main_menu"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="icon-left" />
+                <span className="icon-right" />
+              </button>
+            </div>
+            <div className="logo">
+              <Link to="/">
+                <img src="assets/img/logo.png" alt="img" />
+              </Link>
+            </div>
+            <div className="nav-right-part nav-right-part-mobile">
+              <span className="search-bar-btn" onClick={searchActive}>
+                <FaSearch />
+              </span>
+            </div>
+            <div
               className={
                 active
-                  ? "menu toggle-btn d-block d-lg-none open"
-                  : "menu toggle-btn d-block d-lg-none"
+                  ? "collapse navbar-collapse sopen"
+                  : "collapse navbar-collapse"
               }
-              data-target="#itech_main_menu"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+              id="itech_main_menu"
             >
-              <span className="icon-left" />
-              <span className="icon-right" />
-            </button>
+              <ul className="navbar-nav menu-open text-lg-end">
+                <li>
+                  <a href="/experience">Experiences</a>
+                </li>
+                <li>
+                  <a href="/pricing"> Pricing</a>
+                </li>
+                <li>
+                  <a href="/plan-your-flight">Plan Your Flight</a>
+                </li>
+                <li>
+                  <a href="#">Photo Memories</a>
+                </li>
+                <li>
+                  <Link to="/about">About Us</Link>
+                </li>
+              </ul>
+            </div>
+            <div
+              style={{
+                background: "black",
+                display: "flex",
+                justifyItems: "center",
+                alignContent: "center",
+                padding: "23px",
+                fontSize: "20px",
+                color: "white",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setOpenModal(true);
+              }}
+              className="nav-right-part nav-right-part-desktop align-self-center"
+            >
+              Book Now
+            </div>
           </div>
-          <div className="logo">
-            <Link to="/">
-              <img src="assets/img/logo.png" alt="img" />
-            </Link>
-          </div>
-          <div className="nav-right-part nav-right-part-mobile">
-            <span className="search-bar-btn" onClick={searchActive}>
-              <FaSearch />
-            </span>
-          </div>
-          <div
-            className={
-              active
-                ? "collapse navbar-collapse sopen"
-                : "collapse navbar-collapse"
-            }
-            id="itech_main_menu"
-          >
-            <ul className="navbar-nav menu-open text-lg-end">
-              <li>
-                <a href="/experience">Experiences</a>
-              </li>
-              <li>
-                <a href="/pricing"> Pricing</a>
-              </li>
-              <li>
-                <a href="/plan-your-flight">Plan Your Flight</a>
-              </li>
-              <li>
-                <a href="#">Photo Memories</a>
-              </li>
-              <li>
-                <Link to="/about">About Us</Link>
-              </li>
-            </ul>
-          </div>
-          <div
-            style={{
-              background: "black",
-              display: "flex",
-              justifyItems: "center",
-              alignContent: "center",
-              padding: "23px",
-              fontSize: "20px",
-              color: "white",
-              cursor: "pointer",
-            }}
-            onClick={() => {
-              setOpenModal(true);
-            }}
-            className="nav-right-part nav-right-part-desktop align-self-center"
-          >
-            Book Now
-          </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
+
       {/* navbar end */}
     </>
   );

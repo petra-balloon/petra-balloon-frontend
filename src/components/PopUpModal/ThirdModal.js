@@ -14,6 +14,7 @@ import { BsBagFill } from "react-icons/bs";
 import { BsGift } from "react-icons/bs";
 import { MdOutlineCheckBox } from "react-icons/md";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
+import Loader from "../Loader/spinloader";
 
 import {
   CountryDropdown,
@@ -23,7 +24,8 @@ import {
 
 import CountrySelect from "react-bootstrap-country-select";
 
-const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal }) => {
+const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal,setTicketData }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [value, setValue] = useState(null);
   const [isopen, setIsOpen] = useState(false);
   const [isValidationComfirm, setIsValidationComfirm] = useState(false);
@@ -64,6 +66,7 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal }) => {
 
   const API_URL = "http://localhost:5000/api/";
   const handleToken = async (token) => {
+    setIsLoading(true)
     await axios
       .post(`${API_URL}ticket/payment`, {
         amount: 1000, // Replace with the desired amount
@@ -79,7 +82,12 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal }) => {
         },
       })
       .then(async (response) => {
-        console.log(response.data.data);
+        console.log(response.data);
+        if(response.data.message == "Payment successful"){
+          setTicketData(response.data.data)
+          setSecondModal("fifth");
+          setIsLoading(false)
+        }
       })
       .catch(function (error) {
         console.log(error);
@@ -498,6 +506,7 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal }) => {
           </div>
         </div>
       </div>
+      <Loader isLoading={isLoading} />
     </div>
   );
 };

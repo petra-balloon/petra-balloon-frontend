@@ -7,6 +7,7 @@ import { BsTag } from "react-icons/bs";
 import { BsVinylFill } from "react-icons/bs";
 import { BsChevronExpand } from "react-icons/bs";
 import { BsRecord } from "react-icons/bs";
+import Loader from "../Loader/spinloader";
 
 import Calendar from "react-calendar";
 import axios from "axios";
@@ -18,6 +19,7 @@ const SecondModal = ({
   resData,
   setResData,
 }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [apiData, setApiData] = useState("");
   const [isOpensecond, setIsOpenSecond] = useState(false);
@@ -91,6 +93,7 @@ const SecondModal = ({
   //submit button
 
   const createTicket = async () => {
+    setIsLoading(true)
     await axios
       .post(`${API_URL}ticket/create`, {
         selected_pass: apiData.pass_name,
@@ -103,6 +106,7 @@ const SecondModal = ({
       .then(async (response) => {
         console.log(response.data.data);
         setResData(response.data.data);
+        setIsLoading(false)
       })
       .catch(function (error) {
         console.log(error);
@@ -591,6 +595,7 @@ const SecondModal = ({
           </div>
         </div>
       </div>
+      <Loader isLoading={isLoading} />
     </div>
   );
 };

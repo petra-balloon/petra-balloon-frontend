@@ -27,11 +27,11 @@ const useStyles = makeStyles((theme) => ({
 },
 day: {
   textAlign: 'center',
-  border: '1px solid',
+  border: '0.1px solid #FFCCE5',
   minWidth: '185px',
 },
 info:{
-  fontSize: 21,
+  fontSize: 15,
   fontWeight: "bold",
 }
 }));
@@ -43,7 +43,7 @@ function Weekly({weekData}) {
     <CardMedia className={classes.root}>
       <GridList style={{overflowX:"hidden"}}  className={classes.gridList} cellHeight="auto" spacing={4}>
         {weekData.map((data) => (
-            <GridListTile key={data.key} cols={0.5} className={classes.day}>
+            <GridListTile key={data.key} cols={0.7} className={classes.day}>
               { (data.key === 0) ? 
                 <Typography className={classes.info} gutterBottom color='error'>
                   Today
@@ -64,7 +64,7 @@ function Weekly({weekData}) {
               <Typography variant="h6"  gutterBottom>
                 {data.main},
               </Typography>
-              <h4 style={{fontWeight: 'bold', paddingBottom: '10px'}}>{data.desc}</h4>
+              <h6 style={{ paddingBottom: '5px'}}>{data.desc}</h6>
             </GridListTile>
         ))}
       </GridList>
