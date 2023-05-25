@@ -12,6 +12,9 @@ import Loader from "../Loader/spinloader";
 import Calendar from "react-calendar";
 import axios from "axios";
 import { API_URL } from "../../config";
+
+const currentDate = new Date();
+
 const SecondModal = ({
   secondmodal,
   setSecondModal,
@@ -22,6 +25,7 @@ const SecondModal = ({
   const [isLoading, setIsLoading] = useState(false);
   const [isWarningLowAmount, setIsWarningLowAmount] = useState(false);
   const [isWarningCheckBox, setIsWarningCheckBox] = useState(false);
+  const [showWarningCheckBox, setShowWarningCheckBox] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [apiData, setApiData] = useState("");
   const [isOpensecond, setIsOpenSecond] = useState(false);
@@ -60,10 +64,13 @@ const SecondModal = ({
   //submit button
 
   const createTicket = async () => {
- /*    if (totalTicketAmount !== 0) {
+    if (totalTicketAmount == 0) {
       setIsWarningLowAmount(true);
-    } */
-/*     if (isWarningLowAmount == true && isWarningCheckBox == true) { */
+    } 
+    if (isWarningCheckBox !== true) {
+      setShowWarningCheckBox(true);
+    }
+    if (isWarningLowAmount == false && showWarningCheckBox == true) { 
       setIsLoading(true);
       await axios
         .post(`${API_URL}ticket/create`, {
@@ -77,12 +84,13 @@ const SecondModal = ({
         .then(async (response) => {
           console.log(response.data.data);
           setResData(response.data.data);
+          setSecondModal("third");
           setIsLoading(false);
         })
         .catch(function (error) {
           console.log(error);
         });
-  /*   } */
+     } 
   };
 
   const CalculateTotalBill = async () => {
@@ -517,7 +525,7 @@ const SecondModal = ({
               <div className="row">
                 <div className="col-lg-12">
                   <div>
-                    <Calendar onChange={onChange} value={value} />
+                    <Calendar minDate={currentDate}onChange={onChange} value={value} />
                   </div>
                 </div>
 
@@ -562,7 +570,7 @@ const SecondModal = ({
             </div>
           </div>
         </div>
-      {/*   <div className="col-lg-10">
+         <div className="col-lg-10">
           <div className="row">
             <div className="col-lg-6">
               <div className="warning-text-outer-div">
@@ -574,7 +582,7 @@ const SecondModal = ({
                     </div>
                   </div>
                 )}
-                {isWarningCheckBox && (
+                {showWarningCheckBox && (
                   <div className="warning-text">
                     * Please accept the terms and conditions before continuing.
                   </div>
@@ -582,7 +590,7 @@ const SecondModal = ({
               </div>
             </div>
           </div>
-        </div> */}
+        </div> 
         <div className="col-lg-12">
           <div className="packup-of-div-add-cart">
             {/* <div className="outer-percentage-div">
@@ -594,7 +602,7 @@ const SecondModal = ({
                 className="row button-of-card"
                 onClick={async () => {
                   await createTicket();
-                  setSecondModal("third");
+                  /* setSecondModal("third"); */
                 }}
               >
                 <div className="col-lg-10">
