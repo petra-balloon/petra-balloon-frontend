@@ -138,7 +138,8 @@
  
     display: flex;
     flex-direction: column;
-    position:absolute;
+  /*   position:absolute; */
+    position: relative;
    
     /* width:100%; */
   }
@@ -154,9 +155,44 @@
     cursor: pointer;
     /* border: 1px solid rgba(0, 102, 255, 0.1); */
   }
- /*  .select-main-div{
-    height: 150px;
-  } */
+  .select-main-div::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(180deg, #d0368a 0%, #708ad4 99%);
+    box-shadow: inset 2px 2px 5px 0 rgba(#fff, 0.5);
+    border-radius: 100px;
+  }
+   .select-main-div{
+    height: 200px;
+    position: absolute;
+    overflow: auto;
+  } 
+
+  .select-main-div::-webkit-scrollbar {
+    width: 9px;
+    
+  }
+  
+  /* Track */
+  .select-main-div::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+    cursor: pointer;
+    
+  }
+   
+  /* Handle */
+  .select-main-div::-webkit-scrollbar-thumb {
+    background: rgb(103, 101, 101); 
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  /* Handle on hover */
+  .select-main-div::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+    cursor: pointer;
+  }
+
+
 
   .check-box-input{
     height: 28px;
@@ -178,14 +214,24 @@
 .add-to-cart-outer{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
     bottom: 0px;
     color: #FFFFFF;
     background-color: #246BFD;
     font-size: 18px;
     padding: 1rem 1.5rem;
     cursor: pointer;
-    
+}
+.button-of-card{
+    padding: 10px;
+    background-color: #00112c;
+    color:white
+}
+
+.add-to-card-text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .date-available{
@@ -218,7 +264,8 @@
 }
 
 .packup-of-div-add-cart{
-    margin-top: 163px;
+    margin-top: 140px;
+
 }
 
 .total-bill{
@@ -549,4 +596,16 @@
 .StripeCheckout-btn{
     width:200px;
 
+}
+
+
+/* second modal warning */
+.warning-text-outer-div{
+    margin-top: 10px;
+    padding: 12px;
+}
+/* second modal warning */
+
+.warning-text{
+    color:red;
 }

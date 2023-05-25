@@ -11,7 +11,7 @@ import Loader from "../Loader/spinloader";
 
 import Calendar from "react-calendar";
 import axios from "axios";
-import {API_URL} from '../../config';
+import { API_URL } from "../../config";
 const SecondModal = ({
   secondmodal,
   setSecondModal,
@@ -20,6 +20,8 @@ const SecondModal = ({
   setResData,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isWarningLowAmount, setIsWarningLowAmount] = useState(false);
+  const [isWarningCheckBox, setIsWarningCheckBox] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [apiData, setApiData] = useState("");
   const [isOpensecond, setIsOpenSecond] = useState(false);
@@ -47,45 +49,9 @@ const SecondModal = ({
 
   console.log("this is passName", selectedpass);
 
- // const API_URL = "http://localhost:5000/api/";
+  // const API_URL = "http://localhost:5000/api/";
   //const API_URL = "https://petra-balloon.herokuapp.com/api/";
-  useEffect(() => {
-    /*
-    if (passName === "fast_pass") {
-      const getfastPass = async () => {
-        await axios
-          .get(`${API_URL}pricing/fastpass/get`, {})
-          .then(async (response) => {
-            console.log(response.data.data);
-            setApiData(response.data.data);
-            setAdultPrice(response.data.data.adult_price);
-            setChildPrice(response.data.data.child_price);
-            setInfantPrice(response.data.data.infant_price);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      };
-      getfastPass();
-    }
-    if (passName === "regular_pass") {
-      const getregularPass = async () => {
-        await axios
-          .get(`${API_URL}pricing/regularpass/get`, {})
-          .then(async (response) => {
-            console.log(response.data.data);
-            setApiData(response.data.data);
-            setAdultPrice(response.data.data.adult_price);
-            setChildPrice(response.data.data.child_price);
-            setInfantPrice(response.data.data.infant_price);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      };
-      getregularPass();
-    } */
-  }, [selectedpass]);
+  useEffect(() => {}, [selectedpass]);
 
   useEffect(() => {
     CalculateTotalBill();
@@ -94,24 +60,29 @@ const SecondModal = ({
   //submit button
 
   const createTicket = async () => {
-    setIsLoading(true)
-    await axios
-      .post(`${API_URL}ticket/create`, {
-        selected_pass: selectedpass.pass_name,
-        discount_amount: 0,
-        reservation_details: ticketDetails,
-        date: value,
-        total_amount: totalTicketAmount,
-        tax_amount: taxAmount,
-      })
-      .then(async (response) => {
-        console.log(response.data.data);
-        setResData(response.data.data);
-        setIsLoading(false)
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+ /*    if (totalTicketAmount !== 0) {
+      setIsWarningLowAmount(true);
+    } */
+/*     if (isWarningLowAmount == true && isWarningCheckBox == true) { */
+      setIsLoading(true);
+      await axios
+        .post(`${API_URL}ticket/create`, {
+          selected_pass: selectedpass.pass_name,
+          discount_amount: 0,
+          reservation_details: ticketDetails,
+          date: value,
+          total_amount: totalTicketAmount,
+          tax_amount: taxAmount,
+        })
+        .then(async (response) => {
+          console.log(response.data.data);
+          setResData(response.data.data);
+          setIsLoading(false);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+  /*   } */
   };
 
   const CalculateTotalBill = async () => {
@@ -126,6 +97,9 @@ const SecondModal = ({
     setTotalTicketAmount(totalAmountOfSubTotal);
     console.log("this is total", totalAmountOfSubTotal);
     setIsOpen(false);
+    setIsOpenSecond(false);
+    setIsOpenThird(false);
+    setIsOpenFourth(false);
     console.log(ticketDetails);
   };
 
@@ -239,6 +213,16 @@ const SecondModal = ({
     { value: "8" },
     { value: "9" },
     { value: "10" },
+    { value: "12" },
+    { value: "13" },
+    { value: "14" },
+    { value: "14" },
+    { value: "15" },
+    { value: "16" },
+    { value: "17" },
+    { value: "18" },
+    { value: "19" },
+    { value: "20" },
   ];
 
   return (
@@ -331,10 +315,10 @@ const SecondModal = ({
                                 />
                               </div>
                             </div>
-                            <div className="select-main-div">
-                              <ul className="select-main">
-                                {isOpen &&
-                                  options.map((value) => {
+                            {isOpen && (
+                              <div className="select-main-div">
+                                <ul className="select-main">
+                                  {options.map((value) => {
                                     return (
                                       <li
                                         onClick={() => {
@@ -346,8 +330,9 @@ const SecondModal = ({
                                       </li>
                                     );
                                   })}
-                              </ul>
-                            </div>
+                                </ul>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -387,10 +372,10 @@ const SecondModal = ({
                                 />
                               </div>
                             </div>
-                            <div className="select-main-div">
-                              <ul className="select-main">
-                                {isOpensecond &&
-                                  options.map((value) => {
+                            {isOpensecond && (
+                              <div className="select-main-div">
+                                <ul className="select-main">
+                                  {options.map((value) => {
                                     return (
                                       <li
                                         onClick={() => {
@@ -402,8 +387,9 @@ const SecondModal = ({
                                       </li>
                                     );
                                   })}
-                              </ul>
-                            </div>
+                                </ul>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -441,10 +427,10 @@ const SecondModal = ({
                                 />
                               </div>
                             </div>
-                            <div className="select-main-div">
-                              <ul className="select-main">
-                                {isOpenthird &&
-                                  options.map((value) => {
+                            {isOpenthird && (
+                              <div className="select-main-div">
+                                <ul className="select-main">
+                                  {options.map((value) => {
                                     return (
                                       <li
                                         onClick={() => {
@@ -456,71 +442,73 @@ const SecondModal = ({
                                       </li>
                                     );
                                   })}
-                              </ul>
-                            </div>
+                                </ul>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  {selectedpass.family_price != null &&
-                      <div className="col-lg-12">
-                        <div className="outer-main-adult-div">
-                          <div className="row">
-                            <div className="adult-wraping-div">
-                              <div className="col-lg-8">
+                  {selectedpass.family_price != null && (
+                    <div className="col-lg-12">
+                      <div className="outer-main-adult-div">
+                        <div className="row">
+                          <div className="adult-wraping-div">
+                            <div className="col-lg-8">
+                              <div>
+                                <div className="all-div-heading-in-middle">
+                                  Family
+                                </div>
+                                <div className="all-div-text-in-middle">
+                                  2 Adults and 2 Children (3 - 11 Years)
+                                </div>
+                              </div>
+                            </div>
+                            <div className="col-lg-2">
+                              <div className="all-div-price-in-middle">
+                                {selectedpass.family_price}
+                              </div>
+                            </div>
+                            <div className="col-lg-2">
+                              <div className="select-person-outer-div">
+                                <div className="total-adult-price">
+                                  {familySelectedNumber}
+                                </div>
                                 <div>
-                                  <div className="all-div-heading-in-middle">
-                                    Family
-                                  </div>
-                                  <div className="all-div-text-in-middle">
-                                    2 Adults and 2 Children (3 - 11 Years)
-                                  </div>
+                                  <BsChevronExpand
+                                    onClick={() => {
+                                      setIsOpenFourth(
+                                        isOpenfourth ? false : true
+                                      );
+                                    }}
+                                  />
                                 </div>
                               </div>
-                              <div className="col-lg-2">
-                                <div className="all-div-price-in-middle">
-                                  {selectedpass.family_price}
-                                </div>
-                              </div>
-                              <div className="col-lg-2">
-                                <div className="select-person-outer-div">
-                                  <div className="total-adult-price">
-                                    {familySelectedNumber}
-                                  </div>
-                                  <div>
-                                    <BsChevronExpand
-                                      onClick={() => {
-                                        setIsOpenFourth(
-                                          isOpenfourth ? false : true
-                                        );
-                                      }}
-                                    />
-                                  </div>
-                                </div>
+                              {isOpenfourth && (
                                 <div className="select-main-div">
                                   <ul className="select-main">
-                                    {isOpenfourth &&
-                                      options.map((value) => {
-                                        return (
-                                          <li
-                                            onClick={() => {
-                                              FamilyPriceAdd(value.value);
-                                            }}
-                                            className="select-control"
-                                          >
-                                            {value.value}
-                                          </li>
-                                        );
-                                      })}
+                                    {options.map((value) => {
+                                      return (
+                                        <li
+                                          onClick={() => {
+                                            FamilyPriceAdd(value.value);
+                                          }}
+                                          className="select-control"
+                                        >
+                                          {value.value}
+                                        </li>
+                                      );
+                                    })}
                                   </ul>
                                 </div>
-                              </div>
+                              )}
                             </div>
                           </div>
                         </div>
                       </div>
-                    }
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -552,7 +540,13 @@ const SecondModal = ({
 
                 <div className="col-lg-12">
                   <div className="check-box-outer-div">
-                    <input className="check-box-input" type="checkbox" />
+                    <input
+                      onChange={() => {
+                        setIsWarningCheckBox(true);
+                      }}
+                      className="check-box-input"
+                      type="checkbox"
+                    />
                     <div>
                       I accept the{" "}
                       <span className="checkbox-text-color">
@@ -568,7 +562,27 @@ const SecondModal = ({
             </div>
           </div>
         </div>
-
+      {/*   <div className="col-lg-10">
+          <div className="row">
+            <div className="col-lg-6">
+              <div className="warning-text-outer-div">
+                {isWarningLowAmount && (
+                  <div>
+                    <div className="warning-text">*Bookings is invalid</div>
+                    <div className="warning-text">
+                      *Tickets at least one ticket is required
+                    </div>
+                  </div>
+                )}
+                {isWarningCheckBox && (
+                  <div className="warning-text">
+                    * Please accept the terms and conditions before continuing.
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div> */}
         <div className="col-lg-12">
           <div className="packup-of-div-add-cart">
             {/* <div className="outer-percentage-div">
@@ -576,22 +590,22 @@ const SecondModal = ({
               <div>20 JOD</div>
             </div> */}
             <div className="add-to-cart-outer">
-              <div
-                className="row"
+              <button
+                className="row button-of-card"
                 onClick={async () => {
                   await createTicket();
                   setSecondModal("third");
                 }}
               >
                 <div className="col-lg-10">
-                  <div>ADD to Cart</div>
+                  <div className="add-to-card-text">ADD to Cart</div>
                 </div>
                 <div className="col-lg-2">
                   <div className="calculated-bill">
                     <div className="total-bill">{totalTicketAmount}</div>
                   </div>
                 </div>
-              </div>
+              </button>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@
   color: "white";
   width: "100%";
   background-color: "#648cbc";
-  padding:"5px";
+ /*  padding:"5px"; */
 }
 .navbar-top {
   background: #091d3e;
@@ -79,11 +79,11 @@
     position: relative;
     &.navbar-bg {
       position: relative;
-      padding-left: 40px;
+      /* padding-left: 40px; */
       &:after {
         content: "";
         position: absolute;
-        left: 15px;
+        /* left: 15px; */
         top: 0;
         height: 100%;
         width: 95%;
@@ -93,11 +93,15 @@
     }
     .logo {
       line-height: 0.9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       a {
         font-weight: 700;
         font-size: 24px;
         color: #fff;
         img {
+
           height: auto;
           max-width: 150px;
         }

@@ -86,8 +86,9 @@ const NavBar = () => {
       ></div>
       {/* navbar start */}
       <div className={isSticky ? 'sticky' : ''}>
-        <nav className="navbar navbar-area navbar-expand-lg">
-          <div className="container nav-container navbar-bg">
+        <nav className=" navbar-area navbar-expand-lg">
+        {/* container  */}
+          <div className="nav-container navbar-bg" style={{width:"100%" ,display:"flex"}}>
             <div className="responsive-mobile-menu">
               <button
                 onClick={menuActive}
