@@ -66,14 +66,19 @@ const SecondModal = ({
   const createTicket = async () => {
     if (totalTicketAmount == 0) {
       setIsWarningLowAmount(true);
-    }else{
+    } else {
       setIsWarningLowAmount(false);
     }
     if (isWarningCheckBox == false) {
       setShowWarningCheckBox(true);
     }
-    console.log("isWarningLowAmount =======",isWarningLowAmount,"showWarningCheckBox =====" ,showWarningCheckBox)
-    if (totalTicketAmount !== 0 && isWarningCheckBox == true) { 
+    console.log(
+      "isWarningLowAmount =======",
+      isWarningLowAmount,
+      "showWarningCheckBox =====",
+      showWarningCheckBox
+    );
+    if (totalTicketAmount !== 0 && isWarningCheckBox == true) {
       setIsLoading(true);
       await axios
         .post(`${API_URL}ticket/create`, {
@@ -93,7 +98,7 @@ const SecondModal = ({
         .catch(function (error) {
           console.log(error);
         });
-     } 
+    }
   };
 
   const CalculateTotalBill = async () => {
@@ -528,7 +533,11 @@ const SecondModal = ({
               <div className="row">
                 <div className="col-lg-12">
                   <div>
-                    <Calendar minDate={currentDate}onChange={onChange} value={value} />
+                    <Calendar
+                      minDate={currentDate}
+                      onChange={onChange}
+                      value={value}
+                    />
                   </div>
                 </div>
 
@@ -573,7 +582,7 @@ const SecondModal = ({
             </div>
           </div>
         </div>
-         <div className="col-lg-10">
+        <div className="col-lg-10">
           <div className="row">
             <div className="col-lg-6">
               <div className="warning-text-outer-div">
@@ -593,7 +602,7 @@ const SecondModal = ({
               </div>
             </div>
           </div>
-        </div> 
+        </div>
         <div className="col-lg-12">
           <div className="packup-of-div-add-cart">
             {/* <div className="outer-percentage-div">
@@ -608,12 +617,12 @@ const SecondModal = ({
                   /* setSecondModal("third"); */
                 }}
               >
-                <div className="col-lg-10">
-                  <div className="add-to-card-text">ADD to Cart</div>
-                </div>
-                <div className="col-lg-2">
-                  <div className="calculated-bill">
-                    <div className="total-bill">{totalTicketAmount}</div>
+                <div className="col-lg-12">
+                  <div style={{display:"flex"}}>
+                    <div className="add-to-card-text">ADD to Cart</div>
+                    <div className="calculated-bill">
+                      <div className="total-bill">{totalTicketAmount}</div>
+                    </div>
                   </div>
                 </div>
               </button>

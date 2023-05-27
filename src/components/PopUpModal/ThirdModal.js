@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import StripeCheckout from "react-stripe-checkout";
+import Countdown from "react-countdown";
 import axios from "axios";
 import Moment from "react-moment";
 import ReactDOM from "react-dom";
@@ -15,7 +16,7 @@ import { BsGift } from "react-icons/bs";
 import { MdOutlineCheckBox } from "react-icons/md";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import Loader from "../Loader/spinloader";
-import {API_URL} from '../../config';
+import { API_URL } from "../../config";
 
 import {
   CountryDropdown,
@@ -25,7 +26,13 @@ import {
 
 import CountrySelect from "react-bootstrap-country-select";
 
-const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal,setTicketData }) => {
+const ThirdModal = ({
+  secondmodal,
+  setSecondModal,
+  resData,
+  setOpenModal,
+  setTicketData,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [value, setValue] = useState(null);
   const [isopen, setIsOpen] = useState(false);
@@ -40,7 +47,6 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal,setTick
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
-
 
   console.log("this is res qqqqqqqqqq data", resData);
 
@@ -66,9 +72,29 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal,setTick
     /*  return () => clearInterval(timer); */
   });
 
+  /* timer */
+  const targetTime = Date.now() + 30 * 60 * 1000;
+
+  // Render function for the Countdown component
+  const renderer = ({ minutes, seconds, completed }) => {
+    if (completed) {
+      // Render a message when the countdown is completed
+      return <span>Countdown finished!</span>;
+    } else {
+      // Render the countdown timer
+      return (
+        <span>
+          {/* {minutes}:{seconds} */}
+          {minutes < 10 ? "0" + minutes : minutes}:
+          {seconds < 10 ? "0" + seconds : seconds}
+        </span>
+      );
+    }
+  };
+  /* timer */
   //const API_URL = "http://localhost:5000/api/";
   const handleToken = async (token) => {
-    setIsLoading(true)
+    setIsLoading(true);
     await axios
       .post(`${API_URL}ticket/payment`, {
         amount: `${resData.total_amount}`, // Replace with the desired amount
@@ -85,10 +111,10 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal,setTick
       })
       .then(async (response) => {
         console.log(response.data);
-        if(response.data.message == "Payment successful"){
-          setTicketData(response.data.data)
+        if (response.data.message == "Payment successful") {
+          setTicketData(response.data.data);
           setSecondModal("fifth");
-          setIsLoading(false)
+          setIsLoading(false);
         }
       })
       .catch(function (error) {
@@ -148,15 +174,20 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal,setTick
         <div className="container">
           <div className="row">
             <div className="heading-wrap">
-              <div className="col-lg-3">
+              <div className="col-lg-3 col-9">
                 <div className="shoping-cart-top-div">
                   <div className="heading-top">Shopping Cart</div>
                   <div className="timer-main-class">
                     <BsAlarm className="heading-icon" />
-                    <div className="running-timer">
+                    <Countdown
+                      className="running-timer"
+                      date={targetTime}
+                      renderer={renderer}
+                    />
+                    {/* <div className="running-timer">
                       {minutes < 10 ? "0" + minutes : minutes}:
                       {second < 10 ? "0" + second : second}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
@@ -223,7 +254,9 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal,setTick
                   <div className="col-lg-4">
                     <div
                       className="card-edit"
-                       onClick={()=>{setOpenModal(false)}} 
+                      onClick={() => {
+                        setOpenModal(false);
+                      }}
                     >
                       <BsX className="cross-margin-left" />
                       <div className="third-cross-text-class">Remove</div>
@@ -393,11 +426,11 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal,setTick
               </div>
               <div className="input-margin-bottom-spacer"></div>
               <div className="row">
-                <div className="col-lg-8">
-                  <div className="payment-heading">Payment Details</div>
-                </div>
-                <div className="col-lg-4">
-                  <div className="payment-heading">{resData.total_amount} JOD</div>
+                <div className="col-lg-12">
+                  <div className="payment-heading">
+                    Payment Details :{resData.total_amount} JOD
+                  </div>
+                  {/*                   <div className="payment-heading"></div> */}
                 </div>
               </div>
               {/* credit card */}
@@ -495,7 +528,8 @@ const ThirdModal = ({ secondmodal, setSecondModal, resData, setOpenModal,setTick
                     currency="USD"
                   >
                     <div className="checkout-btn-outer-div">
-                      <BsBagFill className="checkout-icon-class" /> Pay JOD {resData.total_amount}
+                      <BsBagFill className="checkout-icon-class" /> Pay JOD{" "}
+                      {resData.total_amount}
                     </div>
                   </StripeCheckout>
                 </div>
