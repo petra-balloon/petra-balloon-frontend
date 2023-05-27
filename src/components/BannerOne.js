@@ -41,7 +41,7 @@ const BannerOne = () => {
                 >
                   DESIGNING FOR THE FUTURE
                 </h6>
-                <Link
+                {/* <Link
                 style={{display:"block", width:"500px",color:""}}
                   className='banner-btn btn btn-border-base'
                   data-aos='fade-right'
@@ -50,7 +50,7 @@ const BannerOne = () => {
                   to='/'
                 >
                   Discover More <FaPlus />
-                </Link>
+                </Link> */}
               </div>
             </div>
             {/* <div className='col-xl-4 col-lg-5 col-md-8 offset-xl-2 offset-lg-1'>

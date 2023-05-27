@@ -12,6 +12,13 @@
  /*  padding:"5px"; */
 } 
 
+.book-now-text{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .book-now-btn{
   background: black;
   display: flex;
@@ -1078,15 +1085,9 @@
     padding-top: 0px !important;
   }
   .book-now-btn{
-    background: black;
-    display: flex;
-    justify-items: center;
-    align-content: center;
-    padding: 13px;
-     font-size: 17px; 
-    color: white;
-    cursor: pointer;
-    width: 180px;
+    padding: 14px;
+    font-size: 17px;  
+    width: 240px;
   }
 }
 
@@ -1108,15 +1109,9 @@
     min-width: 350px;
   }
   .book-now-btn{
-    background: black;
-    display: flex;
-    justify-items: center;
-    align-content: center;
-    padding: 10px;
-     font-size: 15px; 
-    color: white;
-    cursor: pointer;
-    width: 180px;
+    padding: 14px;
+    font-size: 17px; 
+    width: 240px;
   }
 }
 
@@ -1134,26 +1129,29 @@
   }
 
   .book-now-btn{
-    background: black;
-    display: flex;
-    justify-items: center;
-    align-content: center;
-    padding: 12px;
-     font-size: 15px; 
-    color: white;
-    cursor: pointer;
-    width: 180px;
+    padding: 14px;
+    font-size: 17px; 
   }
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 340px) {
   .search-popup .search-form {
     min-width: 265px;
   }
   .responsive-mobile-menu .navbar-toggler {
     left: calc(100% - 95px);
   }
-
+  .book-now-btn{
+    background: black;
+    display: flex;
+    justify-items: center;
+    align-content: center;
+    padding: 10px;
+     font-size: 13px; 
+    color: white;
+    cursor: pointer;
+    width: 180px;
+  }
 
 }
 

@@ -92,7 +92,7 @@ const NavBar = () => {
             className="nav-container navbar-bg"
             style={{ width: "100%", display: "flex" }}
           >
-            <div className="responsive-mobile-menu" style={{display:"flex"}}>
+            <div className="responsive-mobile-menu" style={{ display: "flex" }}>
               <div className="logo">
                 <Link to="/">
                   <img src="assets/img/logo.png" alt="img" />
@@ -161,7 +161,7 @@ const NavBar = () => {
               }}
               className="nav-right-part nav-right-part-desktop align-self-center book-now-btn"
             >
-              Book Now
+              <div className="book-now-text">Book Now</div>
             </div>
             <button
               onClick={menuActive}
