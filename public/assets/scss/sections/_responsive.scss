@@ -170,7 +170,7 @@
     padding-top: 200px;
   }
   .toggle-btn {
-    top: 0;
+  /*   top: 0; */
   }
   .contact-inner-1 .section-title {
     padding: 30px;
@@ -399,6 +399,9 @@
   }
   .single-case-study-inner .details .right-arrow {
     right: 15px;
+  }
+  .navbar-area .nav-container.navbar-bg {
+    padding-left: 0px;
   }
 }
 

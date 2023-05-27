@@ -1,7 +1,7 @@
 /*----------------------------------------------
     # Nav bar
 ----------------------------------------------*/
-.nav-book-now{
+ .nav-book-now{
   display: "flex";
   flex-direction: "column";
   align-items: "center";
@@ -10,6 +10,18 @@
   width: "100%";
   background-color: "#648cbc";
  /*  padding:"5px"; */
+} 
+
+.book-now-btn{
+  background: black;
+  display: flex;
+  justify-items: center;
+  align-content: center;
+  padding: 20px;
+   font-size: 25px; 
+  color: white;
+  cursor: pointer;
+  width: 180px;
 }
 .navbar-top {
   background: #091d3e;
@@ -84,7 +96,7 @@
         content: "";
         position: absolute;
         /* left: 15px; */
-        top: 0;
+         top: 0; 
         height: 100%;
         width: 95%;
         background: #fff;
@@ -95,7 +107,7 @@
       line-height: 0.9;
       display: flex;
       align-items: center;
-      justify-content: center;
+      /* justify-content: center; */
       a {
         font-weight: 700;
         font-size: 24px;
@@ -343,6 +355,7 @@
   right: -5px;
 }
 .responsive-mobile-menu button:focus {
+
   outline: none;
   border: none;
 }
@@ -1019,7 +1032,20 @@
   .navbar-area .nav-container .navbar-collapse .navbar-nav li a {
     color: #333333;
   }
+  .book-now-btn{
+    background: black;
+    display: flex;
+    justify-items: center;
+    align-content: center;
+    padding: 13px;
+     font-size: 17px; 
+    color: white;
+    cursor: pointer;
+    width: 180px;
+  }
 }
+
+/*  */
 
 /* Tablet Layout wide: 767px. */
 @media only screen and (max-width: 767px) {
@@ -1028,6 +1054,7 @@
     width: 100%;
   }
   .responsive-mobile-menu {
+
     display: block;
     width: 100%;
     position: relative;
@@ -1050,6 +1077,17 @@
   .navbar-area .logo {
     padding-top: 0px !important;
   }
+  .book-now-btn{
+    background: black;
+    display: flex;
+    justify-items: center;
+    align-content: center;
+    padding: 13px;
+     font-size: 17px; 
+    color: white;
+    cursor: pointer;
+    width: 180px;
+  }
 }
 
 /* medium tablet layout 599px */
@@ -1069,6 +1107,17 @@
   .search-popup .search-form {
     min-width: 350px;
   }
+  .book-now-btn{
+    background: black;
+    display: flex;
+    justify-items: center;
+    align-content: center;
+    padding: 10px;
+     font-size: 15px; 
+    color: white;
+    cursor: pointer;
+    width: 180px;
+  }
 }
 
 @media only screen and (max-width: 375px) {
@@ -1083,6 +1132,18 @@
   .search-popup .search-form {
     min-width: 300px;
   }
+
+  .book-now-btn{
+    background: black;
+    display: flex;
+    justify-items: center;
+    align-content: center;
+    padding: 10px;
+     font-size: 15px; 
+    color: white;
+    cursor: pointer;
+    width: 180px;
+  }
 }
 
 @media only screen and (max-width: 320px) {
@@ -1092,4 +1153,12 @@
   .responsive-mobile-menu .navbar-toggler {
     left: calc(100% - 95px);
   }
+
+
 }
+
+
+
+
+
+

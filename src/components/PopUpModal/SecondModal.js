@@ -66,11 +66,14 @@ const SecondModal = ({
   const createTicket = async () => {
     if (totalTicketAmount == 0) {
       setIsWarningLowAmount(true);
-    } 
-    if (isWarningCheckBox !== true) {
+    }else{
+      setIsWarningLowAmount(false);
+    }
+    if (isWarningCheckBox == false) {
       setShowWarningCheckBox(true);
     }
-    if (isWarningLowAmount == false && showWarningCheckBox == true) { 
+    console.log("isWarningLowAmount =======",isWarningLowAmount,"showWarningCheckBox =====" ,showWarningCheckBox)
+    if (totalTicketAmount !== 0 && isWarningCheckBox == true) { 
       setIsLoading(true);
       await axios
         .post(`${API_URL}ticket/create`, {
