@@ -50,8 +50,20 @@ const SecondModal = ({
   const [taxAmount, setTaxAmount] = useState(0);
 
   const [ticketDetails, setTicketDetails] = useState([]);
+  const [discountAmount, setDiscountAmount] = useState(0);
+  const [discountCodeNumber, setDiscountCodeNumber] = useState("");
+  const [isCoupon, setIsCoupon] = useState(false);
+  const [showCouponWarning, setShowCouponWarning] = useState(false);
 
-  console.log("this is passName", selectedpass);
+  const [agencyDiscountDetails, setAgencyDiscountDetails] = useState("");
+  const [isCouponNotValid, setIsCouponNotValid] = useState(false);
+
+
+  const [discountAgencyId , setDiscountAgencyId] = useState('')
+  const [discountAgencyName , setDiscountAgencyName] = useState('')
+  const [discountAgencyPromo , setDiscountAgencyPromo] = useState('')
+  const [discountAgencyDiscount , setDiscountAgencyDiscount] = useState('')
+  //console.log("this is passName", selectedpass);
 
   // const API_URL = "http://localhost:5000/api/";
   //const API_URL = "https://petra-balloon.herokuapp.com/api/";
@@ -60,6 +72,48 @@ const SecondModal = ({
   useEffect(() => {
     CalculateTotalBill();
   }, []);
+
+  // Check Discount
+  const checkDiscount = async () => {
+    setIsLoading(true);
+    await axios
+      .post(`${API_URL}promocode/check-code`, {
+        promo_code: discountCodeNumber,
+      })
+      .then(async (response) => {
+        console.log(response.data.message);
+        if (response.data.message == "Success") {
+          console.log("this is response data", response.data.data);
+          setAgencyDiscountDetails(response.data.data);
+          setDiscountAgencyId(response.data.data[0]._id)
+          setDiscountAgencyName(response.data.data[0].agency_name)
+          setDiscountAgencyPromo(response.data.data[0].promo_code)
+          setDiscountAgencyDiscount(response.data.data[0].discount_percentage)
+          var totalAmountOfSubTotal = 0;
+          for (let i = 0; i < ticketDetails.length; i++) {
+            var totalAmountOfSubTotal =
+              totalAmountOfSubTotal + ticketDetails[i].Sub_total;
+          }
+          var discountPercentage = response.data.data[0].discount_percentage;
+          console.log("This is discount percentage", discountPercentage);
+          var discountAmount =
+            (discountPercentage / 100) * totalAmountOfSubTotal;
+          console.log("this is discount Amount", discountAmount);
+          setDiscountAmount(discountAmount);
+          setTotalTicketAmount(totalAmountOfSubTotal - discountAmount);
+          setIsCoupon(true);
+          setShowCouponWarning(false);
+        } else {
+          setShowCouponWarning(true);
+          setIsCoupon(false);
+        }
+
+        setIsLoading(false);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   //submit button
 
@@ -83,11 +137,15 @@ const SecondModal = ({
       await axios
         .post(`${API_URL}ticket/create`, {
           selected_pass: selectedpass.pass_name,
-          discount_amount: 0,
+          discount_amount: discountAmount,
           reservation_details: ticketDetails,
           date: value,
           total_amount: totalTicketAmount,
           tax_amount: taxAmount,
+          promo_id: discountAgencyId,
+          promo_code:discountAgencyPromo ,
+          discount_percentage:discountAgencyDiscount,
+          agency_name: discountAgencyName,
         })
         .then(async (response) => {
           console.log(response.data.data);
@@ -108,9 +166,22 @@ const SecondModal = ({
       var totalAmountOfSubTotal =
         totalAmountOfSubTotal + ticketDetails[i].Sub_total;
     }
-    console.log("this is tickect details", ticketDetails);
 
-    setTotalTicketAmount(totalAmountOfSubTotal);
+    if (isCoupon) {
+      console.log(
+        "discount percentage in bill function",
+        agencyDiscountDetails
+      );
+      var discountPercentage = agencyDiscountDetails[0].discount_percentage;
+      var discountAmount = (discountPercentage / 100) * totalAmountOfSubTotal;
+      console.log("this is discount Amount", discountAmount);
+      setTotalTicketAmount(totalAmountOfSubTotal - discountAmount);
+      setDiscountAmount(discountAmount);
+    } else {
+      setTotalTicketAmount(totalAmountOfSubTotal);
+    }
+
+    //console.log("this is tickect details", ticketDetails);
     console.log("this is total", totalAmountOfSubTotal);
     setIsOpen(false);
     setIsOpenSecond(false);
@@ -285,11 +356,32 @@ const SecondModal = ({
                     <div className="form-group">
                       <div className="row">
                         <div className="col-lg-9">
-                          <input className="form-control" />
+                          <input
+                            className="form-control"
+                            onChange={(e) => {
+                              setDiscountCodeNumber(e.target.value);
+                            }}
+                          />
+                          {isCoupon && (
+                            <span style={{ color: "green" }}>
+                              Coupon is valid discount would apply automatically
+                            </span>
+                          )}
+                          {showCouponWarning && (
+                            <span style={{ color: "red" }}>
+                              Coupon is invalid -please try again                            </span>
+                          )}
                         </div>
                         <div className="col-lg-3">
                           <div className="btn-main-class-discount">
-                            <button className="discount-btn">Check Code</button>
+                            <button
+                              className="discount-btn"
+                              onClick={async () => {
+                                await checkDiscount();
+                              }}
+                            >
+                              Check Code
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -604,6 +696,14 @@ const SecondModal = ({
           </div>
         </div>
         <div className="col-lg-12">
+          <div className="row">
+            <div className="col-lg-6"></div>
+            {isCoupon && (
+              <div className="col-lg-6">
+                Discount Amount : {discountAmount}{" "}
+              </div>
+            )}
+          </div>
           <div className="packup-of-div-add-cart">
             {/* <div className="outer-percentage-div">
               <div>UAE VAT 5%</div>
@@ -618,7 +718,7 @@ const SecondModal = ({
                 }}
               >
                 <div className="col-lg-12">
-                  <div style={{display:"flex"}}>
+                  <div style={{ display: "flex" }}>
                     <div className="add-to-card-text">ADD to Cart</div>
                     <div className="calculated-bill">
                       <div className="total-bill">{totalTicketAmount}</div>
