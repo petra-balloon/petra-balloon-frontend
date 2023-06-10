@@ -1,9 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FaCheck } from "react-icons/fa";
+import axios from "axios";
+import { API_URL } from "../config";
+import MainPopUpModal from "./PopUpModal/PoPUpModal";
 
 const PricingAreaOne = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const [secondmodal, setSecondModal] = useState(false);
+  const [allPasses, setAllPasses] = useState();
+  useEffect(() => {
+    getPass();
+  }, []);
+
+  const getPass = async (email, password) => {
+    //setIsLoading(true);
+    await axios
+      .get(`${API_URL}pass-pricing/get`, {})
+      .then(async (response) => {
+        console.log(response.data.data);
+        setAllPasses(response.data.data);
+        //setIsLoading(false);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   return (
     <>
+      {openModal && (
+        <MainPopUpModal
+          openModal={openModal}
+          secondmodal={secondmodal}
+          setSecondModal={setSecondModal}
+          setOpenModal={setOpenModal}
+          closeModal={() => {
+            setOpenModal(false);
+          }}
+        />
+      )}
       {/* Pricing Area One start */}
       <div className="pricing-area bg-gray pd-top-120 pd-bottom-90">
         <div className="container">
@@ -14,45 +49,55 @@ const PricingAreaOne = () => {
             </h2>
           </div> */}
           <div className="row">
-            <div className="col-lg-3 col-md-6">
+            {allPasses &&
+              allPasses.map((Details) => (
+                <div className="col-lg-3 col-md-6">
+                  <div className="single-pricing-inner style-3">
+                    {/* <h2 className='mb-3'>
+                        $19 <sub>/mo</sub>
+                      </h2> */}
+                    <h5>{Details.pass_name}</h5>
+                    <p>{Details.Pass_description}</p>
+                    <ul>
+                      <li>
+                        <FaCheck />
+                        Adult {Details.adult_price} JOD
+                      </li>
+                      <li>
+                        <FaCheck />
+                        Children 3 to 11 years {Details.child_price} JOD
+                      </li>
+                      <li>
+                        <FaCheck />
+                        Children Below 3 years of age 0 JOD * Proof of age
+                        required at entrance
+                      </li>
+                      {(() => {
+                        if (Details.family_price != null) {
+                          return (
+                            <li>
+                              <FaCheck />
+                              Family {Details.family_price} JOD
+                            </li>
+                          );
+                        }
+                        return null;
+                      })()}
+                    </ul>
+                    <a
+                      className="btn btn-black border-radius border-radius-0 w-100"
+                      onClick={() => {
+                        setOpenModal(true);
+                      }}
+                    >
+                      BooK Now
+                    </a>
+                  </div>
+                </div>
+              ))}
+
+            {/* <div className="col-lg-3 col-md-6">
               <div className="single-pricing-inner style-3">
-                {/* <h2 className='mb-3'>
-                  $19 <sub>/mo</sub>
-                </h2> */}
-                <h5>REGULAR PASS</h5>
-                <p>
-                  Marvel at Dubai's record-breaking skyline on a 10-minute
-                  flight that offer breathtaking views. After your flight, stop
-                  at the retail store and lounge
-                </p>
-                <ul>
-                  <li>
-                    <FaCheck />
-                    Adult 175 JOD
-                  </li>
-                  <li>
-                    <FaCheck />
-                    Children 3 to 11 years 75 JOD
-                  </li>
-                  <li>
-                    <FaCheck />
-                    Children Below 3 years of age 0 JOD * Proof of age required
-                    at entrance
-                  </li>
-                </ul>
-                <a
-                  className="btn btn-black border-radius border-radius-0 w-100"
-                  href="#"
-                >
-                  BooK Now
-                </a>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6">
-              <div className="single-pricing-inner style-3">
-                {/* <h2 className='mb-3'>
-                  $19 <sub>/mo</sub>
-                </h2> */}
                 <h5>FAST PASS</h5>
                 <p>
                   Enjoy a priority qeue to save time as you jump on your
@@ -83,9 +128,6 @@ const PricingAreaOne = () => {
             </div>
             <div className="col-lg-3 col-md-6">
               <div className="single-pricing-inner style-3">
-                {/* <h2 className='mb-3'>
-                  $19 <sub>/mo</sub>
-                </h2> */}
                 <h5>SUNRISE PASS</h5>
                 <p>
                   Early bird catches the view! Watch as the sun rises over the
@@ -116,9 +158,6 @@ const PricingAreaOne = () => {
             </div>
             <div className="col-lg-3 col-md-6">
               <div className="single-pricing-inner style-3">
-                {/* <h2 className='mb-3'>
-                  $19 <sub>/mo</sub>
-                </h2> */}
                 <h5>EXCLUSIVE USE OF BALLOON</h5>
                 <ul>
                   <li>
@@ -136,7 +175,7 @@ const PricingAreaOne = () => {
                   Contact Us
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
