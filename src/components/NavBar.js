@@ -63,7 +63,7 @@ const NavBar = () => {
           setSelectedPass={setSelectedPass}
           selectedpass={selectedpass}
           closeModal={() => {
-            setSecondModal('first')
+            setSecondModal("first");
             setOpenModal(false);
           }}
         />
@@ -145,7 +145,7 @@ const NavBar = () => {
                   <a href="/plan-your-flight">Plan Your Flight</a>
                 </li>
                 <li>
-                  <a href="#">Photo Memories</a>
+                  <a href="/Photo-memory">Photo Memories</a>
                 </li>
                 <li>
                   <Link to="/about">About Us</Link>

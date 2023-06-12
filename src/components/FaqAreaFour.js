@@ -1,12 +1,14 @@
 import React from "react";
-
-const FaqAreaOne = () => {
+import ReactDOM from "react-dom";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
+const FaqAreaFour = () => {
   return (
     <>
       {/*==================== Faq area start ====================*/}
       <div
         className="faq-area faq-area-margin-top bg-cover pd-top-90 pd-bottom-110"
-        style={{ backgroundImage: 'url("./assets/img/bg/3.png")' }}
+        // style={{ backgroundImage: 'url("./assets/img/bg/3.png")' }}
       >
         <div className="container">
           <div className="row pd-top-120">
@@ -16,44 +18,53 @@ const FaqAreaOne = () => {
               data-aos-delay="100"
               data-aos-duration="1500"
             >
-              <div className="about-thumb-inner pt-lg-3">
+              <Carousel infiniteLoop autoPlay>
+                <div className="about-thumb-inner pt-lg-3">
+                  <img src="https://thedubaiballoon.com/media/350/13.jpg" />
+                </div>
+                <div className="about-thumb-inner pt-lg-3">
+                  <img src="https://thedubaiballoon.com/media/349/12.jpg" />
+                </div>
+                <div className="about-thumb-inner pt-lg-3">
+                  <img src="https://thedubaiballoon.com/media/347/10.jpg" />
+                </div>
+                <div className="about-thumb-inner pt-lg-3">
+                  <img src="https://thedubaiballoon.com/media/345/08.jpg" />
+                </div>
+              </Carousel>
+              {/* <div className="about-thumb-inner pt-lg-3">
                 <img
                   className="main-img"
-                  src="assets/img/about/rainbow.jpg"
+                  src="assets/img/about/31.jpg"
                   alt="img"
                 />
-                {/*  <img
-                  className="animate-img-bottom-right top_image_bounce"
-                  src="assets/img/about/5.png"
-                  alt="img"
-                /> */}
-              </div>
+              </div> */}
             </div>
             <div
-              className="col-xl-7 col-lg-6"
+              className="col-xl-7 col-lg-7"
               data-aos="fade-right"
               data-aos-delay="100"
               data-aos-duration="1500"
             >
               <div className="section-title mb-0 mt-4 mt-lg-0">
                 {/* <h6 className="sub-title">SOME FAQ'S</h6> */}
-                <h2 className="title">
-                  <span>Perta Balloon </span> Ride With Breathtaking Skyline
-                  Views Creating
-                </h2>
-                <p className="content">
-                  Feel on top of the world and experience wonder at
-                  adrenaline-rushing heights of up to a spectacular 300 meters,
-                  or a 100-storey building. Marvel at the stunning shape red
-                  rose city and take in incredible views Petra sites and its
-                  glistening skyline with an experience that offers more than
-                  just an observation point. The Petra Balloon At Petra can be
-                  found at the world’s most iconic entertainment destination.
-                  <br/> <br/>
-                  Make memories with friends and bring the whole family for a
-                  bucket list experience as kids under the age of three get to
-                  enjoy The Petra Balloon.
+                <h3 className="title">
+                  Relive your flight with professional captures
+                </h3>
+
+                <p className="content" style={{ fontSize: "18px" }}>
+                  Every flight’s duration is 10 minutes. However, the memories
+                  will last forever. At the Dubai Balloon, take advantage of
+                  professional photographers and videographers as they capture
+                  your unique experience. For the perfect aerial angles, don’t
+                  forget to pose for the drones!
                 </p>
+              </div>
+
+              <div className="col-3 text-center mt-4">
+                <button className="btn btn-base border-radius-5" type="submit">
+                  VIEW PHOTOS
+                </button>
               </div>
               {/*  <div
                 className="accordion accordion-inner style-2 accordion-icon-left mt-3"
@@ -147,4 +158,4 @@ const FaqAreaOne = () => {
   );
 };
 
-export default FaqAreaOne;
+export default FaqAreaFour;

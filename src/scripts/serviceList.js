@@ -6,12 +6,12 @@ let serviceList = [
   },
   {
     title: "Opening Times",
-    des: `Monday to Thursday | 9 AM – 11 PM  Friday to Sunday | 9 AM – Midnight`,
+    des: `All Days from 6:00 Am till 11:00 PM including weekends`,
     img: "assets/img/service-icon/2.png",
   },
   {
     title: "Located at",
-    des: "The world’s largest waterpark",
+    des: "At Petra one of the world's seven wonders",
     img: "assets/img/service-icon/3.png",
   },
   {

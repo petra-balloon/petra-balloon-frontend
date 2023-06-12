@@ -16,17 +16,17 @@ const CaseStudyAreaOne = () => {
           <div className="section-title text-center">
             <h6 className="sub-title">GALLERY HERE</h6>
             <h2 className="title">
-              The <span>Dubai</span> Balloon Experiences
+              The <span>Petra </span> Balloon Experiences
             </h2>
             <div className="row">
               <div className="col-lg-12">
                 <p>
-                  Each experience offers stunning views over the iconic Palm
-                  Jumeirah, the Dubai skyline and its record-breaking landmarks
-                  like the stunning Atlantis The Royal, Burj Al Arab, Burj
-                  Khalifa, Ain Dubai,and many more. This aerial adventure is
-                  easy to fit in your itinerary and fun and safe for all ages,
-                  making it the ideal activity for family and friends.
+                  Each experience offers stunning views over the iconic Petra
+                  site, Petra skyline and its historical landmarks like the
+                  Treasury, Castle Al Bint, Al Deir and Petra Mountains . This
+                  aerial adventure is easy to fit in your itinerary and fun and
+                  safe for all ages, making it the ideal activity for family and
+                  friends.
                 </p>
               </div>
             </div>

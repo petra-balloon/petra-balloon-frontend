@@ -20,6 +20,7 @@ import HomeFive from "./pages/HomeFive";
 import Experience from "./pages/Experience";
 import Pricing from "./pages/Pricing";
 import PlanYourFlight from "./pages/Plan-your-flight";
+import PhotoMemory from "./pages/Photo-memory";
 function App() {
   useEffect(() => {
     AOS.init({
@@ -32,29 +33,30 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<HomeOne />} />
-        <Route exact path='/index-2' element={<HomeTwo />} />
-        <Route exact path='/index-3' element={<HomeThree />} />
-        <Route exact path='/index-4' element={<HomeFour />} />
-        <Route exact path='/index-5' element={<HomeFive />} />
-        <Route exact path='/about' element={<About />} />
-        <Route exact path='/blog' element={<Blog />} />
-        <Route exact path='/blog-details' element={<BlogDetails />} />
+        <Route exact path="/" element={<HomeOne />} />
+        <Route exact path="/index-2" element={<HomeTwo />} />
+        <Route exact path="/index-3" element={<HomeThree />} />
+        <Route exact path="/index-4" element={<HomeFour />} />
+        <Route exact path="/index-5" element={<HomeFive />} />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/blog" element={<Blog />} />
+        <Route exact path="/blog-details" element={<BlogDetails />} />
         <Route
           exact
-          path='/case-study-details'
+          path="/case-study-details"
           element={<CaseStudyDetails />}
         />
-        <Route exact path='/contact' element={<Contact />} />
-        <Route exact path='/service' element={<Service />} />
-        <Route exact path='/service-details' element={<ServiceDetails />} />
-        <Route exact path='/team' element={<Team />} />
+        <Route exact path="/contact" element={<Contact />} />
+        <Route exact path="/service" element={<Service />} />
+        <Route exact path="/service-details" element={<ServiceDetails />} />
+        <Route exact path="/team" element={<Team />} />
         <Route exact path="/experience" element={<Experience />} />
         <Route exact path="/pricing" element={<Pricing />} />
         <Route exact path="/plan-your-flight" element={<PlanYourFlight />} />
-        <Route exact path='/team-details' element={<TeamDetails />} />
+        <Route exact path="/photo-memory" element={<PhotoMemory />} />
+        <Route exact path="/team-details" element={<TeamDetails />} />
       </Routes>
-      <ScrollToTop smooth color='#246BFD' />
+      <ScrollToTop smooth color="#246BFD" />
     </BrowserRouter>
   );
 }

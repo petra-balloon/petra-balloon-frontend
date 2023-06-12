@@ -41,17 +41,15 @@ const ContactMain = () => {
             <div className="section-title mb-4 pb-2">
               <h2 className="title">About us</h2>
               <p className="content mb-0">
-                The petra Balloon At jordan is a tethered balloon experience in
-                partnership with DEI and Hero Experiences Group, with Atlantis
-                The Palm as the proud location partner. It's an experience that
-                offers visitors the opportunity to rise above the everyday. It’s
-                an observation point that lets guests feel on top of the world
-                as they take in 360° views of the Dubai shoreline and its iconic
-                landmarks. The balloon is securely anchored to the ground and
-                operated manually by our experienced Pilots. Being partnered
-                with industry leaders when it comes to aviation and flight
-                safety, all guests can rest assured that they are in the best
-                hands.
+                The Petra Balloon At Jordan is a tethered balloon experience in
+                Petra. It's an experience that offers visitors the opportunity
+                to rise above Petra Mountains. It’s an observation point that
+                lets guests feel on top of the world as they take in 360° views
+                of the Red Rose City of Petra and its iconic landmarks. The
+                balloon is securely anchored to the ground and operated manually
+                by our experienced Pilots. Being partnered with industry leaders
+                when it comes to aviation and flight safety, all guests can rest
+                assured that they are in the best hands.
               </p>
             </div>
             {/*  <form ref={form} onSubmit={sendEmail}>
@@ -157,8 +155,13 @@ const ContactMain = () => {
       </div>
       {/* Map  */}
       <div className="contact-g-map">
-      {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55092.17348489064!2d35.41791971388405!3d30.34353592616969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15016ef1703b6071%3A0x199bf908679a2291!2sPetra!5e0!3m2!1sen!2s!4v1683818508609!5m2!1sen!2s"></iframe> */}
-      <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d13523.798006832227!2d35.446055659314055!3d30.330317661689698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spetra!5e1!3m2!1sen!2s!4v1683819008377!5m2!1sen!2s"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55092.17348489064!2d35.41791971388405!3d30.34353592616969!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15016ef1703b6071%3A0x199bf908679a2291!2sPetra!5e0!3m2!1sen!2s!4v1683818508609!5m2!1sen!2s"></iframe> */}
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d13523.798006832227!2d35.446055659314055!3d30.330317661689698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1spetra!5e1!3m2!1sen!2s!4v1683819008377!5m2!1sen!2s"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
         {/* <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d29208.601361499546!2d90.3598076!3d23.7803374!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1589109092857!5m2!1sen!2sbd" /> */}
       </div>
 

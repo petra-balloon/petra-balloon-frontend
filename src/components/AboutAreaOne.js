@@ -371,8 +371,7 @@ const AboutAreaOne = () => {
             >
               <div className="section-title mt-5 mt-lg-0 ">
                 <h2 className="title">
-                  <span>Weather Forecast</span> For The Dubai Balloon At
-                  Atlantis
+                  <span>Weather Forecast</span> For The Petra Balloon At Petra
                 </h2>
                 <p className="content mb-4 mb-xl-5">
                   Your safety and security are our top priority, and there might
