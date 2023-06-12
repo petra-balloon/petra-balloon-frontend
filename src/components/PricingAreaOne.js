@@ -6,7 +6,9 @@ import MainPopUpModal from "./PopUpModal/PoPUpModal";
 
 const PricingAreaOne = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [secondmodal, setSecondModal] = useState(false);
+  const [secondmodal, setSecondModal] = useState("second");
+  const [selectedpass, setSelectedPass] = useState("");
+  
   const [allPasses, setAllPasses] = useState();
   useEffect(() => {
     getPass();
@@ -34,8 +36,11 @@ const PricingAreaOne = () => {
           secondmodal={secondmodal}
           setSecondModal={setSecondModal}
           setOpenModal={setOpenModal}
+          setSelectedPass={setSelectedPass}
+          selectedpass={selectedpass}
           closeModal={() => {
             setOpenModal(false);
+            
           }}
         />
       )}
@@ -86,7 +91,8 @@ const PricingAreaOne = () => {
                     </ul>
                     <a
                       className="btn btn-black border-radius border-radius-0 w-100"
-                      onClick={() => {
+                      onClick={async () => {
+                        await setSelectedPass(Details);
                         setOpenModal(true);
                       }}
                     >

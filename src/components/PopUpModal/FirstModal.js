@@ -12,9 +12,10 @@ import {API_URL} from '../../config';
 //const API_URL = "http://localhost:5000/api/";
 //const API_URL = "https://petra-balloon.herokuapp.com/api/";
 
-const FirstModal = ({ setOpenModal }) => {
-  const [secondmodal, setSecondModal] = useState("first");
-  const [selectedpass, setSelectedPass] = useState();
+const FirstModal = ({ setOpenModal ,secondmodal,setSecondModal,setSelectedPass,selectedpass}) => {
+  //const [secondmodal, setSecondModal] = useState("first");
+  //const [secondmodal, setSecondModal] = useState("first");
+ // const [selectedpass, setSelectedPass] = useState();
   const [allPasses, setAllPasses] = useState();
   const [firstmodalcontent, setFirstModalContent] = useState(true);
 
@@ -38,6 +39,8 @@ const FirstModal = ({ setOpenModal }) => {
         console.log(error);
       });
   };
+
+  console.log("this is secondal mpodal>>>>>>>>>>>>>", secondmodal)
 
   return (
     <div>
@@ -136,6 +139,7 @@ const FirstModal = ({ setOpenModal }) => {
       )}
       {secondmodal == "fifth" && (
         <FifthModal
+        
           secondmodal={secondmodal}
           setSecondModal={setSecondModal}
           ticketData={ticketData}

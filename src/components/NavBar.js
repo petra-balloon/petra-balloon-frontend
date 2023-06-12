@@ -6,9 +6,13 @@ import MainPopUpModal from "./PopUpModal/PoPUpModal";
 
 const NavBar = () => {
   const [active, setActive] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
+
   const [searchShow, setSearchShow] = useState(false);
-  const [secondmodal, setSecondModal] = useState(false);
+  //const [secondmodal, setSecondModal] = useState(false);
+  const [secondmodal, setSecondModal] = useState("first");
+  const [selectedpass, setSelectedPass] = useState("");
+
+  const [openModal, setOpenModal] = useState(false);
   /* sticky navbar */
   const [isSticky, setIsSticky] = useState(false);
   useEffect(() => {
@@ -56,7 +60,10 @@ const NavBar = () => {
           secondmodal={secondmodal}
           setSecondModal={setSecondModal}
           setOpenModal={setOpenModal}
+          setSelectedPass={setSelectedPass}
+          selectedpass={selectedpass}
           closeModal={() => {
+            setSecondModal('first')
             setOpenModal(false);
           }}
         />
