@@ -13,7 +13,7 @@ const TeamAreaGroup = () => {
               <div className="single-team-inner text-center">
                 <div className="thumb">
                   <img src="assets/img/team/1.jpg" alt="img" />
-                  <ul className="team-social-inner">
+                  {/* <ul className="team-social-inner">
                     <li>
                       <a href="#">
                         <FaFacebookF />
@@ -29,7 +29,7 @@ const TeamAreaGroup = () => {
                         <FaInstagram />
                       </a>
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
             </div>
@@ -37,7 +37,7 @@ const TeamAreaGroup = () => {
               <div className="single-team-inner text-center">
                 <div className="thumb">
                   <img src="assets/img/team/2.jpg" alt="img" />
-                  <ul className="team-social-inner">
+                  {/* <ul className="team-social-inner">
                     <li>
                       <a href="#">
                         <FaFacebookF />
@@ -53,7 +53,7 @@ const TeamAreaGroup = () => {
                         <FaInstagram />
                       </a>
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
             </div>
@@ -61,14 +61,14 @@ const TeamAreaGroup = () => {
               <div className="single-team-inner text-center">
                 <div className="thumb">
                   <img src="assets/img/team/3.jpg" alt="img" />
-                  <ul className="team-social-inner">
+                  {/* <ul className="team-social-inner">
                     <li>
                       <a href="#">
                         <FaFacebookF />
                       </a>
                     </li>
                   
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@ const TeamAreaGroup = () => {
               <div className="single-team-inner text-center">
                 <div className="thumb">
                   <img src="assets/img/team/4.jpg" alt="img" />
-                  <ul className="team-social-inner">
+                  {/* <ul className="team-social-inner">
                     <li>
                       <a href="#">
                         <FaFacebookF />
@@ -92,7 +92,7 @@ const TeamAreaGroup = () => {
                         <FaInstagram />
                       </a>
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
             </div>

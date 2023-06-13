@@ -1,3 +1,4 @@
+import { FaInstagram } from "react-icons/fa";
 import Breadcrumb from "../components/Breadcrumb";
 import FooterOne from "../components/FooterOne";
 import NavBar from "../components/NavBar";
@@ -64,6 +65,26 @@ const Experience = () => {
 
       {/* Team Area Group */}
       <TeamAreaGroup />
+      <div className="container">
+        <div className="row">
+          <div className="col-5"></div>
+          <div className="col-4">
+            <div class="col col-xs-6 col-sm-4 col-md-3 p-2">
+              <div
+                style={{ border: "1px solid black" }}
+                href="#"
+                class="btn btn-social btn-instagram"
+              >
+                <div>
+                  Instagram
+                  <FaInstagram />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Footer One */}
       <FooterOne />
     </>
