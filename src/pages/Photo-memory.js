@@ -8,6 +8,7 @@ import TeamAreaOne from "../components/TeamAreaOne";
 import WorkProcessOne from "../components/WorkProcessOne";
 import Breadcrumbtwo from "../components/Breadcrumbtwo";
 import FaqAreaFour from "../components/FaqAreaFour";
+import Breadcrumbthree from "../components/Breadcrumbthree";
 
 const PhotoMemory = () => {
   return (
@@ -16,7 +17,7 @@ const PhotoMemory = () => {
       <NavBar />
 
       {/* Navigation Bar */}
-      <Breadcrumbtwo />
+      <Breadcrumbthree />
 
       {/* FAQ Area One */}
       <FaqAreaFour />
