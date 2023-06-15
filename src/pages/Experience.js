@@ -71,13 +71,34 @@ const Experience = () => {
           <div className="col-4">
             <div class="col col-xs-6 col-sm-4 col-md-3 p-2">
               <div
-                style={{ border: "1px solid black" }}
+                style={{ border: "1px solid black" ,backgroundColor:"black"}}
                 href="#"
                 class="btn btn-social btn-instagram"
               >
                 <div>
-                  Instagram
-                  <FaInstagram />
+                  <div
+                    style={{
+                      width: "150px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      textAlign: "center",
+                      color:"white"
+                    }}
+                  >
+                    {" "}
+                    instagram
+                    <FaInstagram
+                      style={{
+                        color: "#f09433",
+                        width: "20px",
+                        height: "20px",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        textAlign: "centers",
+                      }}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

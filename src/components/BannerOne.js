@@ -7,8 +7,12 @@ const BannerOne = () => {
     <>
       {/* ================== BannerOne Start ==================*/}
       <div
-        className='banner-area bg-relative banner-area-1 pd-bottom-100 bg-cover'
-        style={{ backgroundImage: 'url("./assets/img/banner/new.jpg")' }}
+        className="banner-area bg-relative banner-area-1 pd-bottom-100 bg-cover"
+        style={{
+          opacity: "revert",
+          backgroundImage:
+            'url("./assets/img/banner/petraballon-background.png")',
+        }}
       >
         {/* <img
           className='animate-img-1 top_image_bounce'
@@ -20,37 +24,41 @@ const BannerOne = () => {
           src='assets/img/banner/5.svg'
           alt='img'
         /> */}
-        <div className='container'>
-          <div className='row'>
-            <div className='col-lg-6 align-self-center'>
-              <div className='banner-inner pe-xl-5'>
-
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6 align-self-center">
+              <div className="banner-inner pe-xl-5">
                 <h2
-                  className='title'
-                  data-aos='fade-right'
-                  data-aos-delay='200'
-                  data-aos-duration='1500'
+                  className="title"
+                  data-aos="fade-right"
+                  data-aos-delay="200"
+                  data-aos-duration="1500"
                 >
-                  Peaceful <span>Silence</span>   Up High
+                  Peaceful <span>Silence</span> Up High
                 </h2>
                 <h6
-                  className='subtitle'
-                  data-aos='fade-right'
-                  data-aos-delay='100'
-                  data-aos-duration='1500'
+                  className="subtitle"
+                  data-aos="fade-right"
+                  data-aos-delay="100"
+                  data-aos-duration="1500"
                 >
                   DESIGNING FOR THE FUTURE
                 </h6>
-                {/* <Link
-                style={{display:"block", width:"500px",color:""}}
-                  className='banner-btn btn btn-border-base'
-                  data-aos='fade-right'
-                  data-aos-delay='300'
-                  data-aos-duration='1500'
-                  to='/'
+                <Link
+                  style={{
+                    display: "block",
+                    width: "250px",
+                    backgroundColor: "black",
+                    color: "white",
+                  }}
+                  className="banner-btn btn btn-border-base"
+                  data-aos="fade-right"
+                  data-aos-delay="300"
+                  data-aos-duration="1500"
+                  to="/"
                 >
-                  Discover More <FaPlus />
-                </Link> */}
+                  Book Now
+                </Link>
               </div>
             </div>
             {/* <div className='col-xl-4 col-lg-5 col-md-8 offset-xl-2 offset-lg-1'>

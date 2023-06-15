@@ -8,7 +8,7 @@ const PricingAreaOne = () => {
   const [openModal, setOpenModal] = useState(false);
   const [secondmodal, setSecondModal] = useState("second");
   const [selectedpass, setSelectedPass] = useState("");
-  
+
   const [allPasses, setAllPasses] = useState();
   useEffect(() => {
     getPass();
@@ -40,7 +40,6 @@ const PricingAreaOne = () => {
           selectedpass={selectedpass}
           closeModal={() => {
             setOpenModal(false);
-            
           }}
         />
       )}
@@ -56,14 +55,52 @@ const PricingAreaOne = () => {
           <div className="row">
             {allPasses &&
               allPasses.map((Details) => (
-                <div className="col-lg-3 col-md-6">
+                <div className="col-lg-4 col-md-6">
                   <div className="single-pricing-inner style-3">
                     {/* <h2 className='mb-3'>
                         $19 <sub>/mo</sub>
                       </h2> */}
-                    <h5>{Details.pass_name}</h5>
+                    <div
+                      style={{
+                        textAlign: "center",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderBottom: "1px solid black",
+                        boxShadow: "0px 0px 2px 3px black",
+                        zIndex: "999",
+                      }}
+                    >
+                      <div
+                        style={{
+                          backgroundColor: "black",
+                          textAlign: "center",
+                        }}
+                      >
+                        <div>
+                          <h5>{Details.pass_name}</h5>
+                        </div>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          height: "80px",
+                          textAlign: "center",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          boxShadow: "0px 0px 5px 5px white",
+                          zIndex: "999",
+                        }}
+                      >
+                        <div>
+                          {" "}
+                          Children 3 to 11 years
+                          <h4>{Details.child_price} JOD</h4>
+                        </div>
+                      </div>
+                    </div>
+                    <img src="assets/img/gallery/pricing-petra.webp" alt="" />
                     <p>{Details.Pass_description}</p>
-                    <ul>
+                    <ul style={{ padding: "15px" }}>
                       <li>
                         <FaCheck />
                         Adult {Details.adult_price} JOD

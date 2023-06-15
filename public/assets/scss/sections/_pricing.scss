@@ -3,8 +3,8 @@
 ----------------------------------------------*/
 .single-pricing-inner {
   background: #fff;
-  padding: 48px;
-  min-height: 680px;
+  // padding: 8px;
+  min-height: 0px;
   transition: 0.4s;
   margin-bottom: 5px;
   box-shadow: 0px 4.8px 20px rgba(19, 16, 34, 0.1);
@@ -37,7 +37,6 @@
   }
   .btn {
     margin-top: 40px;
-	
   }
   &.price-active,
   &:hover {
@@ -54,7 +53,7 @@
     border: 1px solid #e3e3e3;
     box-shadow: none;
     h5 {
-      background: #f8f9fc;
+      color: #f8f9fc;
       padding: 12px 20px;
       display: inline-block;
       margin-bottom: 32px;
