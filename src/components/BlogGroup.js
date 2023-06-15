@@ -52,7 +52,7 @@ const BlogGroup = () => {
                     className='btn btn-border-base mt-3'
                     to='/service-details'
                   >
-                    Touch More <FaPlus />
+                    Touch More 
                   </Link>
                 </div>
               </div>
