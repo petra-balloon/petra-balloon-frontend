@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaCheck } from "react-icons/fa";
 import axios from "axios";
-import { API_URL } from "../config";
+import { API_URL, image_url } from "../config";
 import MainPopUpModal from "./PopUpModal/PoPUpModal";
 
 const PricingAreaOne = () => {
@@ -55,7 +55,10 @@ const PricingAreaOne = () => {
           <div className="row">
             {allPasses &&
               allPasses.map((Details) => (
-                <div className="col-lg-4 col-md-6">
+                <div
+                  className="col-lg-4 col-md-6 "
+                  style={{ marginBottom: "20px" }}
+                >
                   <div className="single-pricing-inner style-3">
                     {/* <h2 className='mb-3'>
                         $19 <sub>/mo</sub>
@@ -65,8 +68,8 @@ const PricingAreaOne = () => {
                         textAlign: "center",
                         justifyContent: "center",
                         alignItems: "center",
-                        borderBottom: "1px solid black",
-                        boxShadow: "0px 0px 2px 3px black",
+                        /* borderBottom: "1px solid black",
+                        boxShadow: "0px 0px 2px 3px black", */
                         zIndex: "999",
                       }}
                     >
@@ -80,7 +83,7 @@ const PricingAreaOne = () => {
                           <h5>{Details.pass_name}</h5>
                         </div>
                       </div>
-                      <div
+                      {/* <div
                         style={{
                           display: "flex",
                           height: "80px",
@@ -96,11 +99,18 @@ const PricingAreaOne = () => {
                           Children 3 to 11 years
                           <h4>{Details.child_price} JOD</h4>
                         </div>
-                      </div>
+                      </div> */}
                     </div>
-                    <img src="assets/img/gallery/pricing-petra.webp" alt="" />
-                    <p>{Details.Pass_description}</p>
-                    <ul style={{ padding: "15px" }}>
+                    {/* <img src="assets/img/gallery/pricing-petra.webp" alt="" /> */}
+                    <img
+                      src={`${image_url}${Details.pass_image}`}
+                      style={{ height: "200px", width: "100%" }}
+                      alt=""
+                    />
+                    <p style={{ padding: "0px 15px 0px 15px" }}>
+                      {Details.Pass_description}
+                    </p>
+                    <ul style={{  padding: "0px 15px 0px 15px"  }}>
                       <li>
                         <FaCheck />
                         Adult {Details.adult_price} JOD
@@ -123,7 +133,12 @@ const PricingAreaOne = () => {
                             </li>
                           );
                         }
-                        return null;
+                        return (
+                          <li>
+                            <FaCheck />
+                              Choose other pass for family 
+                          </li>
+                        );
                       })()}
                     </ul>
                     <a
