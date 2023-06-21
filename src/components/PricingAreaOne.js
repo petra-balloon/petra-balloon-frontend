@@ -46,18 +46,18 @@ const PricingAreaOne = () => {
       {/* Pricing Area One start */}
       <div className="pricing-area bg-gray pd-top-120 pd-bottom-90">
         <div className="container">
-          {/* <div className="section-title text-center">
+          <div className="section-title text-center">
             <h6 className="sub-title">Pricing plan</h6>
             <h2 className="title">
               Best plane to get our <span>Services</span>
             </h2>
-          </div> */}
+          </div>
           <div className="row">
             {allPasses &&
               allPasses.map((Details) => (
                 <div
-                  className="col-lg-4 col-md-6 "
-                  style={{ marginBottom: "20px" }}
+                  className="col-lg-3 col-md-6 "
+                 /*  style={{ marginBottom: "20px" }} */
                 >
                   <div className="single-pricing-inner style-3">
                     {/* <h2 className='mb-3'>
@@ -75,7 +75,7 @@ const PricingAreaOne = () => {
                     >
                       <div
                         style={{
-                          backgroundColor: "black",
+                          backgroundColor: "#020263",
                           textAlign: "center",
                         }}
                       >
@@ -104,7 +104,7 @@ const PricingAreaOne = () => {
                     {/* <img src="assets/img/gallery/pricing-petra.webp" alt="" /> */}
                     <img
                       src={`${image_url}${Details.pass_image}`}
-                      style={{ height: "200px", width: "100%" }}
+                      style={{ height: "170px", width: "100%" }}
                       alt=""
                     />
                     <p style={{ padding: "0px 15px 0px 15px" }}>
@@ -141,14 +141,14 @@ const PricingAreaOne = () => {
                         );
                       })()}
                     </ul>
-                    <a
+                    <a style={{background:"#aa0404"}}
                       className="btn btn-black border-radius border-radius-0 w-100"
                       onClick={async () => {
                         await setSelectedPass(Details);
                         setOpenModal(true);
                       }}
                     >
-                      BooK Now
+                      Book Now
                     </a>
                   </div>
                 </div>

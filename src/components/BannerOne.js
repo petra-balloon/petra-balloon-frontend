@@ -11,7 +11,7 @@ const BannerOne = () => {
         style={{
           opacity: "revert",
           backgroundImage:
-            'url("./assets/img/banner/petraballon-background.png")',
+            'url("./assets/img/banner/petraballoon-background-img.jpg")',
         }}
       >
         {/* <img
@@ -26,17 +26,18 @@ const BannerOne = () => {
         /> */}
         <div className="container">
           <div className="row">
-            <div className="col-lg-6 align-self-center">
+            <div className="col-lg-3 align-self-center"></div>
+            <div className="col-lg-7  pd-top-100">
               <div className="banner-inner pe-xl-5">
-                <h2
+                <h6
                   className="title"
                   data-aos="fade-right"
                   data-aos-delay="200"
                   data-aos-duration="1500"
                 >
-                  Peaceful <span>Silence</span> Up High
-                </h2>
-                <h6
+                  <span style={{color:"White",fontSize:"42px"}}>Take Flight with Confidence, Choose Petra Balloon</span>
+                </h6>
+               {/*  <h6
                   className="subtitle"
                   data-aos="fade-right"
                   data-aos-delay="100"
@@ -58,9 +59,10 @@ const BannerOne = () => {
                   to="/"
                 >
                   Book Now
-                </Link>
+                </Link> */}
               </div>
             </div>
+            <div className="col-lg-2 "></div>
             {/* <div className='col-xl-4 col-lg-5 col-md-8 offset-xl-2 offset-lg-1'>
               <div
                 className='banner-thumb mt-5 mt-lg-0 ms-4 ms-lg-0'

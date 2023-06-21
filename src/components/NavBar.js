@@ -166,6 +166,7 @@ const NavBar = () => {
               onClick={() => {
                 setOpenModal(true);
               }}
+              style={{background:"#B5A191"}}
               className="nav-right-part nav-right-part-desktop align-self-center book-now-btn"
             >
               <div className="book-now-text">Book Now</div>
