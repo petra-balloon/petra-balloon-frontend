@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useRef } from "react";
+import { FaInstagram } from "react-icons/fa";
 import AboutAreaOne from "../components/AboutAreaOne";
 import BannerOne from "../components/BannerOne";
 import BlogAreaOne from "../components/BlogAreaOne";
@@ -12,6 +13,7 @@ import PricingAreaOne from "../components/PricingAreaOne";
 import ServiceAreaOne from "../components/ServiceAreaOne";
 import TeamAreaOne from "../components/TeamAreaOne";
 import WorkProcessOne from "../components/WorkProcessOne";
+import TeamAreaGroup from "../components/TeamAreaGroup";
 
 const HomeOne = () => {
   return (
@@ -23,20 +25,62 @@ const HomeOne = () => {
       <BannerOne />
 
       {/* About Area One */}
-      <AboutAreaOne />
+     {/*  <AboutAreaOne /> */}
 
       {/* Service Area One */}
-      <ServiceAreaOne />
+      {/*  <ServiceAreaOne /> */}
 
       {/* FAQ Area One */}
       <FaqAreaOne />
 
       {/* Case Study Area One */}
-      <CaseStudyAreaOne />
+      {/*  <CaseStudyAreaOne /> */}
 
       {/* Team Area One */}
 
       {/* <TeamAreaOne /> */}
+
+      <TeamAreaGroup />
+      <div className="container">
+        <div className="row">
+          <div className="col-5"></div>
+          <div className="col-4">
+            <div class="col col-xs-6 col-sm-4 col-md-3 p-2">
+              <div
+                style={{ border: "1px solid black", backgroundColor: "black" }}
+                href="#"
+                class="btn btn-social btn-instagram"
+              >
+                <div>
+                  <div
+                    style={{
+                      width: "150px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      textAlign: "center",
+                      color: "white",
+                    }}
+                  >
+                    {" "}
+                    instagram
+                    <FaInstagram
+                      style={{
+                        color: "#f09433",
+                        width: "20px",
+                        height: "20px",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        textAlign: "centers",
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* Counter Area One */}
 
@@ -47,11 +91,11 @@ const HomeOne = () => {
       {/* <ContactAreaOne /> */}
 
       {/* Work Process One */}
-      
-     {/*  <WorkProcessOne /> */}
+
+      {/*  <WorkProcessOne /> */}
 
       {/* Pricing Area One */}
-      <PricingAreaOne />
+      {/* <PricingAreaOne /> */}
 
       {/* Blog Area One */}
       {/* <BlogAreaOne /> */}

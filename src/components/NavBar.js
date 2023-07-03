@@ -138,9 +138,9 @@ const NavBar = () => {
                 <li>
                   <a href="/experience">Experiences</a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="/pricing"> Pricing</a>
-                </li>
+                </li> */}
                 <li>
                   <a href="/plan-your-flight">Plan Your Flight</a>
                 </li>

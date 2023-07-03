@@ -7,6 +7,9 @@ import { BsTag } from "react-icons/bs";
 import { BsVinylFill } from "react-icons/bs";
 import { BsChevronExpand } from "react-icons/bs";
 import { BsRecord } from "react-icons/bs";
+import { BsDashCircle } from "react-icons/bs";
+import { BsPlusCircle } from "react-icons/bs";
+
 import Loader from "../Loader/spinloader";
 
 import Calendar from "react-calendar";
@@ -58,11 +61,10 @@ const SecondModal = ({
   const [agencyDiscountDetails, setAgencyDiscountDetails] = useState("");
   const [isCouponNotValid, setIsCouponNotValid] = useState(false);
 
-
-  const [discountAgencyId , setDiscountAgencyId] = useState('')
-  const [discountAgencyName , setDiscountAgencyName] = useState('')
-  const [discountAgencyPromo , setDiscountAgencyPromo] = useState('')
-  const [discountAgencyDiscount , setDiscountAgencyDiscount] = useState('')
+  const [discountAgencyId, setDiscountAgencyId] = useState("");
+  const [discountAgencyName, setDiscountAgencyName] = useState("");
+  const [discountAgencyPromo, setDiscountAgencyPromo] = useState("");
+  const [discountAgencyDiscount, setDiscountAgencyDiscount] = useState("");
   //console.log("this is passName", selectedpass);
 
   // const API_URL = "http://localhost:5000/api/";
@@ -85,10 +87,10 @@ const SecondModal = ({
         if (response.data.message == "Success") {
           console.log("this is response data", response.data.data);
           setAgencyDiscountDetails(response.data.data);
-          setDiscountAgencyId(response.data.data[0]._id)
-          setDiscountAgencyName(response.data.data[0].agency_name)
-          setDiscountAgencyPromo(response.data.data[0].promo_code)
-          setDiscountAgencyDiscount(response.data.data[0].discount_percentage)
+          setDiscountAgencyId(response.data.data[0]._id);
+          setDiscountAgencyName(response.data.data[0].agency_name);
+          setDiscountAgencyPromo(response.data.data[0].promo_code);
+          setDiscountAgencyDiscount(response.data.data[0].discount_percentage);
           var totalAmountOfSubTotal = 0;
           for (let i = 0; i < ticketDetails.length; i++) {
             var totalAmountOfSubTotal =
@@ -99,8 +101,8 @@ const SecondModal = ({
           var discountAmount =
             (discountPercentage / 100) * totalAmountOfSubTotal;
           console.log("this is discount Amount", discountAmount);
-          setDiscountAmount(discountAmount);
-          setTotalTicketAmount(totalAmountOfSubTotal - discountAmount);
+          setDiscountAmount(parseInt(discountAmount));
+          setTotalTicketAmount(parseInt(totalAmountOfSubTotal - discountAmount));
           setIsCoupon(true);
           setShowCouponWarning(false);
         } else {
@@ -143,8 +145,8 @@ const SecondModal = ({
           total_amount: totalTicketAmount,
           tax_amount: taxAmount,
           promo_id: discountAgencyId,
-          promo_code:discountAgencyPromo ,
-          discount_percentage:discountAgencyDiscount,
+          promo_code: discountAgencyPromo,
+          discount_percentage: discountAgencyDiscount,
           agency_name: discountAgencyName,
         })
         .then(async (response) => {
@@ -175,10 +177,10 @@ const SecondModal = ({
       var discountPercentage = agencyDiscountDetails[0].discount_percentage;
       var discountAmount = (discountPercentage / 100) * totalAmountOfSubTotal;
       console.log("this is discount Amount", discountAmount);
-      setTotalTicketAmount(totalAmountOfSubTotal - discountAmount);
-      setDiscountAmount(discountAmount);
+      setTotalTicketAmount(parseInt(totalAmountOfSubTotal - discountAmount));
+      setDiscountAmount(parseInt(discountAmount));
     } else {
-      setTotalTicketAmount(totalAmountOfSubTotal);
+      setTotalTicketAmount(parseInt(totalAmountOfSubTotal));
     }
 
     //console.log("this is tickect details", ticketDetails);
@@ -190,10 +192,20 @@ const SecondModal = ({
     console.log(ticketDetails);
   };
 
-  const AdultPriceAdd = async (value) => {
-    console.log(value);
+  const AdultPriceAdd = async (propss) => {
+    //console.log(value);
     console.log(adultPrice);
-
+    if(propss == "add"){
+      var value = adultSelectedNumber + 1;
+    }else{
+      if(adultSelectedNumber == 0){
+        var value = adultSelectedNumber;
+      }else{
+        var value = adultSelectedNumber -1;
+      }
+      
+    }
+    
     setAdultSelectedNumber(value);
     setAdultSubTotal(value * adultPrice);
 
@@ -213,9 +225,19 @@ const SecondModal = ({
     CalculateTotalBill();
   };
 
-  const ChildPriceAdd = async (value) => {
-    console.log(value);
-    setChiledSelectedNumber(value);
+  const ChildPriceAdd = async (propss) => {
+
+    if(propss == "add"){
+      var value = chiledSelectedNumber + 1;
+    }else{
+      if(chiledSelectedNumber == 0){
+        var value = chiledSelectedNumber;
+      }else{
+        var value = chiledSelectedNumber -1;
+      }
+      
+    }
+    setChiledSelectedNumber(value)
     setChildSubTotal(value * childPrice);
 
     for (let i = 0; i < ticketDetails.length; i++) {
@@ -232,7 +254,18 @@ const SecondModal = ({
     CalculateTotalBill();
   };
 
-  const InfantPriceAdd = async (value) => {
+  const InfantPriceAdd = async (propss) => {
+
+    if(propss == "add"){
+      var value = infantSelectedNumber + 1;
+    }else{
+      if(infantSelectedNumber == 0){
+        var value = infantSelectedNumber;
+      }else{
+        var value = infantSelectedNumber -1;
+      }
+      
+    }
     console.log(value);
     setInfantSelectedNumber(value);
     setChildSubTotal(value * infantPrice);
@@ -250,7 +283,19 @@ const SecondModal = ({
     });
     CalculateTotalBill();
   };
-  const FamilyPriceAdd = async (value) => {
+  const FamilyPriceAdd = async (propss) => {
+
+    if(propss == "add"){
+      var value = familySelectedNumber + 1;
+    }else{
+      if(familySelectedNumber == 0){
+        var value = familySelectedNumber;
+      }else{
+        var value = familySelectedNumber -1;
+      }
+      
+    }
+    
     console.log(value);
     setFamilySelectedNumber(value);
     setFamilySubTotal(value * familyPrice);
@@ -290,46 +335,46 @@ const SecondModal = ({
   }
 
   const options = [
-    {name:"+1" ,value: "1" },
-    { name:"+2" , value: "2" },
-    {name:"+3" ,value: "3" },
-    {name:"+4" ,value: "4" },
-    { name:"+5",value: "5" },
-    { name:"+6",value: "6" },
-    { name:"+7",value: "7" },
-    { name:"+8",value: "8" },
-    { name:"+9",value: "9" },
-    { name:"+10",value: "10"},
-    { name:"+11",value: "12"},
-    { name:"+12",value: "13"},
-    { name:"+13",value: "14"},
-    { name:"+14",value: "14"},
-    { name:"+15",value: "15"},
-    {name:"+16", value: "16"},
-    {name:"+17", value: "17"},
-    {name:"+18", value: "18"},
-    { name:"+19",value: "19"},
-    {name:"+20", value: "20"},
-    {name:"+21" ,value: "21"},
-    { name:"+22" ,value: "22"},
-    {name:"+23" ,value: "23"},
-    {name:"+24" ,value: "24"},
-    { name:"+25",value: "25"},
-    { name:"+26",value: "26"},
-    { name:"+27",value: "27"},
-    { name:"+28",value: "28"},
-    { name:"+29",value: "29"},
-    { name:"+30",value: "30"},
-    { name:"+31",value: "31"},
-    { name:"+32",value: "32"},
-    { name:"+33",value: "33"},
-    { name:"+34",value: "34"},
-    { name:"+35",value: "35"},
-    {name:"+36", value: "36"},
-    {name:"+37", value: "37"},
-    {name:"+38", value: "38"},
-    { name:"+39",value: "39"},
-    {name:"+40", value: "40"},
+    { name: "+1", value: "1" },
+    { name: "+2", value: "2" },
+    { name: "+3", value: "3" },
+    { name: "+4", value: "4" },
+    { name: "+5", value: "5" },
+    { name: "+6", value: "6" },
+    { name: "+7", value: "7" },
+    { name: "+8", value: "8" },
+    { name: "+9", value: "9" },
+    { name: "+10", value: "10" },
+    { name: "+11", value: "12" },
+    { name: "+12", value: "13" },
+    { name: "+13", value: "14" },
+    { name: "+14", value: "14" },
+    { name: "+15", value: "15" },
+    { name: "+16", value: "16" },
+    { name: "+17", value: "17" },
+    { name: "+18", value: "18" },
+    { name: "+19", value: "19" },
+    { name: "+20", value: "20" },
+    { name: "+21", value: "21" },
+    { name: "+22", value: "22" },
+    { name: "+23", value: "23" },
+    { name: "+24", value: "24" },
+    { name: "+25", value: "25" },
+    { name: "+26", value: "26" },
+    { name: "+27", value: "27" },
+    { name: "+28", value: "28" },
+    { name: "+29", value: "29" },
+    { name: "+30", value: "30" },
+    { name: "+31", value: "31" },
+    { name: "+32", value: "32" },
+    { name: "+33", value: "33" },
+    { name: "+34", value: "34" },
+    { name: "+35", value: "35" },
+    { name: "+36", value: "36" },
+    { name: "+37", value: "37" },
+    { name: "+38", value: "38" },
+    { name: "+39", value: "39" },
+    { name: "+40", value: "40" },
   ];
 
   return (
@@ -389,7 +434,8 @@ const SecondModal = ({
                           )}
                           {showCouponWarning && (
                             <span style={{ color: "red" }}>
-                              Coupon is invalid -please try again                            </span>
+                              Coupon is invalid -please try again{" "}
+                            </span>
                           )}
                         </div>
                         <div className="col-lg-3">
@@ -432,6 +478,27 @@ const SecondModal = ({
                           </div>
                           <div className="col-lg-2">
                             <div className="select-person-outer-div">
+                              <div className="select-number-adult-outer-class">
+                                <div className="common-class-add-selected-number">
+                                  <BsDashCircle
+                                    onClick={() => {
+                                      AdultPriceAdd("minus");
+                                    }}
+                                  />
+                                </div>
+                                <div className="common-class-add-selected-number">{adultSelectedNumber}</div>
+                                <div className="common-class-add-selected-number">
+                                  <BsPlusCircle
+                                    onClick={() => {
+                                      AdultPriceAdd("add");
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          {/* <div className="col-lg-2">
+                            <div className="select-person-outer-div">
                               <div className="total-adult-price">
                                 {adultSelectedNumber}
                               </div>
@@ -461,7 +528,7 @@ const SecondModal = ({
                                 </ul>
                               </div>
                             )}
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -486,6 +553,27 @@ const SecondModal = ({
                             </div>
                           </div>
                           <div className="col-lg-2">
+                            <div className="select-person-outer-div">
+                              <div className="select-number-adult-outer-class">
+                                <div className="common-class-add-selected-number">
+                                  <BsDashCircle
+                                    onClick={() => {
+                                      ChildPriceAdd("minus");
+                                    }}
+                                  />
+                                </div>
+                                <div className="common-class-add-selected-number">{chiledSelectedNumber}</div>
+                                <div className="common-class-add-selected-number">
+                                  <BsPlusCircle
+                                    onClick={() => {
+                                      ChildPriceAdd("add");
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          {/* <div className="col-lg-2">
                             <div className="select-person-outer-div">
                               <div className="total-adult-price">
                                 {chiledSelectedNumber}
@@ -518,7 +606,7 @@ const SecondModal = ({
                                 </ul>
                               </div>
                             )}
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -543,6 +631,27 @@ const SecondModal = ({
                             </div>
                           </div>
                           <div className="col-lg-2">
+                            <div className="select-person-outer-div">
+                              <div className="select-number-adult-outer-class">
+                                <div className="common-class-add-selected-number">
+                                  <BsDashCircle
+                                    onClick={() => {
+                                      InfantPriceAdd("minus");
+                                    }}
+                                  />
+                                </div>
+                                <div className="common-class-add-selected-number">{infantSelectedNumber}</div>
+                                <div className="common-class-add-selected-number">
+                                  <BsPlusCircle
+                                    onClick={() => {
+                                      InfantPriceAdd("add");
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          {/* <div className="col-lg-2">
                             <div className="select-person-outer-div">
                               <div className="total-adult-price">
                                 {infantSelectedNumber}
@@ -573,7 +682,7 @@ const SecondModal = ({
                                 </ul>
                               </div>
                             )}
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -599,6 +708,27 @@ const SecondModal = ({
                               </div>
                             </div>
                             <div className="col-lg-2">
+                            <div className="select-person-outer-div">
+                              <div className="select-number-adult-outer-class">
+                                <div className="common-class-add-selected-number">
+                                  <BsDashCircle
+                                    onClick={() => {
+                                      FamilyPriceAdd("minus");
+                                    }}
+                                  />
+                                </div>
+                                <div className="common-class-add-selected-number">{familySelectedNumber}</div>
+                                <div className="common-class-add-selected-number">
+                                  <BsPlusCircle
+                                    onClick={() => {
+                                      FamilyPriceAdd("add");
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                            {/* <div className="col-lg-2">
                               <div className="select-person-outer-div">
                                 <div className="total-adult-price">
                                   {familySelectedNumber}
@@ -631,7 +761,7 @@ const SecondModal = ({
                                   </ul>
                                 </div>
                               )}
-                            </div>
+                            </div> */}
                           </div>
                         </div>
                       </div>

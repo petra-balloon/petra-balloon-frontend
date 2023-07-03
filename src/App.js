@@ -21,6 +21,7 @@ import Experience from "./pages/Experience";
 import Pricing from "./pages/Pricing";
 import PlanYourFlight from "./pages/Plan-your-flight";
 import PhotoMemory from "./pages/Photo-memory";
+import TicketCreate from "./pages/TicketCreate";
 function App() {
   useEffect(() => {
     AOS.init({
@@ -55,6 +56,7 @@ function App() {
         <Route exact path="/plan-your-flight" element={<PlanYourFlight />} />
         <Route exact path="/photo-memory" element={<PhotoMemory />} />
         <Route exact path="/team-details" element={<TeamDetails />} />
+        <Route exact path="/ticket" element={<TicketCreate />}></Route>
       </Routes>
       <ScrollToTop smooth color="#246BFD" />
     </BrowserRouter>
