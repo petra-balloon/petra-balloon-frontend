@@ -12,12 +12,15 @@ const [instaAllFeed,setInstaAllFeed] = useState()
 
   const getInstagramFeed = async (email, password) => {
     //setIsLoading(true);
-    const YOUR_ACCESS_TOKEN = 'IGQVJVQUo1RWFfYURVcU1KbzZAvUDNKbEk3bjZAjWWR3MV93V3paNTlfWVR1bmNSNXVzLWRIS0xIUXBoemRvZAlJLS1pPekFqbFpIT0dPejRRVXNrYTVLMXI0TGlEeU1xX3lsYk5SVHhlVWVFSUF3SHVlRwZDZD'
+    //IGQVJXU3hnRXNSS194dENDYzhCWFJWSWtMZAHd1a0NvSnVXVFh6aEdQWEpZAaXM3eUZABWjlZAQ2VTX1dxZA09XSDF2ODVwN0NyaE9oOElhazBCR3JmZA3NEQnprWEkzeWg0VVRubUtfS0JKTGZASSzgya1VkOAZDZD
+    //IGQVJVQUo1RWFfYURVcU1KbzZAvUDNKbEk3bjZAjWWR3MV93V3paNTlfWVR1bmNSNXVzLWRIS0xIUXBoemRvZAlJLS1pPekFqbFpIT0dPejRRVXNrYTVLMXI0TGlEeU1xX3lsYk5SVHhlVWVFSUF3SHVlRwZDZD
+    const YOUR_ACCESS_TOKEN = 'IGQVJXU3hnRXNSS194dENDYzhCWFJWSWtMZAHd1a0NvSnVXVFh6aEdQWEpZAaXM3eUZABWjlZAQ2VTX1dxZA09XSDF2ODVwN0NyaE9oOElhazBCR3JmZA3NEQnprWEkzeWg0VVRubUtfS0JKTGZASSzgya1VkOAZDZD'
     await axios
       .get(`https://graph.instagram.com/me/media?fields=id,media_url,caption&access_token=${YOUR_ACCESS_TOKEN}`, {})
       .then(async (response) => {
-        console.log("this is response",response.data.data[0].media_url)
         console.log(response.data);
+        console.log("this is response",response.data.data[0].media_url)
+       
         setInstaAllFeed(response.data.data);
       })
       .catch(function (error) {

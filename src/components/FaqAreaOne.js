@@ -6,7 +6,7 @@ const FaqAreaOne = () => {
       {/*==================== Faq area start ====================*/}
       <div
         className="faq-area faq-area-margin-top bg-cover pd-top-90 pd-bottom-110"
-        style={{ backgroundImage: 'url("./assets/img/bg/3.png")' }}
+       /*  style={{ backgroundImage: 'url("./assets/img/bg/3.png")' }} */
       >
         <div className="container">
           <div className="row pd-top-120">

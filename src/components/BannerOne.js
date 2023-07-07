@@ -77,10 +77,11 @@ const BannerOne = ({ scrollToComponent2 }) => {
             style={{
               display: "block",
               width: "250px",
-              backgroundColor: "black",
+              backgroundColor: "rgb(170, 4, 4)",
               color: "white",
+              border:"none"
             }}
-            className="banner-btn btn btn-border-base"
+            className="banner-btn btn btn-border-base btn-social "
             data-aos="fade-right"
             data-aos-delay="300"
             data-aos-duration="1500"
@@ -139,7 +140,7 @@ const BannerOne = ({ scrollToComponent2 }) => {
                     >
                       <div
                         style={{
-                          backgroundColor: "#020263",
+                          backgroundColor: "#101a29",
                           textAlign: "center",
                         }}
                       >

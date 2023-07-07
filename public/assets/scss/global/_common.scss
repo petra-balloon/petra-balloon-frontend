@@ -111,6 +111,7 @@
   line-height: 52px;
   &:after {
     background: var(--main-color);
+    background: var(--heading-color);
   }
   &:hover,
   &:focus {

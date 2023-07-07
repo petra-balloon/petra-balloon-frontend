@@ -47,7 +47,7 @@ const HomeOne = () => {
           <div className="col-4">
             <div class="col col-xs-6 col-sm-4 col-md-3 p-2">
               <div
-                style={{ border: "1px solid black", backgroundColor: "black" }}
+                style={{ border: "1px solid black", backgroundColor: "rgb(170, 4, 4)" }}
                 href="#"
                 class="btn btn-social btn-instagram"
               >
