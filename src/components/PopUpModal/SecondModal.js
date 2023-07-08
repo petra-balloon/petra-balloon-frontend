@@ -704,7 +704,7 @@ const SecondModal = ({
                             </div>
                             <div className="col-lg-2">
                               <div className="all-div-price-in-middle">
-                                {selectedpass.family_price}
+                                {selectedpass.family_price} JOD
                               </div>
                             </div>
                             <div className="col-lg-2">

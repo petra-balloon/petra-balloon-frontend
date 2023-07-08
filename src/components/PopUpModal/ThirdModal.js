@@ -13,6 +13,9 @@ import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 import Loader from "../Loader/spinloader";
 import { API_URL } from "../../config";
 
+import Swal from "sweetalert2";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import {
   CountryDropdown,
   RegionDropdown,
@@ -108,12 +111,31 @@ const ThirdModal = ({
         console.log(response.data);
         if (response.data.message == "Payment successful") {
           setTicketData(response.data.data);
-          setSecondModal("fifth");
+          Swal.fire({
+            title: "Success",
+            text: "Payment successful email is send to your email address",
+            icon: "success",
+            confirmButtonText: "OK",
+          }).then(function () {
+              // Redirect the user
+              window.location.href = "/";
+            });
+
+          //setSecondModal("fifth");
           setIsLoading(false);
         }
       })
       .catch(function (error) {
         console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong please try again!',
+          confirmButtonText: "OK",
+        }).then(function () {
+            // Redirect the user
+            window.location.href = "/";
+          });
       });
   };
 
