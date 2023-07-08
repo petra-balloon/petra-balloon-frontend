@@ -25,7 +25,7 @@ const HomeOne = () => {
       <BannerOne />
 
       {/* About Area One */}
-     {/*  <AboutAreaOne /> */}
+      {/*  <AboutAreaOne /> */}
 
       {/* Service Area One */}
       {/*  <ServiceAreaOne /> */}
@@ -42,39 +42,39 @@ const HomeOne = () => {
 
       <TeamAreaGroup />
       <div className="container">
-        <div className="row">
-          <div className="col-5"></div>
-          <div className="col-4">
-            <div class="col col-xs-6 col-sm-4 col-md-3 p-2">
-              <div
-                style={{ border: "1px solid black", backgroundColor: "rgb(170, 4, 4)" }}
-                href="#"
-                class="btn btn-social btn-instagram"
-              >
-                <div>
-                  <div
+        <div className="row" >
+          <div style={{display:"flex", justifyContent:"center" , alignItems:"center"}}>
+            <div
+              style={{
+                border: "1px solid black",
+                backgroundColor: "rgb(170, 4, 4)",
+              }}
+              href="#"
+              class="btn btn-social btn-instagram"
+            >
+              <div>
+                <div
+                  style={{
+                    width: "150px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    color: "white",
+                  }}
+                >
+                  {" "}
+                  instagram
+                  <FaInstagram
                     style={{
-                      width: "150px",
-                      display: "flex",
+                      color: "#f09433",
+                      width: "20px",
+                      height: "20px",
                       alignItems: "center",
                       justifyContent: "center",
-                      textAlign: "center",
-                      color: "white",
+                      textAlign: "centers",
                     }}
-                  >
-                    {" "}
-                    instagram
-                    <FaInstagram
-                      style={{
-                        color: "#f09433",
-                        width: "20px",
-                        height: "20px",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        textAlign: "centers",
-                      }}
-                    />
-                  </div>
+                  />
                 </div>
               </div>
             </div>

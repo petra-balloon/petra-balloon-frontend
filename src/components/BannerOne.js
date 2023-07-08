@@ -72,23 +72,35 @@ const BannerOne = ({ scrollToComponent2 }) => {
           loop
           muted
         ></video>
-        <div id="content-overlay">
-          <Link
-            style={{
-              display: "block",
-              width: "250px",
-              backgroundColor: "rgb(170, 4, 4)",
-              color: "white",
-              border:"none"
-            }}
-            className="banner-btn btn btn-border-base btn-social "
-            data-aos="fade-right"
-            data-aos-delay="300"
-            data-aos-duration="1500"
-            onClick={scrollToTarget}
-          >
-            Our Packages
-          </Link>
+
+        <div>
+          <div id="content-overlay">
+            <div className="container">
+              <div className="row">
+                <div className="col-lg-4 col-xs-2"></div>
+                <div className="col-lg-4 col-xs-8">
+                  <div>
+                    <Link
+                      style={{
+                        display: "block",
+                        width: "320px",
+                        backgroundColor: "rgb(170, 4, 4)",
+                        color: "white",
+                        border: "none",
+                      }}
+                      className="banner-btn btn btn-border-base btn-social "
+                      data-aos="fade-right"
+                      data-aos-delay="300"
+                      data-aos-duration="1500"
+                      onClick={scrollToTarget}
+                    >
+                      Our Packages
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -110,7 +122,7 @@ const BannerOne = ({ scrollToComponent2 }) => {
         className="pricing-area bg-gray pd-top-120 pd-bottom-90"
         ref={targetRef}
       >
-        <div className="container" >
+        <div className="container">
           <div className="section-title text-center">
             <h6 className="sub-title">Pricing plan</h6>
             <h2 className="title">
