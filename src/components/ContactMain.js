@@ -124,7 +124,7 @@ const ContactMain = () => {
                 </div>
                 <div className="media-body">
                   <h5>Contacts us</h5>
-                  <h6>+962 3 215 6600</h6>
+                  <h6>+962 7 7106 0733</h6>
                 </div>
               </div>
             </div>
@@ -135,7 +135,7 @@ const ContactMain = () => {
                 </div>
                 <div className="media-body">
                   <h5>Email</h5>
-                  <h6>petraballoon@gmail.com</h6>
+                  <h6>Hello@petraballoon.com</h6>
                 </div>
               </div>
             </div>

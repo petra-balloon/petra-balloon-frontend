@@ -35,10 +35,10 @@ const FooterOne = () => {
                 <div className="details">
                   <p>PETRA BALLOON PETRA BALLOON ST. PETRA 71810 JORDAN</p>
                   <p className="mt-3">
-                    <FaPhoneAlt /> +962 3 215 6600
+                    <FaPhoneAlt /> +962 7 7106 0733
                   </p>
                   <p className="mt-2">
-                    <FaEnvelope /> petraballoon@gmail.com
+                    <FaEnvelope /> Hello@petraballoon.com
                   </p>
                 </div>
               </div>
