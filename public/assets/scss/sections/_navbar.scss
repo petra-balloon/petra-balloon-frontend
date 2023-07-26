@@ -24,15 +24,16 @@
   display: flex;
   justify-items: center;
   align-content: center;
-  padding: 20px;
-   font-size: 25px; 
+ /*  padding: 8px; */
+   font-size: 16px; 
   color: white;
   cursor: pointer;
   width: 180px;
+  /* margin-right: 10px; */
 }
 .navbar-top {
   background: #091d3e;
-  padding: 15px 0;
+  padding: 0px 0;
   ul {
     margin: 0;
     padding: 0;
@@ -105,7 +106,7 @@
         /* left: 15px; */
          top: 0; 
         height: 100%;
-        width: 95%;
+        width: 100%;
         background: #fff;
         z-index: -1;
       }
@@ -155,7 +156,7 @@
           &.menu-item-has-children {
             position: relative;
             z-index: 0;
-            padding-right: 14px;
+            /* padding-right: 14px; */
             &:before {
               content: "";
               position: absolute;
@@ -541,7 +542,7 @@
   }
   .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children:before,
   .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children:after {
-    background: #fff;
+    background: red;
   }
 }
 .navbar-area-3 .navbarFive {
@@ -570,7 +571,7 @@
   }
 }
 .nav-right-part-desktop {
-  margin-left: 20px;
+  /* margin-left: 20px; */
 }
 .nav-right-part-mobile {
   display: none;
@@ -934,6 +935,7 @@
 @media only screen and (max-width: 991px) {
   .navbar-area .logo {
     padding-top: 0px !important;
+    margin-left: 15px;
   }
   .widget ul {
     text-align: left;

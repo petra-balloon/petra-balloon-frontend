@@ -8,39 +8,47 @@ import FifthModal from "./FifthModal";
 import { BsArrowRight } from "react-icons/bs";
 import Loader from "../Loader/spinloader";
 import axios from "axios";
-import {API_URL} from '../../config';
+import { API_URL } from "../../config";
+import ParmentGatewayModal from "./PaymentModal";
 //const API_URL = "http://localhost:5000/api/";
 //const API_URL = "https://petra-balloon.herokuapp.com/api/";
 
-const FirstModal = ({ setOpenModal ,secondmodal,setSecondModal,setSelectedPass,selectedpass}) => {
+const FirstModal = ({
+  setOpenModal,
+  secondmodal,
+  setSecondModal,
+  setSelectedPass,
+  selectedpass,
+}) => {
   //const [secondmodal, setSecondModal] = useState("first");
   //const [secondmodal, setSecondModal] = useState("first");
- // const [selectedpass, setSelectedPass] = useState();
+  // const [selectedpass, setSelectedPass] = useState();
   const [allPasses, setAllPasses] = useState();
   const [firstmodalcontent, setFirstModalContent] = useState(true);
 
   const [resData, setResData] = useState("");
   const [ticketData, setTicketData] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [merchantSession, setMerchantSession] = useState("");
   useEffect(() => {
     getPass();
   }, []);
 
   const getPass = async (email, password) => {
-    setIsLoading(true)
+    setIsLoading(true);
     await axios
       .get(`${API_URL}pass-pricing/get`, {})
       .then(async (response) => {
         console.log(response.data.data);
         setAllPasses(response.data.data);
-        setIsLoading(false)
+        setIsLoading(false);
       })
       .catch(function (error) {
         console.log(error);
       });
   };
 
-  console.log("this is secondal mpodal>>>>>>>>>>>>>", secondmodal)
+  console.log("this is secondal mpodal>>>>>>>>>>>>>", secondmodal);
 
   return (
     <div>
@@ -129,6 +137,7 @@ const FirstModal = ({ setOpenModal ,secondmodal,setSecondModal,setSelectedPass,s
           setTicketData={setTicketData}
           setOpenModal={setOpenModal}
           setResData={setResData}
+          setMerchantSession={setMerchantSession}
         />
       )}
       {secondmodal == "fourth" && (
@@ -139,10 +148,17 @@ const FirstModal = ({ setOpenModal ,secondmodal,setSecondModal,setSelectedPass,s
       )}
       {secondmodal == "fifth" && (
         <FifthModal
-        
           secondmodal={secondmodal}
           setSecondModal={setSecondModal}
           ticketData={ticketData}
+        />
+      )}
+
+      {secondmodal == "payment" && (
+        <ParmentGatewayModal
+          secondmodal={secondmodal}
+          setSecondModal={setSecondModal}
+          merchantSession={merchantSession}
         />
       )}
       <Loader isLoading={isLoading} />

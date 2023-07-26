@@ -100,7 +100,7 @@ const NavBar = () => {
             style={{ width: "100%", display: "flex" }}
           >
             <div className="responsive-mobile-menu" style={{ display: "flex" }}>
-              <div className="logo">
+              <div className="logo" style={{ marginLeft: "40px" }}>
                 <Link to="/">
                   <img src="assets/img/logo.png" alt="img" />
                 </Link>
@@ -136,6 +136,9 @@ const NavBar = () => {
             >
               <ul className="navbar-nav menu-open text-lg-end">
                 <li>
+                  <a href="/">Home</a>
+                </li>
+                <li>
                   <a href="/experience">Experiences</a>
                 </li>
                 {/* <li>
@@ -148,29 +151,30 @@ const NavBar = () => {
                   <a href="/Photo-memory">Photo Memories</a>
                 </li>
                 <li>
-                  <Link to="/about">About Us</Link>
+                  <Link to="/about">Location</Link>
+                </li>
+                <li>
+                  <div
+                    onClick={() => {
+                      setOpenModal(true);
+                    }}
+                    style={{ background: "rgb(170, 4, 4)" , height:"50px",borderRadius:"25px"}}
+                    className="nav-right-part nav-right-part-desktop align-self-center book-now-btn banner-btn btn btn-border-base btn-social"
+                  >
+                    <div className="book-now-text">Book Now</div>
+                  </div>
                 </li>
               </ul>
             </div>
-            <div
-              /* style={{
-                background: "black",
-                display: "flex",
-                justifyItems: "center",
-                alignContent: "center",
-                padding: "23px",
-                fontSize: "20px",
-                color: "white",
-                cursor: "pointer",
-              }} */
+            {/* <div
               onClick={() => {
                 setOpenModal(true);
               }}
-              style={{background:"#B5A191"}}
+              style={{ background: "rgb(170, 4, 4)" }}
               className="nav-right-part nav-right-part-desktop align-self-center book-now-btn"
             >
               <div className="book-now-text">Book Now</div>
-            </div>
+            </div> */}
             <button
               onClick={menuActive}
               className={

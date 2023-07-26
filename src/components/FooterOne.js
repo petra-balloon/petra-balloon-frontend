@@ -33,9 +33,11 @@ const FooterOne = () => {
                   />
                 </div>
                 <div className="details">
-                  <p>PETRA BALLOON PETRA BALLOON ST. PETRA 71810 JORDAN</p>
+                  <p>
+                    PETRA BALLOON <br></br> PETRA BALLOON ST.<br></br> PETRA 71810 <br></br>JORDAN
+                  </p>
                   <p className="mt-3">
-                    <FaPhoneAlt /> +962 7 7106 0733
+                    <FaPhoneAlt /> 0798001088
                   </p>
                   <p className="mt-2">
                     <FaEnvelope /> Hello@petraballoon.com
@@ -49,35 +51,25 @@ const FooterOne = () => {
 
             <div className="col-lg-3 col-md-6">
               <div className="widget widget_nav_menu">
-                <h4 className="widget-title">Our Service</h4>
+                <h4 className="widget-title">Quick Links</h4>
                 <ul>
                   <li>
-                    <Link to="/experience">
-                       Experiences
-                    </Link>
+                    <Link to="/">Home</Link>
                   </li>
                   <li>
-                    <Link to="/pricing">
-                      
-                      Pricing
-                    </Link>
-                  </li>
-                
-                  <li>
-                    <Link to="/plan-your-flight">
-                       Plan Your Flight
-                    </Link>
+                    <Link to="/experience">Experiences</Link>
                   </li>
                   <li>
-                    <Link to="/">
-                      
-                      Photo Memories
-                    </Link>
+                    <Link to="/plan-your-flight">Plan Your Flight</Link>
                   </li>
                   <li>
-                    <Link to="/about">
-                       About Us
-                    </Link>
+                    <Link to="/">Photo Memories</Link>
+                  </li>
+                  <li>
+                    <Link to="/about">Location</Link>
+                  </li>
+                  <li>
+                    <Link to="/terms&condition">Terms & Conditions</Link>
                   </li>
                 </ul>
               </div>
@@ -92,11 +84,9 @@ const FooterOne = () => {
               <div className="col-md-6 align-self-center">
                 <p>
                   <span style={{ marginRight: "5px" }}> @ 2023</span>
-                  <a target="_blank">
-                    petraballoon
-                  </a>
+                  <a target="_blank">petraballoon</a>
                   <span style={{ marginRight: "5px" }}>
-                  design and developed by
+                    design and developed by
                   </span>
                   <a href="https://www.verticalsols.com/" target="_blank">
                     Verticalsols

@@ -20,16 +20,16 @@ const FaqAreaFour = () => {
             >
               <Carousel infiniteLoop autoPlay>
                 <div className="about-thumb-inner pt-lg-3">
-                  <img src="https://thedubaiballoon.com/media/350/13.jpg" />
+                  <img src="./assets/img/bg/c1.jpeg" />
                 </div>
                 <div className="about-thumb-inner pt-lg-3">
-                  <img src="https://thedubaiballoon.com/media/349/12.jpg" />
+                  <img src="./assets/img/bg/c2.jpeg" />
                 </div>
                 <div className="about-thumb-inner pt-lg-3">
-                  <img src="https://thedubaiballoon.com/media/347/10.jpg" />
+                  <img src="./assets/img/bg/c3.jpeg" />
                 </div>
                 <div className="about-thumb-inner pt-lg-3">
-                  <img src="https://thedubaiballoon.com/media/345/08.jpg" />
+                  <img src="./assets/img/bg/c4.jpeg" />
                 </div>
               </Carousel>
               {/* <div className="about-thumb-inner pt-lg-3">
@@ -53,11 +53,10 @@ const FaqAreaFour = () => {
                 </h3>
 
                 <p className="content" style={{ fontSize: "18px" }}>
-                  Every flight’s duration is 10 minutes. However, the memories
-                  will last forever. At the Dubai Balloon, take advantage of
-                  professional photographers and videographers as they capture
-                  your unique experience. For the perfect aerial angles, don’t
-                  forget to pose for the drones!
+                  Every flight with Petra Balloon lasts for 10 minutes, but the
+                  memories created will stay with you forever. Our team of
+                  professional photographers and videographers will be there to
+                  capture your unique experience in Petra City.
                 </p>
               </div>
 

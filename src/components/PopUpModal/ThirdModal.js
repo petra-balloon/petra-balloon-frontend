@@ -30,6 +30,7 @@ const ThirdModal = ({
   resData,
   setOpenModal,
   setTicketData,
+  setMerchantSession,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [value, setValue] = useState(null);
@@ -54,21 +55,47 @@ const ThirdModal = ({
   }
 
   useEffect(() => {
-    /* var timer = setInterval(() => {
-      if (second === 0) {
-        if (minutes === 0 && second === 0) {
-          clearInterval(timer);
-        } else {
-          setMinutes(minutes - 1);
-          setSecond(59);
-        }
-      } else {
-        setSecond(second - 1);
-      }
-    }, 1000);
- */
-    /*  return () => clearInterval(timer); */
+    //createSession();
   });
+
+  const createSession = async () => {
+    // const username = "merchant.TESTNITEST2";
+    // const password = "050ccb036307426a6a4ace4a57a70ad2";
+
+    // const authHeader = 'Basic ' + btoa(`${username}:${password}`)
+    // const apiUrl =
+    //   "https://test-network.mtf.gateway.mastercard.com/api/rest/version/73/merchant/TESTNITEST2/session";
+    // const config = {
+    //   method: "post", // You can use 'post', 'put', 'delete', etc. depending on the API endpoint
+    //   url: apiUrl,
+    //   headers: {
+    //     Authorization: authHeader, // Include the Basic Authentication header
+    //     "Content-Type": "application/json", // Set the appropriate content type for your request
+    //     // Add any other headers your API requires
+    //   },
+    // };
+
+    // axios(config)
+    //   .then((response) => {
+    //     // Handle the response
+    //     console.log(response)
+    //     console.log("this is session respons"+response.data);
+    //   })
+    //   .catch((error) => {
+    //     // Handle errors
+    //     console.error(error);
+    //   });
+
+    await axios
+      .get(`${API_URL}payment-session`, {})
+      .then(async (response) => {
+        console.log(response.data.data);
+        //setIsLoading(false);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   /* timer */
   const targetTime = Date.now() + 30 * 60 * 1000;
@@ -91,13 +118,12 @@ const ThirdModal = ({
   };
   /* timer */
   //const API_URL = "http://localhost:5000/api/";
-  const handleToken = async (token) => {
+  const handleUser = async () => {
     setIsLoading(true);
     await axios
       .post(`${API_URL}ticket/payment`, {
         amount: `${resData.total_amount}`, // Replace with the desired amount
-        currency: "USD", // Replace with the desired currency code
-        token,
+        currency: "USD",
         user_information: {
           country: country,
           firstName: firstName,
@@ -108,18 +134,23 @@ const ThirdModal = ({
         },
       })
       .then(async (response) => {
-        console.log(response.data);
-        if (response.data.message == "Payment successful") {
-          setTicketData(response.data.data);
-          Swal.fire({
-            title: "Success",
-            text: "Payment successful email is send to your email address",
-            icon: "success",
-            confirmButtonText: "OK",
-          }).then(function () {
-              // Redirect the user
-              window.location.href = "/";
-            });
+        console.log("this is payment details!!!!!!!!!!!!!!!");
+        console.log("this is responsoe data for payment", response);
+        if (response.data.message == "Update successful") {
+          setMerchantSession(response.data.data.session.id);
+          //console.log("this is responsoe data for payment",response.data.data.session.id)
+          //setTicketData(response.data.data);
+          setSecondModal("payment");
+          // Swal.fire({
+          //   title: "Success",
+          //   text: "Payment successful email is send to your email address",
+          //   icon: "success",
+          //   confirmButtonText: "OK",
+          // }).then(function () {
+          //     // Redirect the user
+          //     //window.location.href = "/";
+
+          //   });
 
           //setSecondModal("fifth");
           setIsLoading(false);
@@ -128,14 +159,14 @@ const ThirdModal = ({
       .catch(function (error) {
         console.log(error);
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'Something went wrong please try again!',
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong please try again!",
           confirmButtonText: "OK",
         }).then(function () {
-            // Redirect the user
-            window.location.href = "/";
-          });
+          // Redirect the user
+          window.location.href = "/";
+        });
       });
   };
 
@@ -535,20 +566,13 @@ const ThirdModal = ({
               </div> */}
               <div className="row">
                 <div className="col-lg-12">
-                  <StripeCheckout
-                    style={{ width: "100% !important" }}
-                    stripeKey="pk_test_51N8h2FBeZw2xmDYe02KYq06IRE39kiGvg4nIHhR0ignR7PmeZjji5DdpdqGAUSxyx8gZH0CmzzbIDuMdP8aA8X5Z000qHCUjIJ"
-                    token={handleToken}
-                    name="Example Store"
-                    disabled={isPaymentBtn}
-                    amount={resData.total_amount}
-                    currency="USD"
+                  <button
+                    className="checkout-btn-outer-div"
+                    onClick={handleUser}
                   >
-                    <div className="checkout-btn-outer-div">
-                      <BsBagFill className="checkout-icon-class" /> Pay JOD{" "}
-                      {resData.total_amount}
-                    </div>
-                  </StripeCheckout>
+                    <BsBagFill className="checkout-icon-class" /> Pay JOD{" "}
+                    {resData.total_amount}
+                  </button>
                 </div>
               </div>
             </div>

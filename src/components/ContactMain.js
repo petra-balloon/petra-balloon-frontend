@@ -39,7 +39,7 @@ const ContactMain = () => {
         <div className="container">
           <div className="contact-page-inner bg-gray">
             <div className="section-title mb-4 pb-2">
-              <h2 className="title">About us</h2>
+              <h2 className="title">About Us and Our Location</h2>
               <p className="content mb-0">
                 The Petra Balloon At Jordan is a tethered balloon experience in
                 Petra. It's an experience that offers visitors the opportunity
@@ -124,7 +124,7 @@ const ContactMain = () => {
                 </div>
                 <div className="media-body">
                   <h5>Contacts us</h5>
-                  <h6>+962 7 7106 0733</h6>
+                  <h6>0798001088</h6>
                 </div>
               </div>
             </div>

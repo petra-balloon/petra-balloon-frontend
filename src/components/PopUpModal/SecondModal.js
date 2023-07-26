@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import moment from "react-moment";
 import "react-responsive-modal/styles.css";
 import "react-calendar/dist/Calendar.css";
 import { BsVinyl } from "react-icons/bs";
@@ -15,7 +14,9 @@ import Loader from "../Loader/spinloader";
 import Calendar from "react-calendar";
 import axios from "axios";
 import { API_URL } from "../../config";
-
+import moment from "moment";
+import CancellationPolicyModal from "./cancellation&termsmodal/cancellationPolicyModal";
+import TermsAndCondition from "./cancellation&termsmodal/TermsAndCondition";
 const currentDate = new Date();
 
 const SecondModal = ({
@@ -65,6 +66,11 @@ const SecondModal = ({
   const [discountAgencyName, setDiscountAgencyName] = useState("");
   const [discountAgencyPromo, setDiscountAgencyPromo] = useState("");
   const [discountAgencyDiscount, setDiscountAgencyDiscount] = useState("");
+
+  const [cancellationopenModal, setCancellationOpenModal] = useState(false);
+  const [termconditionopenModal, setTermConditionOpenModal] = useState(false);
+
+  
   //console.log("this is passName", selectedpass);
 
   // const API_URL = "http://localhost:5000/api/";
@@ -102,7 +108,9 @@ const SecondModal = ({
             (discountPercentage / 100) * totalAmountOfSubTotal;
           console.log("this is discount Amount", discountAmount);
           setDiscountAmount(parseInt(discountAmount));
-          setTotalTicketAmount(parseInt(totalAmountOfSubTotal - discountAmount));
+          setTotalTicketAmount(
+            parseInt(totalAmountOfSubTotal - discountAmount)
+          );
           setIsCoupon(true);
           setShowCouponWarning(false);
         } else {
@@ -141,13 +149,14 @@ const SecondModal = ({
           selected_pass: selectedpass.pass_name,
           discount_amount: discountAmount,
           reservation_details: ticketDetails,
-          date: value,
+          date: moment(value).format("YYYY-MM-DD"),
           total_amount: totalTicketAmount,
           tax_amount: taxAmount,
           promo_id: discountAgencyId,
           promo_code: discountAgencyPromo,
           discount_percentage: discountAgencyDiscount,
           agency_name: discountAgencyName,
+          created_date: moment(currentDate).format("YYYY-MM-DD"),
         })
         .then(async (response) => {
           console.log(response.data.data);
@@ -195,17 +204,16 @@ const SecondModal = ({
   const AdultPriceAdd = async (propss) => {
     //console.log(value);
     console.log(adultPrice);
-    if(propss == "add"){
+    if (propss == "add") {
       var value = adultSelectedNumber + 1;
-    }else{
-      if(adultSelectedNumber == 0){
+    } else {
+      if (adultSelectedNumber == 0) {
         var value = adultSelectedNumber;
-      }else{
-        var value = adultSelectedNumber -1;
+      } else {
+        var value = adultSelectedNumber - 1;
       }
-      
     }
-    
+
     setAdultSelectedNumber(value);
     setAdultSubTotal(value * adultPrice);
 
@@ -226,18 +234,16 @@ const SecondModal = ({
   };
 
   const ChildPriceAdd = async (propss) => {
-
-    if(propss == "add"){
+    if (propss == "add") {
       var value = chiledSelectedNumber + 1;
-    }else{
-      if(chiledSelectedNumber == 0){
+    } else {
+      if (chiledSelectedNumber == 0) {
         var value = chiledSelectedNumber;
-      }else{
-        var value = chiledSelectedNumber -1;
+      } else {
+        var value = chiledSelectedNumber - 1;
       }
-      
     }
-    setChiledSelectedNumber(value)
+    setChiledSelectedNumber(value);
     setChildSubTotal(value * childPrice);
 
     for (let i = 0; i < ticketDetails.length; i++) {
@@ -255,16 +261,14 @@ const SecondModal = ({
   };
 
   const InfantPriceAdd = async (propss) => {
-
-    if(propss == "add"){
+    if (propss == "add") {
       var value = infantSelectedNumber + 1;
-    }else{
-      if(infantSelectedNumber == 0){
+    } else {
+      if (infantSelectedNumber == 0) {
         var value = infantSelectedNumber;
-      }else{
-        var value = infantSelectedNumber -1;
+      } else {
+        var value = infantSelectedNumber - 1;
       }
-      
     }
     console.log(value);
     setInfantSelectedNumber(value);
@@ -284,18 +288,16 @@ const SecondModal = ({
     CalculateTotalBill();
   };
   const FamilyPriceAdd = async (propss) => {
-
-    if(propss == "add"){
+    if (propss == "add") {
       var value = familySelectedNumber + 1;
-    }else{
-      if(familySelectedNumber == 0){
+    } else {
+      if (familySelectedNumber == 0) {
         var value = familySelectedNumber;
-      }else{
-        var value = familySelectedNumber -1;
+      } else {
+        var value = familySelectedNumber - 1;
       }
-      
     }
-    
+
     console.log(value);
     setFamilySelectedNumber(value);
     setFamilySubTotal(value * familyPrice);
@@ -378,126 +380,146 @@ const SecondModal = ({
   ];
 
   return (
-    <div className="second-modal-outer-div">
-      <div className="second-modal-main-container">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="second-popup-heading">
-                <div>{selectedpass.pass_name} :</div>
+    <>
+      {cancellationopenModal && (
+        <CancellationPolicyModal
+          cancellationopenModal={cancellationopenModal}
+          closeModal={() => {
+            setCancellationOpenModal(false);
+          }}
+        />
+      )}
+      {termconditionopenModal && (
+        <TermsAndCondition
+          termconditionopenModal={termconditionopenModal}
+          closeModal={() => {
+            setTermConditionOpenModal(false);
+          }}
+        />
+      )}
+      <div className="second-modal-outer-div">
+        <div className="second-modal-main-container">
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="second-popup-heading">
+                  <div>{selectedpass.pass_name} :</div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="container">
-          <div className="row">
-            <div ref={wrapperRef} className="col-lg-6">
-              <div className="outer-div-lef-side-upper">
-                <div
-                  onClick={() => {
-                    setIsDiscount(true);
-                  }}
-                  className="left-div-first"
-                >
-                  {!isDiscount && (
-                    <div>
-                      <BsVinyl style={{ color: "#354052" }} />
-                    </div>
-                  )}
+          <div className="container">
+            <div className="row">
+              <div ref={wrapperRef} className="col-lg-6">
+                <div className="outer-div-lef-side-upper">
+                  <div
+                    onClick={() => {
+                      setIsDiscount(true);
+                    }}
+                    className="left-div-first"
+                  >
+                    {!isDiscount && (
+                      <div>
+                        <BsVinyl style={{ color: "#354052" }} />
+                      </div>
+                    )}
 
-                  {isDiscount && (
-                    <div>
-                      <BsVinylFill style={{ color: "#354052" }} />
+                    {isDiscount && (
+                      <div>
+                        <BsVinylFill style={{ color: "#354052" }} />
+                      </div>
+                    )}
+                    <div className="first-div-tag-text">
+                      <BsTag className="first-div-tag" />
+                      <div className="tag-div-text">Enter Discount Code</div>
                     </div>
-                  )}
-                  <div className="first-div-tag-text">
-                    <BsTag className="first-div-tag" />
-                    <div className="tag-div-text">Enter Discount Code</div>
                   </div>
-                </div>
-                {isDiscount && (
-                  <div className="container">
-                    <div className="form-group">
-                      <div className="row">
-                        <div className="col-lg-9">
-                          <input
-                            className="form-control"
-                            onChange={(e) => {
-                              setDiscountCodeNumber(e.target.value);
-                            }}
-                          />
-                          {isCoupon && (
-                            <span style={{ color: "green" }}>
-                              Coupon is valid discount would apply automatically
-                            </span>
-                          )}
-                          {showCouponWarning && (
-                            <span style={{ color: "red" }}>
-                              Coupon is invalid -please try again{" "}
-                            </span>
-                          )}
-                        </div>
-                        <div className="col-lg-3">
-                          <div className="btn-main-class-discount">
-                            <button
-                              className="discount-btn"
-                              onClick={async () => {
-                                await checkDiscount();
+                  {isDiscount && (
+                    <div className="container">
+                      <div className="form-group">
+                        <div className="row">
+                          <div className="col-lg-9">
+                            <input
+                              className="form-control"
+                              onChange={(e) => {
+                                setDiscountCodeNumber(e.target.value);
                               }}
-                            >
-                              Check Code
-                            </button>
+                            />
+                            {isCoupon && (
+                              <span style={{ color: "green" }}>
+                                Coupon is valid discount would apply
+                                automatically
+                              </span>
+                            )}
+                            {showCouponWarning && (
+                              <span style={{ color: "red" }}>
+                                Coupon is invalid -please try again{" "}
+                              </span>
+                            )}
+                          </div>
+                          <div className="col-lg-3">
+                            <div className="btn-main-class-discount">
+                              <button
+                                className="discount-btn"
+                                onClick={async () => {
+                                  await checkDiscount();
+                                }}
+                              >
+                                Check Code
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
-              </div>
-              <div className="container">
-                <div className="row">
-                  <div className="col-lg-12">
-                    <div className="outer-main-adult-div">
-                      <div className="row">
-                        <div className="adult-wraping-div">
-                          <div className="col-lg-8">
-                            <div>
-                              <div className="all-div-heading-in-middle">
-                                Adult
-                              </div>
-                              <div className="all-div-text-in-middle">
-                                12 Years And Above
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-lg-2">
-                            <div className="all-div-price-in-middle">
-                              {selectedpass.adult_price} JOD
-                            </div>
-                          </div>
-                          <div className="col-lg-2">
-                            <div className="select-person-outer-div">
-                              <div className="select-number-adult-outer-class">
-                                <div className="common-class-add-selected-number">
-                                  <BsDashCircle
-                                    onClick={() => {
-                                      AdultPriceAdd("minus");
-                                    }}
-                                  />
+                  )}
+                </div>
+                <div className="container">
+                  <div className="row">
+                    <div className="col-lg-12">
+                      <div className="outer-main-adult-div">
+                        <div className="row">
+                          <div className="adult-wraping-div">
+                            <div className="col-lg-8">
+                              <div>
+                                <div className="all-div-heading-in-middle">
+                                  Adult
                                 </div>
-                                <div className="common-class-add-selected-number">{adultSelectedNumber}</div>
-                                <div className="common-class-add-selected-number">
-                                  <BsPlusCircle
-                                    onClick={() => {
-                                      AdultPriceAdd("add");
-                                    }}
-                                  />
+                                <div className="all-div-text-in-middle">
+                                  12 Years And Above
                                 </div>
                               </div>
                             </div>
-                          </div>
-                          {/* <div className="col-lg-2">
+                            <div className="col-lg-2">
+                              <div className="all-div-price-in-middle">
+                                {selectedpass.adult_price} JOD
+                              </div>
+                            </div>
+                            <div className="col-lg-2">
+                              <div className="select-person-outer-div">
+                                <div className="select-number-adult-outer-class">
+                                  <div className="common-class-add-selected-number">
+                                    <BsDashCircle
+                                      onClick={() => {
+                                        AdultPriceAdd("minus");
+                                      }}
+                                    />
+                                  </div>
+                                  <div className="common-class-add-selected-number">
+                                    {adultSelectedNumber}
+                                  </div>
+                                  <div className="common-class-add-selected-number">
+                                    <BsPlusCircle
+                                      onClick={() => {
+                                        AdultPriceAdd("add");
+                                      }}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {/* <div className="col-lg-2">
                             <div className="select-person-outer-div">
                               <div className="total-adult-price">
                                 {adultSelectedNumber}
@@ -529,51 +551,53 @@ const SecondModal = ({
                               </div>
                             )}
                           </div> */}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-lg-12">
-                    <div className="outer-main-adult-div">
-                      <div className="row">
-                        <div className="adult-wraping-div">
-                          <div className="col-lg-8">
-                            <div>
-                              <div className="all-div-heading-in-middle">
-                                Child
-                              </div>
-                              <div className="all-div-text-in-middle">
-                                3-11 Years
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-lg-2">
-                            <div className="all-div-price-in-middle">
-                              {selectedpass.child_price} JOD
-                            </div>
-                          </div>
-                          <div className="col-lg-2">
-                            <div className="select-person-outer-div">
-                              <div className="select-number-adult-outer-class">
-                                <div className="common-class-add-selected-number">
-                                  <BsDashCircle
-                                    onClick={() => {
-                                      ChildPriceAdd("minus");
-                                    }}
-                                  />
+                    <div className="col-lg-12">
+                      <div className="outer-main-adult-div">
+                        <div className="row">
+                          <div className="adult-wraping-div">
+                            <div className="col-lg-8">
+                              <div>
+                                <div className="all-div-heading-in-middle">
+                                  Child
                                 </div>
-                                <div className="common-class-add-selected-number">{chiledSelectedNumber}</div>
-                                <div className="common-class-add-selected-number">
-                                  <BsPlusCircle
-                                    onClick={() => {
-                                      ChildPriceAdd("add");
-                                    }}
-                                  />
+                                <div className="all-div-text-in-middle">
+                                  3-11 Years
                                 </div>
                               </div>
                             </div>
-                          </div>
-                          {/* <div className="col-lg-2">
+                            <div className="col-lg-2">
+                              <div className="all-div-price-in-middle">
+                                {selectedpass.child_price} JOD
+                              </div>
+                            </div>
+                            <div className="col-lg-2">
+                              <div className="select-person-outer-div">
+                                <div className="select-number-adult-outer-class">
+                                  <div className="common-class-add-selected-number">
+                                    <BsDashCircle
+                                      onClick={() => {
+                                        ChildPriceAdd("minus");
+                                      }}
+                                    />
+                                  </div>
+                                  <div className="common-class-add-selected-number">
+                                    {chiledSelectedNumber}
+                                  </div>
+                                  <div className="common-class-add-selected-number">
+                                    <BsPlusCircle
+                                      onClick={() => {
+                                        ChildPriceAdd("add");
+                                      }}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {/* <div className="col-lg-2">
                             <div className="select-person-outer-div">
                               <div className="total-adult-price">
                                 {chiledSelectedNumber}
@@ -607,51 +631,53 @@ const SecondModal = ({
                               </div>
                             )}
                           </div> */}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="col-lg-12">
-                    <div className="outer-main-adult-div">
-                      <div className="row">
-                        <div className="adult-wraping-div">
-                          <div className="col-lg-8">
-                            <div>
-                              <div className="all-div-heading-in-middle">
-                                Infant
-                              </div>
-                              <div className="all-div-text-in-middle">
-                                0-2 Years
-                              </div>
-                            </div>
-                          </div>
-                          <div className="col-lg-2">
-                            <div className="all-div-price-in-middle">
-                              {apiData.infant_price} Free
-                            </div>
-                          </div>
-                          <div className="col-lg-2">
-                            <div className="select-person-outer-div">
-                              <div className="select-number-adult-outer-class">
-                                <div className="common-class-add-selected-number">
-                                  <BsDashCircle
-                                    onClick={() => {
-                                      InfantPriceAdd("minus");
-                                    }}
-                                  />
+                    <div className="col-lg-12">
+                      <div className="outer-main-adult-div">
+                        <div className="row">
+                          <div className="adult-wraping-div">
+                            <div className="col-lg-8">
+                              <div>
+                                <div className="all-div-heading-in-middle">
+                                  Infant
                                 </div>
-                                <div className="common-class-add-selected-number">{infantSelectedNumber}</div>
-                                <div className="common-class-add-selected-number">
-                                  <BsPlusCircle
-                                    onClick={() => {
-                                      InfantPriceAdd("add");
-                                    }}
-                                  />
+                                <div className="all-div-text-in-middle">
+                                  0-2 Years
                                 </div>
                               </div>
                             </div>
-                          </div>
-                          {/* <div className="col-lg-2">
+                            <div className="col-lg-2">
+                              <div className="all-div-price-in-middle">
+                                {apiData.infant_price} Free
+                              </div>
+                            </div>
+                            <div className="col-lg-2">
+                              <div className="select-person-outer-div">
+                                <div className="select-number-adult-outer-class">
+                                  <div className="common-class-add-selected-number">
+                                    <BsDashCircle
+                                      onClick={() => {
+                                        InfantPriceAdd("minus");
+                                      }}
+                                    />
+                                  </div>
+                                  <div className="common-class-add-selected-number">
+                                    {infantSelectedNumber}
+                                  </div>
+                                  <div className="common-class-add-selected-number">
+                                    <BsPlusCircle
+                                      onClick={() => {
+                                        InfantPriceAdd("add");
+                                      }}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            {/* <div className="col-lg-2">
                             <div className="select-person-outer-div">
                               <div className="total-adult-price">
                                 {infantSelectedNumber}
@@ -683,11 +709,11 @@ const SecondModal = ({
                               </div>
                             )}
                           </div> */}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  {selectedpass.family_price != null && (
+                    {/* {selectedpass.family_price != null && (
                     <div className="col-lg-12">
                       <div className="outer-main-adult-div">
                         <div className="row">
@@ -728,64 +754,30 @@ const SecondModal = ({
                               </div>
                             </div>
                           </div>
-                            {/* <div className="col-lg-2">
-                              <div className="select-person-outer-div">
-                                <div className="total-adult-price">
-                                  {familySelectedNumber}
-                                </div>
-                                <div>
-                                  <BsChevronExpand
-                                    onClick={() => {
-                                      setIsOpenFourth(
-                                        isOpenfourth ? false : true
-                                      );
-                                    }}
-                                  />
-                                </div>
-                              </div>
-                              {isOpenfourth && (
-                                <div className="select-main-div">
-                                  <ul className="select-main">
-                                    {options.map((value) => {
-                                      return (
-                                        <li
-                                          onClick={() => {
-                                            FamilyPriceAdd(value.value);
-                                          }}
-                                          className="select-control"
-                                        >
-                                          {value.name}
-                                        </li>
-                                      );
-                                    })}
-                                  </ul>
-                                </div>
-                              )}
-                            </div> */}
                           </div>
                         </div>
                       </div>
                     </div>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-6">
-              <div className="row">
-                <div className="col-lg-12">
-                  <div>
-                    <Calendar
-                      minDate={currentDate}
-                      onChange={onChange}
-                      value={value}
-                    />
+                  )} */}
                   </div>
                 </div>
+              </div>
 
-                <div className="col-lg-12">
-                  <div className="main-wrap-class-available">
-                    {/*  <div className="date-available">
+              <div className="col-lg-6">
+                <div className="row">
+                  <div className="col-lg-12">
+                    <div>
+                      <Calendar
+                        minDate={currentDate}
+                        onChange={onChange}
+                        value={value}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-lg-12">
+                    <div className="main-wrap-class-available">
+                      {/*  <div className="date-available">
                       <BsRecord className="color-green" />
                       <div className="color-green">Available</div>
                     </div>
@@ -797,91 +789,98 @@ const SecondModal = ({
                       <BsRecord className="color-red" />
                       <div className="color-red">Sold Out</div>
                     </div> */}
+                    </div>
                   </div>
-                </div>
 
-                <div className="col-lg-12">
-                  <div className="check-box-outer-div">
-                    <input
-                      onChange={() => {
-                        setIsWarningCheckBox(true);
-                      }}
-                      className="check-box-input"
-                      type="checkbox"
-                    />
-                    <div>
-                      I accept the{" "}
-                      <span className="checkbox-text-color">
-                        cancellation policy
-                      </span>{" "}
-                      and{" "}
-                      <span className="checkbox-text-color">booking terms</span>{" "}
-                      for this booking.
+                  <div className="col-lg-12">
+                    <div className="check-box-outer-div">
+                      <input
+                        onChange={() => {
+                          setIsWarningCheckBox(true);
+                        }}
+                        className="check-box-input"
+                        type="checkbox"
+                      />
+                      <div>
+                        I accept the{" "}
+                        <span
+                          onClick={() => setCancellationOpenModal(true)}
+                          className="checkbox-text-color"
+                        >
+                          cancellation policy
+                        </span>{" "}
+                        and{" "}
+                        <span onClick={() => setTermConditionOpenModal(true)} className="checkbox-text-color">
+                          booking terms
+                        </span>{" "}
+                        for this booking.
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="col-lg-10">
-          <div className="row">
-            <div className="col-lg-6">
-              <div className="warning-text-outer-div">
-                {isWarningLowAmount && (
-                  <div>
-                    <div className="warning-text">*Bookings is invalid</div>
-                    <div className="warning-text">
-                      *Tickets at least one ticket is required
+          <div className="col-lg-10">
+            <div className="row">
+              <div className="col-lg-6">
+                <div className="warning-text-outer-div">
+                  {isWarningLowAmount && (
+                    <div>
+                      <div className="warning-text">*Bookings is invalid</div>
+                      <div className="warning-text">
+                        *Tickets at least one ticket is required
+                      </div>
                     </div>
-                  </div>
-                )}
-                {showWarningCheckBox && (
-                  <div className="warning-text">
-                    * Please accept the terms and conditions before continuing.
-                  </div>
-                )}
+                  )}
+                  {showWarningCheckBox && (
+                    <div className="warning-text">
+                      * Please accept the terms and conditions before
+                      continuing.
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="col-lg-12">
-          <div className="row">
-            <div className="col-lg-6"></div>
-            {isCoupon && (
-              <div className="col-lg-6">
-                Discount Amount : {discountAmount}{" "}
-              </div>
-            )}
-          </div>
-          <div className="packup-of-div-add-cart">
-            {/* <div className="outer-percentage-div">
+          <div className="col-lg-12">
+            <div className="row">
+              <div className="col-lg-6"></div>
+              {isCoupon && (
+                <div className="col-lg-6">
+                  Discount Amount : {discountAmount}{" "}
+                </div>
+              )}
+            </div>
+            <div className="packup-of-div-add-cart">
+              {/* <div className="outer-percentage-div">
               <div>UAE VAT 5%</div>
               <div>20 JOD</div>
             </div> */}
-            <div className="add-to-cart-outer">
-              <button
-                className="row button-of-card"
-                onClick={async () => {
-                  await createTicket();
-                  /* setSecondModal("third"); */
-                }}
-              >
-                <div className="col-lg-12">
-                  <div style={{ display: "flex" }}>
-                    <div className="add-to-card-text">ADD to Cart</div>
-                    <div className="calculated-bill">
-                      <div className="total-bill">{totalTicketAmount}</div>
+              <div className="add-to-cart-outer">
+                <button
+                  className="row button-of-card"
+                  onClick={async () => {
+                    await createTicket();
+                    /* setSecondModal("third"); */
+                  }}
+                >
+                  <div className="col-lg-12">
+                    <div style={{ display: "flex" }}>
+                      <div className="add-to-card-text">ADD to Cart</div>
+                      <div className="calculated-bill">
+                        <div className="total-bill">{totalTicketAmount}</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </button>
+                </button>
+              </div>
             </div>
           </div>
         </div>
+        <Loader isLoading={isLoading} />
       </div>
-      <Loader isLoading={isLoading} />
-    </div>
+    </>
   );
 };
 

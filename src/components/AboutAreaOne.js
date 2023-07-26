@@ -378,9 +378,11 @@ const AboutAreaOne = () => {
                   be times the balloon isn’t allowed to operate. We are aware
                   that this might be an activity that you were looking forward
                   to, and to avoid disappointment, we suggest checking this
-                  weather widget on the day of your experience.
+                  weather widget on the day of your experience. The flight will
+                  be grounded when there are thunderstorms or winds above 25
+                  knots.
                 </p>
-                <div className="row">
+                {/* <div className="row">
                   <div className="col-md-6">
                     <div className="single-about-inner">
                       <div className="thumb mb-3">
@@ -408,7 +410,7 @@ const AboutAreaOne = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

@@ -10,7 +10,7 @@ const Breadcrumbthree = ({}) => {
         className="breadcrumb-area bg-cover"
         style={{
           height: "720px",
-          backgroundImage: 'url("./assets/img/bg/photo-banner-petra.jpg")',
+          backgroundImage: 'url("./assets/img/bg/73.jpeg")',
         }}
       >
         <div className="container">

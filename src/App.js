@@ -22,6 +22,8 @@ import Pricing from "./pages/Pricing";
 import PlanYourFlight from "./pages/Plan-your-flight";
 import PhotoMemory from "./pages/Photo-memory";
 import TicketCreate from "./pages/TicketCreate";
+import TermsAndConditions from './pages/TermsAndConditions';
+import OrderConfirm from './pages/OrderConfirm'
 function App() {
   useEffect(() => {
     AOS.init({
@@ -42,11 +44,7 @@ function App() {
         <Route exact path="/about" element={<About />} />
         <Route exact path="/blog" element={<Blog />} />
         <Route exact path="/blog-details" element={<BlogDetails />} />
-        <Route
-          exact
-          path="/case-study-details"
-          element={<CaseStudyDetails />}
-        />
+        <Route exact path="/case-study-details" element={<CaseStudyDetails />}/>
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/service" element={<Service />} />
         <Route exact path="/service-details" element={<ServiceDetails />} />
@@ -57,6 +55,10 @@ function App() {
         <Route exact path="/photo-memory" element={<PhotoMemory />} />
         <Route exact path="/team-details" element={<TeamDetails />} />
         <Route exact path="/ticket" element={<TicketCreate />}></Route>
+        <Route exact path="/terms&condition" element={<TermsAndConditions />}></Route>
+        <Route exact path="/order-confirm" element={<OrderConfirm />}></Route>
+
+        
       </Routes>
       <ScrollToTop smooth color="#246BFD" />
     </BrowserRouter>

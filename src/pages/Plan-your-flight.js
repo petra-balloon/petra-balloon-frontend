@@ -29,27 +29,22 @@ const PlanYourFlight = () => {
           <div className="col-12">
             <h2 style={{ marginTop: "34px" }}>What To Wear?</h2>
             <p style={{ fontSize: "18px" }}>
-              Dubai is lucky enough to have sunny weather year-round. However,
-              some months are warmer than others. As The Dubai Balloon At
-              Atlantis will operate throughout the year, ensure you are aware of
-              the weather conditions during your visit.
+              Petra enjoys sunny weather throughout the year, though some months
+              are warmer than others. As you plan to experience The Petra
+              Balloon, it's important to consider the weather conditions during
+              your visit. In the summer months from May to September, choose
+              cool and loose-fitting.
             </p>
             <p style={{ fontSize: "18px" }}>
-              October to April is considered winter, and the temperatures are
-              pleasant, with the coldest months being November to January. Bring
-              a jacket, as it might be cooler once the balloon reaches its
-              maximum height, especially at night. Comfortable, casual clothing
-              such as shorts, t-shirts and dresses are recommended.
+              Please note that large bags are not allowed onboard, but backpacks
+              and purses are permitted. It is recommended to avoid wearing high
+              heels for your comfort and safety.
             </p>
             <p style={{ fontSize: "18px" }}>
               From May to September, always wear cool, loose clothing during the
               summer. If you are visiting from Aquaventure Waterpark, you are
               allowed to embark on the flight in respectable swimming clothes
               permitted by the waterpark.
-            </p>
-            <p style={{ fontSize: "18px" }}>
-              Big bags will not be permitted onboard; however, backpacks and
-              purses will be allowed. We suggest to avoid wearing high heels.
             </p>
           </div>
         </div>
@@ -62,15 +57,18 @@ const PlanYourFlight = () => {
               Wheelchair And Stroller Accessibility
             </h2>
             <p style={{ fontSize: "18px" }}>
-              The Dubai Balloon At Atlantis is accessible for wheelchairs and
-              baby strollers. Please speak to a Ground Crew member for
-              assistance loading and unloading the balloon gondola. The
-              wheelchair/stroller must have a braking/locking system to prevent
-              unsecured movement in flight. This function will be checked and
-              verified by the ground crew before boarding. If your wheelchair
-              doesn't fit in the gondola, there is no need to worry as will have
-              extra wheelchairs on-site which you are welcome to use for the
-              duration of the flight.
+              The Petra Balloon in Petra City is designed to be accessible for
+              individuals using wheelchairs and baby strollers. Our dedicated
+              Ground Crew members are available to assist you with loading and
+              unloading the balloon gondola. Please ensure that your wheelchair
+              or stroller has a functioning braking/locking system to ensure
+              stability during the flight. Our ground crew will verify and check
+              this function before boarding. If your wheelchair is unable to fit
+              in the gondola, there's no need to worry. We have additional
+              wheelchairs available on-site that you are welcome to use
+              throughout the entire flight. Your comfort and accessibility are
+              our priority, and we strive to make the Petra Balloon experience
+              inclusive for all.
             </p>
           </div>
         </div>

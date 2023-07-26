@@ -8,7 +8,7 @@ const Breadcrumb = ({  }) => {
       {/* ================ Breadcrumb Start ================*/}
       <div
         className='breadcrumb-area bg-cover'
-        style={{ height :"720px" , backgroundImage: 'url("./assets/img/bg/71.jpg")' }}
+        style={{ height :"720px" , backgroundImage: 'url("./assets/img/bg/71.jpeg")' }}
       >
         <div className='container'>
           <div className='breadcrumb-inner'>

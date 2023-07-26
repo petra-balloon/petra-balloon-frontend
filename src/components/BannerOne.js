@@ -36,6 +36,7 @@ const BannerOne = ({ scrollToComponent2 }) => {
     // Loop the video
     video.addEventListener("ended", () => {
       video.currentTime = 0;
+      
       video.play();
     });
 
@@ -78,7 +79,10 @@ const BannerOne = ({ scrollToComponent2 }) => {
             <div className="container">
               <div className="row">
                 <div className="col-lg-4 col-xs-2"></div>
-                <div className="col-lg-4 col-xs-8">
+                <div
+                  className="col-lg-4 col-xs-8"
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
                   <div>
                     <Link
                       style={{
@@ -94,7 +98,7 @@ const BannerOne = ({ scrollToComponent2 }) => {
                       data-aos-duration="1500"
                       onClick={scrollToTarget}
                     >
-                      Our Packages
+                      Book Your Ride
                     </Link>
                   </div>
                 </div>
@@ -119,14 +123,15 @@ const BannerOne = ({ scrollToComponent2 }) => {
       )}
       {/* Pricing Area One start */}
       <div
-        className="pricing-area bg-gray pd-top-120 pd-bottom-90"
+        className="pricing-area bg-gray pd-top-60 pd-bottom-90"
         ref={targetRef}
       >
         <div className="container">
           <div className="section-title text-center">
-            <h6 className="sub-title">Pricing plan</h6>
+            {/* <h6 className="sub-title">Pricing plan</h6> */}
             <h2 className="title">
-              Best plane to get our <span>Services</span>
+              Check Availability and Book Your Tickets at{" "}
+              <span>Petra Balloon</span>
             </h2>
           </div>
           <div className="row">
@@ -170,6 +175,20 @@ const BannerOne = ({ scrollToComponent2 }) => {
                       {Details.Pass_description}
                     </p>
                     <ul style={{ padding: "0px 15px 0px 15px" }}>
+                      <li style={{ borderBottom: "1px solid #E4E4E4", display:"flex", justifyContent:"space-between"}}>
+                        <div>Adult</div>
+                        <div>{Details.adult_price} JOD</div>
+                      </li>
+                      <li style={{ borderBottom: "1px solid #E4E4E4", display:"flex", justifyContent:"space-between"}}>
+                        <div>Children <br></br> 3 to 11 years</div>
+                        <div>{Details.child_price} JOD</div>
+                      </li>
+                      <li style={{ borderBottom: "1px solid #E4E4E4", display:"flex", justifyContent:"space-between"}}>
+                        <div>Children <br></br> Below 3 years of age</div>
+                        <div>Free</div>
+                      </li>
+                    </ul>
+                    {/* <ul style={{ padding: "0px 15px 0px 15px" }}>
                       <li>
                         <FaCheck />
                         Adult {Details.adult_price} JOD
@@ -183,7 +202,7 @@ const BannerOne = ({ scrollToComponent2 }) => {
                         Children Below 3 years of age 0 JOD * Proof of age
                         required at entrance
                       </li>
-                      {(() => {
+                       {(() => {
                         if (Details.family_price != null) {
                           return (
                             <li>
@@ -198,8 +217,8 @@ const BannerOne = ({ scrollToComponent2 }) => {
                             Choose other pass for family
                           </li>
                         );
-                      })()}
-                    </ul>
+                      })()} 
+                    </ul> */}
                     <a
                       style={{ background: "#aa0404" }}
                       className="btn btn-black border-radius border-radius-0 w-100"

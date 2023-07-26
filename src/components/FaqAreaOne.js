@@ -5,7 +5,7 @@ const FaqAreaOne = () => {
     <>
       {/*==================== Faq area start ====================*/}
       <div
-        className="faq-area faq-area-margin-top bg-cover pd-top-90 pd-bottom-110"
+        className="faq-area faq-area-margin-top bg-cover pd-top-60 pd-bottom-110"
        /*  style={{ backgroundImage: 'url("./assets/img/bg/3.png")' }} */
       >
         <div className="container">
@@ -19,7 +19,7 @@ const FaqAreaOne = () => {
               <div className="about-thumb-inner pt-lg-3">
                 <img
                   className="main-img"
-                  src="assets/img/about/rainbow.jpg"
+                  src="assets/img/about/rainbow.jpeg"
                   alt="img"
                 />
                 {/*  <img

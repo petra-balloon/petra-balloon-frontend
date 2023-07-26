@@ -9,9 +9,8 @@ const FaqAreaThree = () => {
         // style={{ backgroundImage: 'url("./assets/img/bg/3.png")' }}
       >
         <div className="container">
-         
           <div className="row pd-top-120">
-          <div className="col-12">
+            {/*  <div className="col-12">
             <p style={{textAlign:"center" , fontSize:"18px" , marginBottom:"35px" }}>
               Wondering what to wear, where to park or when is the best time to
               fly? <br />
@@ -20,8 +19,8 @@ const FaqAreaThree = () => {
               perfect picture once you are on the balloon, and we will assist
               you with the rest.</span>
             </p>
-          </div>
-            <div 
+          </div> */}
+            <div
               className="col-xl-5 col-lg-6 col-md-8 order-lg-last"
               data-aos="fade-left"
               data-aos-delay="100"
@@ -30,10 +29,9 @@ const FaqAreaThree = () => {
               <div className="about-thumb-inner pt-lg-3">
                 <img
                   className="main-img"
-                  src="assets/img/about/map2.jpg"
+                  src="./assets/img/bg/c4.jpeg"
                   alt="img"
                 />
-               
               </div>
             </div>
             <div
@@ -45,21 +43,21 @@ const FaqAreaThree = () => {
               <div className="section-title mb-0 mt-4 mt-lg-0">
                 {/* <h6 className="sub-title">SOME FAQ'S</h6> */}
                 <h2 className="title">
-                  <span>Dubai Balloon </span> Ride With Breathtaking Skyline
+                  <span>Petra Balloon </span> Ride With Breathtaking Skyline
                   Views Creating
                 </h2>
-                <p className="content" style={{ fontSize:"18px" }}>
-                  Feel on top of the world and experience wonder at
-                  adrenaline-rushing heights of up to a spectacular 300 meters,
-                  or a 100-storey building. Marvel at the stunning shape of Palm
-                  Jumeirah and take in incredible views of Dubai and its
-                  glistening skyline with an experience that offers more than
-                  just an observation point. The Dubai Balloon At Atlantis can
-                  be found at the world’s most iconic entertainment destination,
-                  Atlantis, the Palm and the record-breaking Aquaventure
-                  Waterpark. Make memories with friends and bring the whole
-                  family for a bucket list experience as kids under the age of
-                  three get to enjoy The Dubai Balloon for free.
+                <p className="content" style={{ fontSize: "18px" }}>
+                  Feel on top of the world and experience wonder in the
+                  captivating city of Petra, Jordan. Soar to adrenaline-rushing
+                  heights of up to a breathtaking 300 meters, offering panoramic
+                  views that rival a 100- storey building. Marvel at the
+                  stunning beauty of Petra's ancient architecture and take in
+                  the incredible vistas of the city and its majestic skyline.
+                  The Petra Balloon, located in the heart of this iconic
+                  destination, invites you to create unforgettable memories with
+                  friends and family. Children under the age of three can enjoy
+                  the Petra Balloon experience for free, making it a must-do
+                  adventure for everyone.
                 </p>
               </div>
               {/*  <div
