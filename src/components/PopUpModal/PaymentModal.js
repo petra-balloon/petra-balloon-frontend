@@ -17,7 +17,7 @@ const ParmentGatewayModal = ({
         },
       });
       window.Checkout.showEmbeddedPage("#embed-target");
-    }, 5000);
+    }, 2000);
    
   }, []);
 
