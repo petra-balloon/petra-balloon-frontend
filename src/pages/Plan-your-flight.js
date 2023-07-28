@@ -42,9 +42,7 @@ const PlanYourFlight = () => {
             </p>
             <p style={{ fontSize: "18px" }}>
               From May to September, always wear cool, loose clothing during the
-              summer. If you are visiting from Aquaventure Waterpark, you are
-              allowed to embark on the flight in respectable swimming clothes
-              permitted by the waterpark.
+              summer.
             </p>
           </div>
         </div>

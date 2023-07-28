@@ -260,7 +260,7 @@ const ThirdModal = ({
 
                 <div className="row">
                   <div className="col-lg-8">
-                    <div className="third-pass-details">Sunrise Pass</div>
+                    <div className="third-pass-details">{resData.selected_pass}</div>
                   </div>
                   <div className="col-lg-4">
                     <div className="third-total-recipt-price">
