@@ -53,7 +53,7 @@ const FaqAreaFour = () => {
                 </h3>
 
                 <p className="content" style={{ fontSize: "18px" }}>
-                  Every flight with Petra Balloon lasts for 10 minutes, but the
+                  Every flight with Petra Balloon lasts up to 20 minutes, but the
                   memories created will stay with you forever. Our team of
                   professional photographers and videographers will be there to
                   capture your unique experience in Petra City.

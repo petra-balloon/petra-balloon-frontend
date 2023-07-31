@@ -36,7 +36,7 @@ function OrderConfirm() {
   return (
     <>
       <NavBar />
-      <div>OrderConfirm</div>
+      <div style={{marginTop:"165px"}}>OrderConfirm</div>
       <FooterOne />
     </>
   );

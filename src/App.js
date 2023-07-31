@@ -23,7 +23,8 @@ import PlanYourFlight from "./pages/Plan-your-flight";
 import PhotoMemory from "./pages/Photo-memory";
 import TicketCreate from "./pages/TicketCreate";
 import TermsAndConditions from './pages/TermsAndConditions';
-import OrderConfirm from './pages/OrderConfirm'
+import OrderConfirm from './pages/OrderConfirm';
+import Faqs from './pages/petra-FAQs';
 function App() {
   useEffect(() => {
     AOS.init({
@@ -57,8 +58,7 @@ function App() {
         <Route exact path="/ticket" element={<TicketCreate />}></Route>
         <Route exact path="/terms&condition" element={<TermsAndConditions />}></Route>
         <Route exact path="/order-confirm" element={<OrderConfirm />}></Route>
-
-        
+        <Route exact path="/faqs" element={<Faqs />}></Route>
       </Routes>
       <ScrollToTop smooth color="#246BFD" />
     </BrowserRouter>
