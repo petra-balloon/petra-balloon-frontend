@@ -71,6 +71,9 @@ const FooterOne = () => {
                   <li>
                     <Link to="/terms&condition">Terms & Conditions</Link>
                   </li>
+                  <li>
+                    <Link to="/FAQs">FAQS</Link>
+                  </li>
                 </ul>
               </div>
             </div>
