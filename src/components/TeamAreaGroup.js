@@ -11,17 +11,18 @@ const TeamAreaGroup = () => {
   }, []);
 
   const getTocken = async (event) => {
-      await axios
-        .get(`${API_URL}social-token/get`, {})
-        .then(async (response) => {
-          var tokenDb = response.data.data[0].tocken;
-          console.log("this is tocken!!!!!!!!!", response.data.data);
-          getInstagramFeed(tokenDb);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+    await axios
+      .get(`${API_URL}social-token/get`, {})
+      .then(async (response) => {
+        var tokenDb = response.data.data[0].tocken;
+        console.log("this is tocken!!!!!!!!!", response.data.data);
+
+        getInstagramFeed(tokenDb);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
   const getInstagramFeed = async (tokenDb) => {
     //setIsLoading(true);
@@ -29,7 +30,7 @@ const TeamAreaGroup = () => {
     //IGQVJVQUo1RWFfYURVcU1KbzZAvUDNKbEk3bjZAjWWR3MV93V3paNTlfWVR1bmNSNXVzLWRIS0xIUXBoemRvZAlJLS1pPekFqbFpIT0dPejRRVXNrYTVLMXI0TGlEeU1xX3lsYk5SVHhlVWVFSUF3SHVlRwZDZD
     //IGQVJWY1hQcG9qZAnVpa1dRZAERYNjdYcmpzYjRpd0NVRGw4dXZA6bkJmbXBKMU00azdTdGN3dVR6UU5iTmhieWJveDhmYUlnMXk4cE1lb3VqOUFQY0J3RjhaYVVOSEdZANUNXQ3hFMjdHcHdKUDdKc2xPcQZDZD
     //const YOUR_ACCESS_TOKEN =
-     // "IGQVJXdVNFV1JINkh1NTQ3UmxXMGgtZAXVEMjdyejRkV0RJQjVPdmxrUVdicTE4NTF1dDFsUlVIRzlQM2pOTThGckx3cW1yYlEwMWlOVFlDN2VjYm9wOEZAlc2I1Ukdlb082Q085NGJtQnIybll2MDBycwZDZD";
+    // "IGQVJXdVNFV1JINkh1NTQ3UmxXMGgtZAXVEMjdyejRkV0RJQjVPdmxrUVdicTE4NTF1dDFsUlVIRzlQM2pOTThGckx3cW1yYlEwMWlOVFlDN2VjYm9wOEZAlc2I1Ukdlb082Q085NGJtQnIybll2MDBycwZDZD";
     await axios
       .get(
         `https://graph.instagram.com/me/media?fields=id,media_url,caption&access_token=${tokenDb}`,
@@ -38,8 +39,33 @@ const TeamAreaGroup = () => {
       .then(async (response) => {
         console.log(response.data);
         console.log("this is response", response.data.data[0].media_url);
-
-        setInstaAllFeed(response.data.data);
+        //setInstaAllFeed(response.data.data);
+        //pleaeeee
+        const mediaData = response.data.data;
+        const fetchMediaItems = async () => {
+          const updatedMediaItems = await Promise.all(
+            mediaData.map(async (item) => {
+              try {
+                const response = await fetch(item.media_url);
+                if (response.ok) {
+                  const contentType = response.headers.get("content-type");
+                  if (contentType && contentType.startsWith("image")) {
+                    return { ...item, type: "image" };
+                  } else if (contentType && contentType.startsWith("video")) {
+                    return { ...item, type: "video" };
+                  }
+                }
+              } catch (error) {
+                console.error("Error fetching media:", error);
+              }
+              return { ...item, type: "unsupported" };
+            })
+          );
+          console.log("updatedMediaItems<<>>>>>>>>>>>>",updatedMediaItems);
+          const images = updatedMediaItems.filter(itemB => itemB.type == "image" );
+          setInstaAllFeed(images);
+        };
+        fetchMediaItems();
       })
       .catch(function (error) {
         console.log(error);
