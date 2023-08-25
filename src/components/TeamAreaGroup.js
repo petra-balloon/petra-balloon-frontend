@@ -80,7 +80,7 @@ const TeamAreaGroup = () => {
           <div className="row">
             {instaAllFeed &&
               instaAllFeed.map((Details) => (
-                <div className="col-4">
+                <div className="col-lg-4 col-sm-12  col-md-6">
                   <div className="single-team-inner text-center">
                     <div className="thumb">
                       <img
