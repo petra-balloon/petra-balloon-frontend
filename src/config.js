@@ -10,5 +10,10 @@
 //export const API_URL = "https://petra-balloon-backend.onrender.com/api/";
 //export const image_url = "https://petra-balloon-backend.onrender.com/static/";
 
-export const API_URL = "https://api.petraballoon.com/api/"
-export const image_url = "https://api.petraballoon.com/static/";
+//last one before another userr
+//export const API_URL = "https://api.petraballoon.com/api/"
+//export const image_url = "https://api.petraballoon.com/static/";
+
+
+export const API_URL = "https://backend.api.luxotel.com/api/"
+export const image_url = "https://backend.api.luxotel.com/static/";
